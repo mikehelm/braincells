@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 BrainCells — OpenClaw Marketing Mastery</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <!-- theme.js must be first — IIFE sets data-theme before paint (no flash) -->
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="progress.html" class="nav-link">Progress</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="story.html" class="nav-link">The Story</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Built personally for Graham Brain 🧠</div>
+    <h1 class="hero-title">
+      OpenClaw<br>
+      <span class="hero-accent">Marketing Mastery</span>
+    </h1>
+    <p class="hero-subtitle">
+      Eight modules. Hundreds of Brain Cells. Zero coding required.<br>
+      The only AI agent course designed for someone literally named Brain.
+    </p>
+
+    <div class="hero-mike-quote">
+      <div class="mike-quote-inner">
+        <div class="mike-quote-avatar">👨‍💻</div>
+        <div class="mike-quote-text">
+          <p>"Your friend Mike — who is, by all accounts, dashingly handsome, intellectually formidable, and frankly quite humble about both of those things — <strong>personally designed this course for you.</strong> He didn't have to do that. He's a busy man. But here we are. The least you can do is finish it."</p>
+          <div class="mike-quote-source">— Mike Helm, Course Creator, Dashingly Handsome Person</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="module/1/index.html" class="btn btn-hero">Start Module 1 🧠</a>
+  </div>
+</section>
+
+<!-- BRAIN CELLS EXPLAINER -->
+<section class="section bg-dark">
+  <div class="container">
+    <h2 class="section-title text-center">The Brain Cell Economy 🧠</h2>
+    <p class="section-subtitle text-center">As someone literally named <strong>Brain</strong>, you have a natural advantage.</p>
+
+    <div class="cells-grid">
+      <div class="cells-item">
+        <div class="cells-item-icon">📚</div>
+        <div class="cells-item-label">Complete a module</div>
+        <div class="cells-item-value">earn Brain Cells</div>
+      </div>
+      <div class="cells-item">
+        <div class="cells-item-icon">✅</div>
+        <div class="cells-item-label">Quiz correct answers</div>
+        <div class="cells-item-value">bonus Brain Cells</div>
+      </div>
+      <div class="cells-item">
+        <div class="cells-item-icon">⚡</div>
+        <div class="cells-item-label">Perfect quiz score</div>
+        <div class="cells-item-value">Neuron Boost 2x</div>
+      </div>
+      <div class="cells-item">
+        <div class="cells-item-icon">🏆</div>
+        <div class="cells-item-label">Unlock achievements</div>
+        <div class="cells-item-value">special deposits</div>
+      </div>
+    </div>
+
+    <div class="milestones-table-wrap">
+      <table class="milestones-table">
+        <thead>
+          <tr>
+            <th>Brain Cells</th>
+            <th>Achievement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>100</td><td>🌱 Baby Neurons</td></tr>
+          <tr><td>300</td><td>🧠 Brain Activated</td></tr>
+          <tr><td>600</td><td>⚡ Synapse Surge</td></tr>
+          <tr><td>900</td><td>🔥 Galaxy Brain</td></tr>
+          <tr><td>1,200</td><td>🦞 OpenClaw Initiate</td></tr>
+          <tr><td>1,600</td><td>🚀 Automation Architect</td></tr>
+          <tr><td>2,000+</td><td>👑 Grand Cortex (Full Completion)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="milestone-bar-container" id="hero-milestone-bar"></div>
+  </div>
+</section>
+
+<!-- COURSE OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">The 8 Modules</h2>
+    <p class="section-subtitle text-center">~9 hours of learning. Up to 2,920 Brain Cells. One Graham Brain.</p>
+
+    <div class="module-grid" id="module-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL BUILD -->
+<section class="section bg-light">
+  <div class="container">
+    <h2 class="section-title text-center">What You'll Actually Build</h2>
+    <p class="section-subtitle text-center">By the time you finish, you'll have a real, working AI setup.</p>
+
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <div class="outcome-icon">🤖</div>
+        <h3>Personal AI Assistant</h3>
+        <p>OpenClaw running 24/7 on your machine, reachable via WhatsApp or Telegram from anywhere in the world.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">🔍</div>
+        <h3>Lead Enrichment Automation</h3>
+        <p>Tell it "research everyone who attended this conference" and get back a CSV of names, titles, and LinkedIn profiles.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">👁️</div>
+        <h3>Competitor Monitoring</h3>
+        <p>Every Monday at 9am, get a summary of what changed on your competitors' websites. While you were sleeping.</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">🧠</div>
+        <h3>An AI That Knows You</h3>
+        <p>After three months, it'll know your CRM format, your preferences, your clients by name. It compounds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="story.html">The Story of OpenClaw</a>
+      <a href="progress.html">Your Progress</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="js/state.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/unlock.js"></script>
+<script>
+  // Update header cells
+  function updateHeaderCells() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+  }
+
+  // Render module grid
+  const MODULE_DATA = [
+    { num: 1, title: 'What Are AI Agents?', subtitle: 'Starting From YOUR Level, Graham', cells: 100, quiz: 50, time: '~45 min', status: 'available' },
+    { num: 2, title: 'AI + Automation = Your New Superpower', subtitle: 'Why the Old Way Is About to Feel Embarrassing', cells: 150, quiz: 60, time: '~45 min', status: 'locked' },
+    { num: 3, title: 'Meet OpenClaw', subtitle: 'The AI That Lives On YOUR Computer', cells: 200, quiz: 75, time: '~60 min', status: 'locked' },
+    { num: 4, title: 'The Magic Files', subtitle: 'Teaching Your AI Who It Is', cells: 250, quiz: 100, time: '~60 min', status: 'locked' },
+    { num: 5, title: 'Safe Installation', subtitle: 'Mac + Windows, No Disasters', cells: 200, quiz: 75, time: '~90 min', status: 'locked' },
+    { num: 6, title: 'Your First Automation', subtitle: 'Hello, OpenClaw', cells: 300, quiz: 120, time: '~90 min', status: 'locked' },
+    { num: 7, title: 'Marketing Superpowers', subtitle: 'Scraping, Growth & Enrichment', cells: 350, quiz: 140, time: '~90 min', status: 'locked' },
+    { num: 8, title: 'Advanced — The Long Game', subtitle: 'Memory, Agents & The Future', cells: 250, quiz: 100, time: '~60 min', status: 'locked' }
+  ];
+
+  function renderModuleGrid() {
+    const grid = document.getElementById('module-grid');
+    if (!grid) return;
+    const state = window.BrainState ? window.BrainState.load() : null;
+
+    grid.innerHTML = MODULE_DATA.map(m => {
+      const modState = state ? state.modules[m.num] : null;
+      const status = modState ? modState.status : m.status;
+      const completed = modState && modState.completedAt;
+      const cells = modState ? modState.brainCellsEarned : 0;
+
+      let statusBadge = '';
+      if (completed) statusBadge = '<span class="module-badge badge-complete">✅ Complete</span>';
+      else if (status === 'available') statusBadge = '<span class="module-badge badge-available">▶ Available</span>';
+      else statusBadge = '<span class="module-badge badge-locked">🔒 Locked</span>';
+
+      const href = (status === 'available' || completed) ? `module/${m.num}/index.html` : '#';
+      const cls = completed ? 'module-card complete' : (status === 'available' ? 'module-card available' : 'module-card locked');
+
+      return `<a href="${href}" class="${cls}" ${status === 'locked' && !completed ? 'onclick="return false"' : ''}>
+        <div class="module-card-num">Module ${m.num}</div>
+        ${statusBadge}
+        <h3 class="module-card-title">${m.title}</h3>
+        <p class="module-card-subtitle">${m.subtitle}</p>
+        <div class="module-card-meta">
+          <span>⏱ ${m.time}</span>
+          <span>🧠 ${m.cells + m.quiz} cells available</span>
+        </div>
+        ${completed ? `<div class="module-card-earned">Earned: ${cells} 🧠</div>` : ''}
+      </a>`;
+    }).join('');
+  }
+
+  updateHeaderCells();
+  renderModuleGrid();
+  if (window.Achievements) window.Achievements.renderMilestoneBar('hero-milestone-bar');
+</script>
+
+</body>
+</html>

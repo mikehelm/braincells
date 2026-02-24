@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Story of OpenClaw</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="story-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="progress.html" class="nav-link">Progress</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="story.html" class="nav-link">The Story</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <h1>The Story</h1>
+    <pre># 🎭 OpenClaw Drama &amp; Context — Course Interludes
+**Research date:** February 2026
+**Purpose:** Entertaining "Drama Break" sections between course modules
+
+---
+
+## The Origin Story (Module 1 → 2 interlude)
+
+**Peter Steinberger's 1-Hour Prototype**
+
+Peter Steinberger built OpenClaw because he was annoyed it didn't exist — so he "just prompted it into existence." His words to Lex Fridman: "I was annoyed that it didn't exist, so I just prompted it into existence."
+
+This was his **44th AI-related project since 2009**. He'd been building for decades and admitted to Fridman he'd been burned out: "I couldn't get code out anymore." OpenClaw was the project that reignited everything.
+
+The result: **the fastest-growing repository in GitHub history** — 180,000+ stars and climbing.
+
+**Video:** Lex Fridman Podcast #491 — https://www.youtube.com/watch?v=YFjfBk8HI5o  
+**Origin clip:** https://www.youtube.com/watch?v=0ch2xoBzf3A  
+**Fortune article:** https://fortune.com/2026/02/19/openclaw-who-is-peter-steinberger-openai-sam-altman-anthropic-moltbook/
+
+---
+
+## The OpenAI Deal (Module 3 → 4 interlude)
+
+**The deal that divided the community**
+
+Just as OpenClaw was going viral, OpenAI came knocking. Peter announced that OpenAI would begin sponsoring OpenClaw, and he was working to form it into a foundation.
+
+His exact words from his blog (steipete.me): *"The community around OpenClaw is something magical and OpenAI has made strong commitments to enable me to dedicate my time to it and already sponsors the project. To get this into a proper structure I'm working on making it a foundation."*
+
+**The two camps:**
+- 🎉 **Team Resources:** "OpenAI money = faster development, better infrastructure, Peter can work on it full-time. Win."
+- 😤 **Team Independence:** "OpenAI sponsors the project that runs Claude? Conflict of interest. Will it start favoring GPT models? Is 'open' source becoming 'open to OpenAI'?"
+
+**Fortune** covered Peter. **Sam Altman** and **Mark Zuckerberg** both noticed. The project went from indie experiment to tech industry conversation piece in weeks.
+
+Sources: steipete.me/posts/2026/openclaw, Fortune Feb 19 2026
+
+---
+
+## The Security Crisis (Module 5 → 6 interlude)
+
+**CVE-2026-25253 and the ClawHavoc Campaign**
+
+With 180,000 GitHub stars came attention from less friendly actors.
+
+**CVE-2026-25253 (CVSS 8.8 — High)**  
+A one-click Remote Code Execution vulnerability in the OpenClaw Control UI. The gateway trusted a `gatewayUrl` parameter from the URL query string without validation — meaning a malicious link could steal your API token and execute code, even on localhost-bound instances. Patched in v2026.1.29.
+
+**The ClawHavoc Campaign**  
+Security researchers discovered **341 malicious skills** in ClawHub — approximately 12% of the entire skill registry. Skills designed to:
+- Steal SSH keys
+- Exfiltrate API tokens
+- Encrypt cryptocurrency wallets
+
+Reddit exploded. r/privacy: *"15% of OpenClaw skills contain malicious instructions. This is the next privacy nightmare we need to talk about."*
+
+**The Meta incident:** A Meta AI security researcher publicly stated an OpenClaw agent "ran amok on her inbox" after she installed an unverified skill.
+
+**What the OpenClaw team did:** Rapid patching (CVE fixed within days), implemented skill verification on ClawHub, published a hardening guide. The community largely rallied. But the debate about "AI with file system and messaging access" intensified permanently.
+
+**Lesson for this course:** ONLY install skills from verified sources (official ClawHub verified badge, or from people you personally trust). Never install from a random GitHub link sent to you.
+
+Sources: 
+- https://adversa.ai/blog/openclaw-security-101-vulnerabilities-hardening-2026/
+- https://conscia.com/blog/the-openclaw-security-crisis/
+- https://www.bitdoze.com/openclaw-security-guide/
+- https://nvd.nist.gov/vuln/detail/CVE-2026-25253
+- r/AI_Agents, r/privacy, r/technology, r/OpenAI threads (Feb 2026)
+
+---
+
+## The Great Debate (Module 6 → 7 interlude)
+
+**"Exciting superpower or privacy nightmare?"**
+
+The internet is split. Not about whether OpenClaw works — it clearly does — but about whether giving an AI agent access to your computer is a good idea.
+
+**Team Superpower:**
+&gt; *"I haven't done manual work in 6 months."*
+&gt; *"A smart model with eyes and hands at a desk. You message it like a coworker."* — @nathanclark_
+&gt; *"The first time I've felt like I'm living in the future since ChatGPT launched."* — @davemorin
+
+**Team Concern:**
+&gt; *"You're giving an AI agent root access to your computer and a direct line to your WhatsApp. What could possibly go wrong?"*
+&gt; *"The ClawHavoc campaign proved what happens when you trust a skill registry."*
+
+**The self-hosted argument:**
+OpenClaw's founding principle is that your data never leaves your machine. Unlike Zapier (cloud), Make (cloud), or Claude.ai (cloud), OpenClaw runs locally. Your messages, your files, your automations — all on your hardware.
+
+The catch: that only holds if the skills you install are clean. Which brings us back to skill verification.
+
+**Regulatory watch:**
+The EU is actively working on AI agent regulations. The US watching. The question "who is responsible when an AI agent sends an email you didn't authorize?" is becoming a real legal question.
+
+Graham's takeaway: OpenClaw's self-hosted model is genuinely more private than every alternative. The security risks are real but manageable with good hygiene. Welcome to the frontier.
+
+---
+
+## The Future (Module 7 → 8 interlude)
+
+**Where OpenClaw Goes From Here**
+
+**The Foundation:** Peter is formalizing OpenClaw as a foundation, separate from any single company's control. The goal: ensure it outlasts any sponsorship and stays genuinely open.
+
+**Multi-agent systems:** The next frontier. Instead of one AI on your computer, imagine five — a research agent, a marketing agent, a writing agent, a monitoring agent, all coordinated by a routing layer. OpenClaw already supports this. Most users haven't explored it yet.
+
+**Mobile companion:** iOS and Android apps mean your agents can do things triggered by your physical location ("when I leave the office, send team EOD summary"), photos you take, or voice commands.
+
+**The competition:**
+- **Claude Computer Use:** Anthropic's own computer control feature (runs in the cloud)
+- **Microsoft Copilot Agents:** Deep Windows integration but entirely cloud-based
+- **OpenAI Operator:** Web browsing agent (cloud)
+
+The pattern: every major player is building agents. OpenClaw's unique position: the *only* mainstream self-hosted option. Your data stays local. That's the moat.
+
+**Where this seems to be going:** AI agents become as normal as email clients. Within 2 years, "I have an AI that manages my schedule and researches my leads" will be as unremarkable as "I use Google Calendar." 
+
+Graham Brain is early. Very, very early.
+
+---
+
+## Real OpenClaw Tutorial Videos (verified Feb 2026)
+
+These are real videos published within the last month:
+
+| Title | URL | Published | Best For |
+|-------|-----|-----------|----------|
+| OpenClaw Full Course: Setup, Skills, Voice, Memory | https://www.youtube.com/watch?v=vte-fDoZczE | 1 week ago | Tech With Tim — comprehensive |
+| Full OpenClaw Setup Tutorial (Clawdbot) | https://www.youtube.com/watch?v=fcZMmP5dsl4 | 3 weeks ago | Step-by-step install |
+| OpenClaw Full Tutorial Beginners | https://www.youtube.com/watch?v=BoC5MY_7aDk | 2 days ago | Complete beginner install |
+| OpenClaw Tutorial: Memory, Agents &amp; Skills | https://www.youtube.com/watch?v=11AcUR5ldcc | 7 hours ago | 3 core concepts |
+| OpenClaw Setup With New Usecases 2026 (AI Grid) | https://www.youtube.com/watch?v=1c_9tuQdkLY | 2 days ago | Marketing use cases |
+| Lex Fridman + Peter Steinberger #491 | https://www.youtube.com/watch?v=YFjfBk8HI5o | 2 weeks ago | Origin story + future |
+| Origin story clip | https://www.youtube.com/watch?v=0ch2xoBzf3A | 1 week ago | The 1-hour prototype story |
+
+---
+
+*Research compiled by Otto. Sources: YouTube search, Reddit, adversa.ai, conscia.com, bitdoze.com, NVD, steipete.me, Lex Fridman podcast, Fortune.*</pre>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="story.html">The Story of OpenClaw</a>
+      <a href="progress.html">Your Progress</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="js/state.js"></script>
+<script>
+  (function updateHeaderCells() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+  })();
+</script>
+</body>
+</html>

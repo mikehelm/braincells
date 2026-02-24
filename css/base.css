@@ -1,0 +1,341 @@
+/* =============================================================
+   BASE.CSS — Reset, Typography, CSS Variables
+   BrainCells Course for Graham Brain
+   ============================================================= */
+
+:root {
+  /* Colors */
+  --color-primary: #0B1E3D;
+  --color-accent: #00C9A7;
+  --color-gold: #F5A623;
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-success: #2ECC71;
+  --color-error: #E74C3C;
+  --color-locked: #6B7280;
+  --color-dark-bg: #0F172A;
+  --color-text: #1E293B;
+  --color-text-light: #64748B;
+  --color-border: #E2E8F0;
+  --color-hover: #F1F5F9;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Typography */
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  /* Borders */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Layout */
+  --header-height: 64px;
+  --sidebar-width: 280px;
+  --content-max-width: 860px;
+}
+
+/* ============================================================
+   DARK MODE — [data-theme="dark"] overrides
+   Accent (#00C9A7) and gold (#F5A623) are intentionally
+   unchanged — they read well on both backgrounds.
+   ============================================================ */
+[data-theme="dark"] {
+  --color-bg:        #0F172A;
+  --color-surface:   #1E293B;
+  --color-text:      #E2E8F0;
+  --color-text-light:#94A3B8;
+  --color-border:    #334155;
+  --color-hover:     #293548;
+  /* primary stays navy — it's already dark, used for header/footer backgrounds */
+}
+
+/* ============================================================
+   THEME TRANSITIONS — smooth 200ms swap on everything that
+   carries a background, text, or border colour.
+   Using :root instead of * keeps it selective and fast.
+   ============================================================ */
+body,
+.site-header,
+.sidebar,
+.module-card,
+.quiz-card,
+.callout,
+.drama-break,
+.video-card,
+.achievement-card,
+.outcome-card,
+.cells-item,
+.meta-chip,
+.breadcrumb,
+.site-footer,
+.section,
+table td,
+table th,
+blockquote,
+.btn,
+.progress-page,
+.resources-page,
+.about-page {
+  transition:
+    background-color 200ms ease,
+    color            200ms ease,
+    border-color     200ms ease;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* ---- Typography ---- */
+h1 { font-size: var(--font-size-4xl); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: var(--font-size-3xl); font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+h3 { font-size: var(--font-size-2xl); font-weight: 700; line-height: 1.4; }
+h4 { font-size: var(--font-size-xl); font-weight: 600; line-height: 1.4; }
+h5 { font-size: var(--font-size-lg); font-weight: 600; }
+h6 { font-size: var(--font-size-base); font-weight: 600; }
+
+p { margin-bottom: var(--space-md); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover { color: #00a88c; text-decoration: underline; }
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+ul, ol {
+  padding-left: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+li { margin-bottom: var(--space-xs); }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-xl) 0;
+}
+
+blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-xl) 0;
+  background: rgba(0,201,167,0.06);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: italic;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  font-style: normal;
+}
+
+/* ---- Code ---- */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: #1E293B;
+  color: #E2E8F0;
+  padding: 0.125em 0.375em;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background: #1E293B;
+  color: #E2E8F0;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin: var(--space-lg) 0;
+  position: relative;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+/* ---- Tables ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+  font-size: var(--font-size-sm);
+}
+
+th {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--color-hover); }
+
+/* ---- Utility Classes ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-mono { font-family: var(--font-mono); }
+
+.text-sm { font-size: var(--font-size-sm); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+
+.text-muted { color: var(--color-text-light); }
+.text-accent { color: var(--color-accent); }
+.text-gold { color: var(--color-gold); }
+.text-success { color: var(--color-success); }
+.text-error { color: var(--color-error); }
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-2xl { margin-top: var(--space-2xl); }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.hidden { display: none !important; }
+.visible { display: block !important; }
+
+/* ---- Focus Styles ---- */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: rgba(0,201,167,0.2);
+  color: var(--color-primary);
+}
+
+/* ---- Scrollbar (Webkit) ---- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-locked); }
+
+/* ---- Dark mode: theme toggle button ---- */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+  color: white;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

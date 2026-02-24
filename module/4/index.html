@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Module 4 — The Magic Files</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <script src="../../js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../progress.html" class="nav-link">Progress</a>
+      <a href="../../resources.html" class="nav-link">Resources</a>
+      <a href="../../story.html" class="nav-link">The Story</a>
+      <a href="../../about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Module 4</span>
+    </div>
+
+    <section class="callout callout-info">
+      <span class="callout__icon">📘</span>
+      <div class="callout__body">
+        <strong>Module 4: The Magic Files</strong>
+        <p>Course content below is copied verbatim from the research outline.</p>
+      </div>
+    </section>
+
+    <article>
+      <pre># MODULE 4: The Magic Files
+## *Teaching Your AI Who It Is, What It Does, and How to Be Awesome*
+
+&gt; 🧠 **Brain Cells at stake:** 250 base + up to 100 bonus (quiz)  
+&gt; ⏱️ **Estimated time:** ~60 minutes  
+&gt; 🎯 **Unlock:** Requires Module 3 completion
+
+---
+
+### 🎵 THE MODULE 4 RAP 🎵
+
+*(Because Mike said "include a rap" and Otto delivers)*
+
+---
+
+**"The Magic Files Banger"**  
+*Drop the beat. Here we go.*
+
+🎤 *Verse 1:*
+Yo, my name is Graham Brain and I'm about to get smart,  
+OpenClaw on my machine, gonna play the part,  
+Got a SOUL dot MD that defines who I am,  
+An AGENTS dot MD, like a personal exam.  
+
+My AI's got memory, it writes it all down,  
+MEMORY dot MD — that's the king of the town,  
+HEARTBEAT dot MD is the morning alarm,  
+Every thirty minutes, baby, running like a charm.  
+
+🎤 *Chorus:*
+It's the **Magic Files**! (Magic Files!)  
+They define the mind! (Define the mind!)  
+SOUL dot MD! (Soul dot MD!)  
+Leave the old way behind! (Leave it behind!)  
+
+🎤 *Verse 2:*
+TOOLS dot MD got the notes on my setup,  
+If I change my config it won't get tripped up,  
+Markdown text, plain English — that's the whole game,  
+No databases, no bullshit, everything plain.  
+
+Graham B-R-A-I-N, neuron by neuron,  
+Stacking Brain Cells like he's farming on Coron,  
+Mike built this course, he's clearly the GOAT,  
+(Mike told me to say that, I'm just taking note)  
+
+🎤 *Outro:*
+SOUL dot MD — that's WHO you are  
+AGENTS dot MD — that's HOW you go far  
+HEARTBEAT dot MD — that's WHEN you run  
+MEMORY dot MD — that's WHAT you've done  
+TOOLS dot MD — that's WHERE you play  
+Five files, five powers, every single day!  
+
+*mic drop* 🎤
+
+---
+
+### Learning Objectives
+By the end of this module, Graham will be able to:
+- [ ] Identify the 5 magic files and what each one does
+- [ ] Understand why plain Markdown (text) files are used instead of a complicated interface
+- [ ] Know what to customize in SOUL.md to shape his AI's personality
+- [ ] Understand how HEARTBEAT.md creates "passive" background automation
+- [ ] Be able to explain the two-layer memory system (daily logs vs. long-term memory)
+- [ ] Know what NOT to put in these files (security)
+
+---
+
+### Key Concepts to Cover
+
+**1. Why text files? The philosophy behind it**
+- Everything your AI knows about itself lives in plain readable text
+- You can open any file, read it, edit it — no complex interface
+- Version control (git backup) is trivial — just commit the folder
+- This is intentional: transparency over magic boxes
+- *"You can audit your AI's entire brain in 5 minutes by reading 5 files."*
+
+**2. Deep dive: SOUL.md**
+- This is the PERSONALITY file
+- It shapes HOW the AI talks, what it cares about, what it refuses
+- For Graham: set a tone that matches his business style
+- Can include: formal/casual preference, sense of humor level, language style
+- Real example line from a live workspace: "An assistant with no personality is just a search engine with extra steps."
+- Graham's SOUL.md will be pre-configured by Mike — but understanding it means Graham can tweak it
+
+**3. Deep dive: AGENTS.md**
+- The OPERATING INSTRUCTIONS — the employee handbook
+- What to do at session start, how to handle different requests, safety rules
+- Mike will pre-configure this for Graham's marketing workflows
+- Graham should know what's in it so he can request changes
+
+**4. Deep dive: HEARTBEAT.md**
+- The 30-MINUTE ALARM CLOCK that makes automation passive
+- Every ~30 minutes, OpenClaw wakes up and reads this file
+- Only messages Graham if something needs attention
+- Otherwise: silent, working in the background
+- Real examples for Graham's HEARTBEAT.md:
+  ```markdown
+  - Check if any new leads came in overnight
+  - If competitor pricing check is due, run it
+  - If Graham hasn't been messaged in 8+ hours, send a status update
+  ```
+
+**5. Deep dive: MEMORY.md (long-term) and daily logs**
+- Two layers: daily notes (raw log, like a diary) and MEMORY.md (curated, like long-term memory)
+- The AI writes to memory automatically when it learns something important
+- Example memory entries Graham's AI will accumulate over time:
+  - "Graham prefers summaries under 5 bullet points"
+  - "Primary CRM is HubSpot, contact IDs follow format HB-XXXXX"
+  - "DO NOT contact prospects on Fridays after 3pm (Graham's rule)"
+- The AI gets smarter about Graham's business over time — automatically
+
+**6. Deep dive: TOOLS.md**
+- The LOCAL NOTES file — cheat sheet for the specific machine setup
+- Not shared, not standard — Graham's specific environment details
+- Examples: which email account to use, which spreadsheet is the master contacts file
+
+**7. Security: what NOT to put in these files**
+- Never: API keys, passwords, access tokens
+- Never: private client data that doesn't need to be there
+- Never: anything you wouldn't be comfortable a tech-savvy stranger reading
+- Where the real secrets live: `~/.openclaw/` credentials folder (separate, secure)
+
+---
+
+### Suggested Videos for This Module
+*No external video perfectly covers this topic — Mike's walkthrough of the actual files will be the primary content here*
+
+🎥 Supplementary: **"What is AI? A Beginner's Guide"** — https://www.youtube.com/watch?v=ZgXYX5MDsWo — *Good refresher on how AI "learns" — helpful context for why memory files matter*
+
+---
+
+### Quiz — Module 4
+**Complete for up to 100 bonus Brain Cells (20 per correct answer)**
+
+**Q1:** If you want to change how your AI introduces itself in messages — which file do you edit?  
+✅ **Answer:** SOUL.md — this controls personality, tone, and character.
+
+**Q2:** HEARTBEAT.md runs every:  
+A) 5 minutes  
+B) 30 minutes (default, configurable)  
+C) Once a day  
+D) Whenever Graham sends a message  
+✅ **Answer:** B — 30 minutes by default, but this is configurable in the gateway settings.
+
+**Q3:** Graham's AI learns that he never books meetings before 9am. Where should this go?  
+✅ **Answer:** MEMORY.md (long-term preference) — or AGENTS.md (if it should be a hard rule). Either is acceptable. Daily log (memory/YYYY-MM-DD.md) is where it would first be noted; MEMORY.md is where it should be distilled.
+
+**Q4:** You need to store your HubSpot API key so OpenClaw can access your CRM. Where does it go?  
+A) SOUL.md  
+B) TOOLS.md  
+C) `~/.openclaw/` credentials folder or environment variable  
+D) MEMORY.md  
+✅ **Answer:** C — API keys and secrets never go in the workspace files. They go in the secure credentials system.
+
+**Q5:** Why does OpenClaw use plain text Markdown files instead of a complex database or interface?  
+✅ **Answer:** Transparency and simplicity. You can read, edit, and understand every aspect of your AI's configuration just by opening a text file. It's auditable, portable, and doesn't require special software.
+
+---
+
+### 🔓 Unlock Criteria for Module 5
+- Complete quiz with 3/5 correct
+- **Achievement Unlock:** "File Whisperer" 📁 (+25 bonus Brain Cells)
+- **Neuron Boost:** 5/5 on quiz = double base Brain Cells for Module 4 (500 total)
+
+---
+
+### Humor Notes for Module 4
+- THE RAP is the centerpiece — make it silly but actually educational (all five files are in it)
+- Mike gets specifically called out in the rap ("Mike told me to say that") — keep the meta-humor going
+- The memory section can use a "your AI will remember things even you've forgotten" angle — a bit eerie but in a funny way
+- The security section should be serious but brief — don't kill the vibe
+
+---
+
+---</pre>
+    </article>
+
+    <section class="callout callout-warning drama-break">
+      <span class="callout__icon">🎭</span>
+      <div class="callout__body">
+        <strong>Drama Break</strong>
+        <pre>## The Security Crisis (Module 5 → 6 interlude)
+
+**CVE-2026-25253 and the ClawHavoc Campaign**
+
+With 180,000 GitHub stars came attention from less friendly actors.
+
+**CVE-2026-25253 (CVSS 8.8 — High)**  
+A one-click Remote Code Execution vulnerability in the OpenClaw Control UI. The gateway trusted a `gatewayUrl` parameter from the URL query string without validation — meaning a malicious link could steal your API token and execute code, even on localhost-bound instances. Patched in v2026.1.29.
+
+**The ClawHavoc Campaign**  
+Security researchers discovered **341 malicious skills** in ClawHub — approximately 12% of the entire skill registry. Skills designed to:
+- Steal SSH keys
+- Exfiltrate API tokens
+- Encrypt cryptocurrency wallets
+
+Reddit exploded. r/privacy: *"15% of OpenClaw skills contain malicious instructions. This is the next privacy nightmare we need to talk about."*
+
+**The Meta incident:** A Meta AI security researcher publicly stated an OpenClaw agent "ran amok on her inbox" after she installed an unverified skill.
+
+**What the OpenClaw team did:** Rapid patching (CVE fixed within days), implemented skill verification on ClawHub, published a hardening guide. The community largely rallied. But the debate about "AI with file system and messaging access" intensified permanently.
+
+**Lesson for this course:** ONLY install skills from verified sources (official ClawHub verified badge, or from people you personally trust). Never install from a random GitHub link sent to you.
+
+Sources: 
+- https://adversa.ai/blog/openclaw-security-101-vulnerabilities-hardening-2026/
+- https://conscia.com/blog/the-openclaw-security-crisis/
+- https://www.bitdoze.com/openclaw-security-guide/
+- https://nvd.nist.gov/vuln/detail/CVE-2026-25253
+- r/AI_Agents, r/privacy, r/technology, r/OpenAI threads (Feb 2026)
+
+---</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Video Walkthrough</h2>
+      <div class="video-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/11AcUR5ldcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Module Quiz</h2>
+      <div id="quiz-placeholder-4"></div>
+    </section>
+
+    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
+      <a class="btn btn-outline" href="../../module/3/index.html">← Previous</a>
+      <a class="btn btn-primary" href="../../module/5/index.html">Next: Module 5 →</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="../../story.html">The Story of OpenClaw</a>
+      <a href="../../progress.html">Your Progress</a>
+      <a href="../../resources.html">Resources</a>
+      <a href="../../about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="../../js/state.js"></script>
+<script src="../../js/quiz.js"></script>
+<script>
+  (function initModulePage() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+    if (typeof window.initQuiz === 'function') {
+      window.initQuiz(4);
+    }
+  })();
+</script>
+
+</body>
+</html>

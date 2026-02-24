@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Module 1 — What Are AI Agents?</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <script src="../../js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../progress.html" class="nav-link">Progress</a>
+      <a href="../../resources.html" class="nav-link">Resources</a>
+      <a href="../../story.html" class="nav-link">The Story</a>
+      <a href="../../about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Module 1</span>
+    </div>
+
+    <section class="callout callout-info">
+      <span class="callout__icon">📘</span>
+      <div class="callout__body">
+        <strong>Module 1: What Are AI Agents?</strong>
+        <p>Course content below is copied verbatim from the research outline.</p>
+      </div>
+    </section>
+
+    <article>
+      <pre># MODULE 1: What Are AI Agents?
+## *Starting From YOUR Level, Graham (Which Is Already Pretty High)*
+
+&gt; 🧠 **Brain Cells at stake:** 100 base + up to 50 bonus (quiz)  
+&gt; ⏱️ **Estimated time:** ~45 minutes  
+&gt; 🎯 **Prerequisite:** None. You already know what AI is. We're skipping "what is a computer."
+
+---
+
+### The Poem That Starts Everything
+
+*(Because Mike insisted there be a poem, and honestly he was right)*
+
+---
+
+**Ode to Graham Brain**  
+*by Otto, AI assistant*
+
+There once was a marketer named Brain,  
+Whose neurons fired again and again.  
+He'd heard about AI,  
+Said "worth giving a try,"  
+And Mike built him this whole course to explain.
+
+Now the agents are coming to help him,  
+They'll scrape the web, right to the brim,  
+They'll enrich his leads,  
+And meet all his needs,  
+While Graham just sips his afternoon swim.
+
+*(Graham: if you don't swim, substitute your leisure activity of choice.  
+The rhyme scheme demanded it. Poetry is hard.)*
+
+---
+
+### Learning Objectives
+By the end of this module, Graham will be able to:
+- [ ] Explain what an "AI agent" is in plain English (to clients, partners, or skeptical family members)
+- [ ] Distinguish between a regular AI chatbot and an AI agent that *does things*
+- [ ] Understand why AI agents are the upgrade from AI tools like ChatGPT
+- [ ] Describe 3 specific things an AI agent could do for a marketing business
+- [ ] Feel genuinely excited (not intimidated) about what comes next
+
+---
+
+### Key Concepts to Cover
+
+**1. The Chatbot vs. Agent distinction**  
+- Chatbot: You ask a question → it answers → done. Full stop.
+- Agent: You give it a goal → it plans → it uses tools → it executes → it reports back → it *remembers* for next time
+- The difference is like a calculator vs. an assistant
+
+**2. What "tools" means for an AI agent**  
+- Tools are things the AI can DO: browse websites, read files, send messages, run scripts, call APIs
+- An agent is only as powerful as its tools
+- OpenClaw gives the agent *many* tools — and you can add more
+
+**3. The "loop" — how agents think and act**  
+- Perceive → Think → Act → Observe → Repeat
+- Unlike a chatbot (one answer), agents loop until the task is done
+- This is why they can handle complex, multi-step work
+
+**4. Agentic AI in marketing — the concrete version**
+- "Go find the LinkedIn profiles of everyone who attended X conference last month and pull their email + title"
+- "Check our competitor's pricing page every Monday and tell me if anything changed"  
+- "Every morning at 8am, check for new form submissions, research each lead, and add a summary to our CRM"
+- These aren't features. These are things Graham's OpenClaw will actually do.
+
+**5. Why now? (The 2024–2026 inflection point)**  
+- AI models crossed a capability threshold — they're now reliable enough for real business tasks
+- Tools like OpenClaw made agents accessible without needing a developer team
+- Early adopters get an enormous competitive advantage — this is that window
+
+---
+
+### Suggested Videos for This Module
+1. 🎥 **"What is AI? An Introduction to AI, Updated for 2024"** (IBM Technology) — https://www.youtube.com/watch?v=WP6z_X5d-Rw — *Watch first, 10 min*
+2. 🎥 **"AI Agents, Clearly Explained"** (Jeff Su) — https://www.youtube.com/watch?v=FwOTs4UxQS4 — *Watch second, 15 min*
+3. 🎥 **"Top 1 AI Skill for Marketers — Why You Must Learn This in 2026"** — https://www.youtube.com/watch?v=VHCUZwP-8gg — *Optional context, 10–15 min*
+
+---
+
+### Quiz — Module 1
+**Complete for up to 50 bonus Brain Cells (10 per correct answer)**
+
+**Q1:** What's the key difference between an AI chatbot and an AI agent?  
+✅ **Answer:** An AI agent can take actions (use tools, browse web, execute tasks, remember context). A chatbot just answers questions.  
+&gt; *Incorrect: "An agent is smarter" — it's not about intelligence, it's about the ability to act.*
+
+**Q2:** What does it mean when we say an agent has "tools"?  
+✅ **Answer:** Tools are actions the AI can perform — browsing the web, reading/writing files, sending messages, calling APIs.
+
+**Q3:** Name two things an AI marketing agent could realistically do this week.  
+✅ **Sample answers:** Research leads from LinkedIn, monitor competitor websites, check form submissions, draft email campaigns, summarize last week's analytics, schedule social posts, find contact information for potential clients.  
+&gt; *Award Brain Cells for any two plausible marketing tasks — there are no wrong answers here.*
+
+**Q4:** Why is 2025–2026 a particularly important time to learn this?  
+✅ **Answer:** AI models became reliable enough for real business tasks AND tools like OpenClaw made them accessible. Early adopters gain significant competitive advantage. The window for being "ahead of the curve" is now.
+
+**Q5:** Graham's last name is Brain. This is:  
+A) A coincidence  
+B) Destiny  
+C) A sign he will ace this course  
+D) All of the above  
+✅ **Answer:** D) All of the above *(5 bonus Brain Cells awarded regardless of answer — it's impossible to get this wrong)*
+
+---
+
+### 🔓 Unlock Criteria for Module 2
+Graham can unlock Module 2 after:
+- Watching at least Video 1 (IBM AI Intro)
+- Answering at least 3 of 5 quiz questions correctly
+- OR completing the module (no quiz minimum — progress matters more than perfection)
+
+**Unlock message:** *"Your Brain has been activated. Proceeding to Module 2..."* 🧠⚡
+
+---
+
+### Humor Notes for Module 1
+- Open with the poem — set the tone that this is fun
+- Make the "Graham Brain" joke early and commit to it — "you were literally born to do this"
+- Use the calculator vs. assistant metaphor — it's clear and relatable
+- Keep the energy warm and encouraging — Graham already knows AI basics, we're building on that
+- End with something that makes him actually *want* to open Module 2
+
+---
+
+---</pre>
+    </article>
+
+    <section class="callout callout-warning drama-break">
+      <span class="callout__icon">🎭</span>
+      <div class="callout__body">
+        <strong>Drama Break</strong>
+        <pre>## The Origin Story (Module 1 → 2 interlude)
+
+**Peter Steinberger's 1-Hour Prototype**
+
+Peter Steinberger built OpenClaw because he was annoyed it didn't exist — so he "just prompted it into existence." His words to Lex Fridman: "I was annoyed that it didn't exist, so I just prompted it into existence."
+
+This was his **44th AI-related project since 2009**. He'd been building for decades and admitted to Fridman he'd been burned out: "I couldn't get code out anymore." OpenClaw was the project that reignited everything.
+
+The result: **the fastest-growing repository in GitHub history** — 180,000+ stars and climbing.
+
+**Video:** Lex Fridman Podcast #491 — https://www.youtube.com/watch?v=YFjfBk8HI5o  
+**Origin clip:** https://www.youtube.com/watch?v=0ch2xoBzf3A  
+**Fortune article:** https://fortune.com/2026/02/19/openclaw-who-is-peter-steinberger-openai-sam-altman-anthropic-moltbook/
+
+---</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Video Walkthrough</h2>
+      <div class="video-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YFjfBk8HI5o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Module Quiz</h2>
+      <div id="quiz-placeholder-1"></div>
+    </section>
+
+    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
+      <a class="btn btn-outline" href="../../index.html">← Previous</a>
+      <a class="btn btn-primary" href="../../module/2/index.html">Next: Module 2 →</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="../../story.html">The Story of OpenClaw</a>
+      <a href="../../progress.html">Your Progress</a>
+      <a href="../../resources.html">Resources</a>
+      <a href="../../about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="../../js/state.js"></script>
+<script src="../../js/quiz.js"></script>
+<script>
+  (function initModulePage() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+    if (typeof window.initQuiz === 'function') {
+      window.initQuiz(1);
+    }
+  })();
+</script>
+
+</body>
+</html>

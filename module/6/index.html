@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Module 6 — Your First Automation</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <script src="../../js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../progress.html" class="nav-link">Progress</a>
+      <a href="../../resources.html" class="nav-link">Resources</a>
+      <a href="../../story.html" class="nav-link">The Story</a>
+      <a href="../../about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Module 6</span>
+    </div>
+
+    <section class="callout callout-info">
+      <span class="callout__icon">📘</span>
+      <div class="callout__body">
+        <strong>Module 6: Your First Automation</strong>
+        <p>Course content below is copied verbatim from the research outline.</p>
+      </div>
+    </section>
+
+    <article>
+      <pre># MODULE 6: Your First Automation
+## *Hello, OpenClaw. Let's Do Something Actually Useful.*
+
+&gt; 🧠 **Brain Cells at stake:** 300 base + up to 120 bonus (quiz)  
+&gt; ⏱️ **Estimated time:** ~90 minutes (hands-on)  
+&gt; 🎯 **Unlock:** Requires Module 5 completion with gateway running
+
+---
+
+### Learning Objectives
+By the end of this module, Graham will be able to:
+- [ ] Have a real conversation with his OpenClaw instance
+- [ ] Set up a basic HEARTBEAT.md with 3 automated checks
+- [ ] Create his first cron job (scheduled task)
+- [ ] Verify automations are running correctly
+- [ ] Know how to edit the magic files safely
+- [ ] Feel the genuine satisfaction of seeing "it actually worked"
+
+---
+
+### Key Concepts to Cover
+
+**1. Your first conversation**
+Open Telegram, message your bot:
+- "What's today's date?"
+- "Summarize what you know about yourself"  
+- "Tell me a joke about marketing"
+
+This isn't fluff — it's verifying the connection works and the AI has personality.
+
+**2. Setting up HEARTBEAT.md for the first time**
+Edit `~/.openclaw/workspace/HEARTBEAT.md`:
+```markdown
+# Graham's Heartbeat Checklist
+
+- Good morning check: if it's between 8am-9am, send me a brief morning greeting
+- If more than 12 hours since last message, send a check-in
+- Check if any cron jobs have finished recently — if yes, report summary
+```
+
+After saving, the AI picks this up on the next 30-minute cycle.
+
+**3. Creating a first cron job: the Weekly Recap**
+```bash
+openclaw cron add \
+  --name "Monday Morning Brief" \
+  --cron "0 8 * * 1" \
+  --tz "Asia/Bangkok" \
+  --session isolated \
+  --message "It's Monday morning. Give Graham a brief motivational note and remind him to check his lead pipeline." \
+  --announce \
+  --channel telegram
+```
+
+This will run every Monday at 8am Bangkok time and send Graham a message. Change timezone to match his location.
+
+**4. Verifying everything works**
+```bash
+openclaw cron list          # See all scheduled jobs
+openclaw cron run &lt;job-id&gt;  # Force-run a job immediately to test it
+openclaw gateway status      # Confirm gateway is healthy
+```
+
+**5. The magic file edit workflow (safe)**
+1. Open the file in any text editor (Notepad, VS Code, TextEdit on Mac)
+2. Make changes
+3. Save
+4. The gateway picks up changes on the next session/heartbeat (no restart needed for workspace files)
+5. Test with a message: "What does your HEARTBEAT.md say?" — AI will confirm it read the update
+
+---
+
+### Suggested Videos for This Module
+1. 🎥 **"AI Agents, Clearly Explained"** (Jeff Su) — https://www.youtube.com/watch?v=FwOTs4UxQS4 — *Re-watch optional — the agent loop concept clicks here*
+2. 🎥 **"AI in 5 Minutes"** — https://www.youtube.com/watch?v=ad79nYk2keg — *Quick refresher if first automation feels confusing*
+
+---
+
+### Quiz — Module 6
+**Complete for up to 120 bonus Brain Cells (24 per correct answer)**
+
+**Q1:** Graham set up a cron job for Monday mornings but it didn't run. What's the most likely issue?  
+✅ **Answer (any of):** Timezone mismatch (UTC vs local time); Gateway not running; Job is disabled; Cron expression is wrong. Solution: `openclaw cron list` to check status, `openclaw cron run &lt;id&gt;` to force-test.
+
+**Q2:** How does OpenClaw "pick up" changes to HEARTBEAT.md?  
+✅ **Answer:** On the next heartbeat cycle (default: ~30 minutes), the agent reads the current version of HEARTBEAT.md. Changes take effect automatically without restarting the gateway.
+
+**Q3:** What's the difference between a "main session" cron job and an "isolated session" cron job?  
+✅ **Answer:** Main session = runs in the same context as your regular conversations (sees history). Isolated = starts fresh each time (no prior context, can use different model, announces summary).
+
+**Q4:** Graham sends his OpenClaw bot "What's on my heartbeat checklist?" and gets a blank response. What might be wrong?  
+✅ **Answer:** HEARTBEAT.md might be empty, the gateway might not have read it yet, or the AI may need to be prompted more specifically. Try asking: "Please read your HEARTBEAT.md file and tell me what it contains."
+
+**Q5:** What command lists all of Graham's current cron jobs?  
+✅ **Answer:** `openclaw cron list`
+
+---
+
+### 🔓 Unlock Criteria for Module 7
+- HEARTBEAT.md configured with at least 2 items AND
+- At least 1 cron job created AND
+- Successfully sent and received at least 5 messages with OpenClaw
+- **Achievement Unlock:** "First Automation Live" 🤖 (+30 bonus Brain Cells)
+- **Streak bonus:** Complete Module 5 → 6 in same week = +50 Brain Cells
+
+---
+
+### Humor Notes for Module 6
+- The "tell me a joke about marketing" test message is deliberately fun — normalize enjoying the AI
+- The first working automation is a dopamine hit — the module should BUILD to it and celebrate it
+- "The Magic File Edit Workflow (safe)" should be presented with appropriate gravitas — this is where people mess up
+- Consider: "Congratulations. You just automated your life a little bit. This feeling only gets better."
+
+---
+
+---</pre>
+    </article>
+
+    <section class="callout callout-warning drama-break">
+      <span class="callout__icon">🎭</span>
+      <div class="callout__body">
+        <strong>Drama Break</strong>
+        <pre>## The Great Debate (Module 6 → 7 interlude)
+
+**"Exciting superpower or privacy nightmare?"**
+
+The internet is split. Not about whether OpenClaw works — it clearly does — but about whether giving an AI agent access to your computer is a good idea.
+
+**Team Superpower:**
+&gt; *"I haven't done manual work in 6 months."*
+&gt; *"A smart model with eyes and hands at a desk. You message it like a coworker."* — @nathanclark_
+&gt; *"The first time I've felt like I'm living in the future since ChatGPT launched."* — @davemorin
+
+**Team Concern:**
+&gt; *"You're giving an AI agent root access to your computer and a direct line to your WhatsApp. What could possibly go wrong?"*
+&gt; *"The ClawHavoc campaign proved what happens when you trust a skill registry."*
+
+**The self-hosted argument:**
+OpenClaw's founding principle is that your data never leaves your machine. Unlike Zapier (cloud), Make (cloud), or Claude.ai (cloud), OpenClaw runs locally. Your messages, your files, your automations — all on your hardware.
+
+The catch: that only holds if the skills you install are clean. Which brings us back to skill verification.
+
+**Regulatory watch:**
+The EU is actively working on AI agent regulations. The US watching. The question "who is responsible when an AI agent sends an email you didn't authorize?" is becoming a real legal question.
+
+Graham's takeaway: OpenClaw's self-hosted model is genuinely more private than every alternative. The security risks are real but manageable with good hygiene. Welcome to the frontier.
+
+---</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Video Walkthrough</h2>
+      <div class="video-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vte-fDoZczE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Module Quiz</h2>
+      <div id="quiz-placeholder-6"></div>
+    </section>
+
+    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
+      <a class="btn btn-outline" href="../../module/5/index.html">← Previous</a>
+      <a class="btn btn-primary" href="../../module/7/index.html">Next: Module 7 →</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="../../story.html">The Story of OpenClaw</a>
+      <a href="../../progress.html">Your Progress</a>
+      <a href="../../resources.html">Resources</a>
+      <a href="../../about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="../../js/state.js"></script>
+<script src="../../js/quiz.js"></script>
+<script>
+  (function initModulePage() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+    if (typeof window.initQuiz === 'function') {
+      window.initQuiz(6);
+    }
+  })();
+</script>
+
+</body>
+</html>

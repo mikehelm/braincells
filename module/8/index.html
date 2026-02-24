@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Module 8 — Advanced — Memory, Agents & The Long Game</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <script src="../../js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../progress.html" class="nav-link">Progress</a>
+      <a href="../../resources.html" class="nav-link">Resources</a>
+      <a href="../../story.html" class="nav-link">The Story</a>
+      <a href="../../about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Module 8</span>
+    </div>
+
+    <section class="callout callout-info">
+      <span class="callout__icon">📘</span>
+      <div class="callout__body">
+        <strong>Module 8: Advanced — Memory, Agents & The Long Game</strong>
+        <p>Course content below is copied verbatim from the research outline.</p>
+      </div>
+    </section>
+
+    <article>
+      <pre># MODULE 8: Advanced — Memory, Agents &amp; The Long Game
+## *Where This Gets Really Interesting (and a Little Mind-Bending)*
+
+&gt; 🧠 **Brain Cells at stake:** 250 base + up to 100 bonus (quiz)  
+&gt; ⏱️ **Estimated time:** ~60 minutes  
+&gt; 🎯 **Unlock:** Requires Module 7 completion
+
+---
+
+### Learning Objectives
+By the end of this module, Graham will be able to:
+- [ ] Understand how OpenClaw's memory system improves over time
+- [ ] Know what multi-agent setups look like and when they're useful
+- [ ] Understand the concept of custom AI personas for specific tasks
+- [ ] Plan what their OpenClaw setup should look like in 6 months
+- [ ] Know where to go for help, updates, and continued learning
+- [ ] Feel genuine pride in completing this course
+
+---
+
+### Key Concepts to Cover
+
+**1. Memory: the compounding advantage**
+- Week 1: OpenClaw doesn't know Graham well — responses are good but generic
+- Month 1: OpenClaw knows Graham's CRM format, preferred communication style, which leads to prioritize
+- Month 3: OpenClaw knows his clients by name, anticipates his weekly needs, flags things Graham hasn't asked about yet
+- Month 6: OpenClaw is effectively a business partner who knows Graham's operation deeply
+- This isn't magic — it's the memory system writing to MEMORY.md over time
+
+**2. Multi-agent setups — when you need a team**
+- Imagine having three different AI assistants with different personalities and skills
+- "Marketing Agent" — focused on lead research, CRM, campaigns
+- "Research Agent" — focused on competitor monitoring, industry news
+- "Content Agent" — focused on drafting emails, social posts, copy
+- OpenClaw supports running multiple agents simultaneously, each with their own workspace
+- For Graham: this is a "Phase 2" ambition — get the first agent dialed in, then expand
+
+**3. Custom personas — your AI, your way**
+- Mike's OpenClaw is called "Otto" — has a specific personality, style, and set of rules
+- Graham can give his AI a name, a personality, and a brand voice
+- Example: "Marketing Max" — always formal, always cites sources, never sends without review
+- Or: "Campaign Claude" — creative, idea-generating, gets punchy with marketing copy
+- The SOUL.md file is the mechanism — edit it, and the personality changes
+
+**4. The long game: what this looks like in a year**
+- Graham has configured OpenClaw for his specific workflow
+- It runs 24/7 on his Mac Mini (hint, hint) 
+- Every morning: lead pipeline status, overnight leads enriched
+- Every Monday: competitor update, week's opportunities flagged
+- On demand: research any person, company, or topic in minutes
+- Over time: builds a custom knowledge base about his industry, clients, and markets
+- This isn't a tool. It's infrastructure.
+
+**5. Staying current — the OpenClaw ecosystem**
+- OpenClaw is open-source and actively developed
+- The AI models powering it (Claude) are also improving regularly
+- Best practice: update OpenClaw monthly (`npm install -g openclaw@latest`)
+- The automations Mike provides will also evolve — treat this as an ongoing partnership
+- The biggest risk: not keeping up. The second biggest risk: over-automating before you trust the outputs.
+
+---
+
+### Suggested Videos for This Module
+1. 🎥 **"How to Build &amp; Sell AI Automations"** — https://www.youtube.com/watch?v=5TxSqvPbnWw — *Inspiration: the scale of what's possible*
+2. 🎥 **"But What Is a Neural Network?" (3Blue1Brown)** — https://www.youtube.com/watch?v=aircAruvnKk — *Optional: the nerdy Brain dessert — for the curious*
+
+---
+
+### Quiz — Module 8
+**Complete for up to 100 bonus Brain Cells (20 per correct answer)**
+
+**Q1:** How does OpenClaw "get smarter" about Graham's business over time?  
+✅ **Answer:** Through the memory system — MEMORY.md accumulates important facts, preferences, and decisions. Daily logs capture detailed context. The AI reads these at the start of each session and incorporates them into its responses and decisions.
+
+**Q2:** What's the difference between Graham's current single-agent setup and a multi-agent setup?  
+✅ **Answer:** Single agent: one AI with one workspace handling everything. Multi-agent: multiple specialized AIs, each with their own workspace, persona, and channel connections, routed based on the request or channel.
+
+**Q3:** Graham wants his AI to always sound professional and formal, never use emojis, and always end emails with a specific sign-off. Which file does he edit?  
+✅ **Answer:** SOUL.md — this controls personality, tone, and communication style.
+
+**Q4:** How often should Graham update OpenClaw itself?  
+✅ **Answer:** Approximately monthly (`npm install -g openclaw@latest`). There's no strict schedule, but regular updates ensure access to new features and security patches.
+
+**Q5:** Fill in the blank: "The biggest risk in automation is __________ before you trust the outputs."  
+✅ **Answer:** Over-automating — setting up automations that act on data or send communications without sufficient human review before you've verified the AI's accuracy and reliability.
+
+---
+
+### 🔓 Module 8 Completion
+- Complete quiz with 3/5 correct
+- **Achievement Unlock:** "Grand Cortex" 👑 (+50 bonus Brain Cells)
+- **Course Completion Award:** "OpenClaw Certified" 🦞🎓 (special achievement)
+- **Final Brain Cell deposit:** +100 (course completion bonus)
+
+---
+
+### The Final Message (to Graham, from Mike)
+
+---
+
+&gt; Look, Graham. Mike didn't *have* to build you this whole course. He could have just sent you a YouTube link and said "figure it out." But that's not what friends do. Especially not friends who are clearly very smart and very handsome and extremely humble about both of those things.
+&gt;
+&gt; You now know more about AI agents and OpenClaw than 99% of marketers on the planet. That knowledge compounds. Every automation you set up saves you time in perpetuity. Every thing your AI learns about your business makes it more valuable.
+&gt;
+&gt; As someone literally named Brain, you were always going to be good at this.
+&gt;
+&gt; Go use your Brain.
+&gt;
+&gt; 🦞
+
+---
+
+### Humor Notes for Module 8
+- The "it's infrastructure, not a tool" framing is the right note to end on
+- Graham's name gets the LAST moment of humor — "Go use your Brain" — keep it genuinely warm
+- Mike's final note should feel sincerely funny, not sycophantic-for-real
+- The 3Blue1Brown video as "nerdy Brain dessert" is the perfect optional bonus tone
+
+---
+
+---</pre>
+    </article>
+
+    <section class="callout callout-warning drama-break">
+      <span class="callout__icon">🎭</span>
+      <div class="callout__body">
+        <strong>Drama Break</strong>
+        <pre>## The Future (Module 7 → 8 interlude)
+
+**Where OpenClaw Goes From Here**
+
+**The Foundation:** Peter is formalizing OpenClaw as a foundation, separate from any single company's control. The goal: ensure it outlasts any sponsorship and stays genuinely open.
+
+**Multi-agent systems:** The next frontier. Instead of one AI on your computer, imagine five — a research agent, a marketing agent, a writing agent, a monitoring agent, all coordinated by a routing layer. OpenClaw already supports this. Most users haven't explored it yet.
+
+**Mobile companion:** iOS and Android apps mean your agents can do things triggered by your physical location ("when I leave the office, send team EOD summary"), photos you take, or voice commands.
+
+**The competition:**
+- **Claude Computer Use:** Anthropic's own computer control feature (runs in the cloud)
+- **Microsoft Copilot Agents:** Deep Windows integration but entirely cloud-based
+- **OpenAI Operator:** Web browsing agent (cloud)
+
+The pattern: every major player is building agents. OpenClaw's unique position: the *only* mainstream self-hosted option. Your data stays local. That's the moat.
+
+**Where this seems to be going:** AI agents become as normal as email clients. Within 2 years, "I have an AI that manages my schedule and researches my leads" will be as unremarkable as "I use Google Calendar." 
+
+Graham Brain is early. Very, very early.
+
+---</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Video Walkthrough</h2>
+      <div class="video-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/11AcUR5ldcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Module Quiz</h2>
+      <div id="quiz-placeholder-8"></div>
+    </section>
+
+    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
+      <a class="btn btn-outline" href="../../module/7/index.html">← Previous</a>
+      <a class="btn btn-primary" href="../../progress.html">Next: Progress →</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="../../story.html">The Story of OpenClaw</a>
+      <a href="../../progress.html">Your Progress</a>
+      <a href="../../resources.html">Resources</a>
+      <a href="../../about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="../../js/state.js"></script>
+<script src="../../js/quiz.js"></script>
+<script>
+  (function initModulePage() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+    if (typeof window.initQuiz === 'function') {
+      window.initQuiz(8);
+    }
+  })();
+</script>
+
+</body>
+</html>

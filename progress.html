@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Progress</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="progress-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="progress.html" class="nav-link">Progress</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="story.html" class="nav-link">The Story</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <h1>Progress Tracker</h1>
+    <pre>## Appendix A: Brain Cell Total &amp; Achievement Log
+
+*Template for tracking Graham's progress*
+
+| Module | Base | Quiz Bonus | Achievement | Streak | Running Total |
+|--------|------|------------|-------------|--------|---------------|
+| 1 | 100 | /50 | — | — | |
+| 2 | 150 | /60 | "Automation Believer" +15 | — | |
+| 3 | 200 | /75 | "OpenClaw Curious" +20 | — | |
+| 4 | 250 | /100 | "File Whisperer" +25 | — | |
+| 5 | 200 | /75 | "Gateway Guardian" +25 | — | |
+| 6 | 300 | /120 | "First Automation Live" +30 | Week streak +50 | |
+| 7 | 350 | /140 | "Marketing Machine" +35 | — | |
+| 8 | 250 | /100 | "Grand Cortex" +50 | Course complete +100 | |
+| **Max** | **1,800** | **+720** | **+350** | **+50** | **~2,920** |
+
+*A determined Graham with perfect quizzes and streaks can break 2,900 Brain Cells.*  
+*That would be impressive. Even for someone named Brain.*
+
+---</pre>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="story.html">The Story of OpenClaw</a>
+      <a href="progress.html">Your Progress</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="js/state.js"></script>
+<script>
+  (function updateHeaderCells() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+  })();
+</script>
+</body>
+</html>

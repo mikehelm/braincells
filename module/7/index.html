@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Module 7 — Marketing Superpowers</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/layout.css">
+  <script src="../../js/theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../progress.html" class="nav-link">Progress</a>
+      <a href="../../resources.html" class="nav-link">Resources</a>
+      <a href="../../story.html" class="nav-link">The Story</a>
+      <a href="../../about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Module 7</span>
+    </div>
+
+    <section class="callout callout-info">
+      <span class="callout__icon">📘</span>
+      <div class="callout__body">
+        <strong>Module 7: Marketing Superpowers</strong>
+        <p>Course content below is copied verbatim from the research outline.</p>
+      </div>
+    </section>
+
+    <article>
+      <pre># MODULE 7: Marketing Superpowers
+## *Web Scraping, Database Growth, Contact Enrichment — The Good Stuff*
+
+&gt; 🧠 **Brain Cells at stake:** 350 base + up to 140 bonus (quiz)  
+&gt; ⏱️ **Estimated time:** ~90 minutes  
+&gt; 🎯 **Unlock:** Requires Module 6 completion
+
+---
+
+### Learning Objectives
+By the end of this module, Graham will be able to:
+- [ ] Understand what web scraping is and what it's ethically/legally appropriate for
+- [ ] Describe 5 marketing use cases for AI-powered data gathering
+- [ ] Know how Mike's pre-built automations work and how to trigger them
+- [ ] Set up a basic lead enrichment workflow
+- [ ] Understand contact database growth via automated research
+- [ ] Know when to run automations vs. when to review them before acting
+
+---
+
+### Key Concepts to Cover
+
+**1. What is web scraping? (Plain English)**
+- Web scraping = automatically reading publicly available information from websites
+- Instead of you manually visiting 100 company pages and copy-pasting data → your AI does it
+- Publicly available data (job titles, company names, public LinkedIn info) = generally fine
+- Private data, data behind logins, GDPR-protected personal data = be careful (laws apply)
+- **Graham's rule of thumb:** "If a human could look at this and write it down, my AI can too"
+
+**2. Contact database growth — the core use case**
+
+**The manual way:** Graham visits conference attendee pages, LinkedIn, company websites... one by one. Copies names, titles, emails, companies. Takes days.
+
+**The OpenClaw way:**
+```
+Graham: "Find me the LinkedIn profiles and company info for everyone who spoke at 
+         [Industry Conference 2025]. I want: name, title, company, LinkedIn URL, 
+         company size if visible, email if public."
+
+OpenClaw: "On it. Will take about 15 minutes. I'll send you the results as a 
+           formatted spreadsheet."
+
+[15 minutes later]
+
+OpenClaw: "Done. Found 47 speakers. 41 have LinkedIn profiles. 12 had public 
+           contact info. Here's the CSV. 🦞"
+```
+
+That's the dream. And it's real.
+
+**3. Contact enrichment — making your existing list smarter**
+
+You have a list of company names. OpenClaw can:
+- Find the right decision-maker at each company (by role)
+- Find their title, LinkedIn, public contact info
+- Note company size, industry, recent news
+- Score leads by relevance criteria you define
+
+**Mike will provide a pre-built enrichment prompt** — Graham triggers it, reviews results, imports to CRM.
+
+**4. Competitor monitoring — knowing before they know you know**
+
+Set up weekly automated checks:
+- Check competitor pricing pages for changes
+- Monitor their blog/news for new product announcements  
+- Track their job postings (hiring signals)
+- Watch for new case studies or testimonials
+
+```bash
+# Competitor monitoring cron (set and forget)
+openclaw cron add \
+  --name "Weekly Competitor Watch" \
+  --cron "0 9 * * 1" \
+  --session isolated \
+  --message "Check [Competitor A] and [Competitor B] websites for pricing changes, 
+             new product pages, or major announcements since last Monday. 
+             Summarize in under 10 bullet points." \
+  --announce --channel telegram
+```
+
+**5. The ethics and limits — being a responsible user**
+
+✅ **Fine to automate:**
+- Public business information (company names, addresses, public phone numbers)
+- Public social media profiles (names, job titles, public posts)
+- Conference speaker lists, industry directories
+- Public pricing pages
+- News articles and press releases
+
+⚠️ **Be careful with:**
+- Email addresses (even public ones — GDPR applies in many countries)
+- Personal information about private individuals (not businesses)
+- High-volume scraping of websites (be respectful of their servers)
+- Any data from behind a login wall
+
+❌ **Don't:**
+- Scrape data you'd need to log in to see
+- Violate a website's Terms of Service
+- Use scraped data in ways that violate GDPR or local privacy laws
+- Spam people with scraped contact info
+
+**6. Mike's pre-built automations — how to use them**
+
+Mike has built (or will build) several ready-to-go automation templates for Graham:
+- Lead enrichment template (trigger → review → CRM import)
+- Competitor monitoring setup
+- Conference/event attendee research
+- CRM data quality checker
+
+Graham triggers these with a simple message, reviews the output, then decides what to do with it. He's always in control.
+
+---
+
+### Suggested Videos for This Module
+1. 🎥 **"How I Built a Web Scraping AI Agent"** (Tech With Tim) — https://www.youtube.com/watch?v=G5djZjdxVvo — *Shows the concept in action (~20 min)*
+2. 🎥 **"How I Use AI to Automate 80% of My Marketing"** — https://www.youtube.com/watch?v=XKqNdX0qNRI — *13 strategies — inspiration fuel*
+3. 🎥 **"AI for Marketers: Automation &amp; Personalization"** — https://www.youtube.com/watch?v=_SFiSfA6_2U — *Marketing-specific examples*
+
+---
+
+### Quiz — Module 7
+**Complete for up to 140 bonus Brain Cells (28 per correct answer)**
+
+**Q1:** Graham wants to collect the job titles and LinkedIn URLs for all speakers at a major industry conference. The speaker list is publicly visible on the conference website. Is this generally appropriate to automate?  
+✅ **Answer:** Yes — this is publicly available business information, visible to any human visiting the site. Automating the research of publicly available data is generally appropriate. He should still review the data before using it and be mindful of local privacy laws before emailing anyone.
+
+**Q2:** What is "contact enrichment"?  
+✅ **Answer:** Taking an existing contact list (with partial data like company names) and automatically researching to add more details — job titles, LinkedIn profiles, company size, industry, contact info. Turning thin data into rich data.
+
+**Q3:** Graham sets up a competitor monitoring cron job. It runs every Monday. What's the ideal output format for the results?  
+✅ **Answer (any reasonable answer):** Short bullet-point summary (under 10 items), highlighting only what CHANGED since last check. Flagging anything significant for Graham's attention. Not a wall of text.
+
+**Q4:** Name two types of data that Graham should NOT automate the collection of.  
+✅ **Answer (any two):** Personal data about private individuals; data behind a login wall; emails at such volume it becomes spam infrastructure; any data the website's Terms of Service prohibits scraping.
+
+**Q5:** After Graham's OpenClaw returns a list of 50 enriched contacts, what's the right next step before importing to CRM?  
+✅ **Answer:** Review the results — spot-check accuracy (AI can make mistakes), remove any entries that don't meet criteria, verify email addresses before sending anything, ensure compliance with privacy laws for his jurisdiction.
+
+---
+
+### 🔓 Unlock Criteria for Module 8
+- Complete quiz with 4/5 correct AND
+- Successfully trigger at least one of Mike's pre-built automation templates AND
+- Review and approve (or modify) the output
+- **Achievement Unlock:** "Marketing Machine" 🚀 (+35 bonus Brain Cells)
+- **Big Brain Award:** Perfect module score = "Galaxy Brain Status" 🌌 (+50 bonus)
+
+---
+
+### Humor Notes for Module 7
+- The "Graham asks / OpenClaw responds" dialogue is the money shot — make it vivid and aspirational
+- The ethics section must be respectful and clear but doesn't have to be preachy
+- "Mike will provide pre-built automations" is a recurring comfort — Graham is never alone in this
+- End on excitement: this module is where the ROI becomes obvious
+
+---
+
+---</pre>
+    </article>
+
+    <section class="callout callout-warning drama-break">
+      <span class="callout__icon">🎭</span>
+      <div class="callout__body">
+        <strong>Drama Break</strong>
+        <pre>## The Future (Module 7 → 8 interlude)
+
+**Where OpenClaw Goes From Here**
+
+**The Foundation:** Peter is formalizing OpenClaw as a foundation, separate from any single company's control. The goal: ensure it outlasts any sponsorship and stays genuinely open.
+
+**Multi-agent systems:** The next frontier. Instead of one AI on your computer, imagine five — a research agent, a marketing agent, a writing agent, a monitoring agent, all coordinated by a routing layer. OpenClaw already supports this. Most users haven't explored it yet.
+
+**Mobile companion:** iOS and Android apps mean your agents can do things triggered by your physical location ("when I leave the office, send team EOD summary"), photos you take, or voice commands.
+
+**The competition:**
+- **Claude Computer Use:** Anthropic's own computer control feature (runs in the cloud)
+- **Microsoft Copilot Agents:** Deep Windows integration but entirely cloud-based
+- **OpenAI Operator:** Web browsing agent (cloud)
+
+The pattern: every major player is building agents. OpenClaw's unique position: the *only* mainstream self-hosted option. Your data stays local. That's the moat.
+
+**Where this seems to be going:** AI agents become as normal as email clients. Within 2 years, "I have an AI that manages my schedule and researches my leads" will be as unremarkable as "I use Google Calendar." 
+
+Graham Brain is early. Very, very early.
+
+---</pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Video Walkthrough</h2>
+      <div class="video-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1c_9tuQdkLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Module Quiz</h2>
+      <div id="quiz-placeholder-7"></div>
+    </section>
+
+    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
+      <a class="btn btn-outline" href="../../module/6/index.html">← Previous</a>
+      <a class="btn btn-primary" href="../../module/8/index.html">Next: Module 8 →</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="../../story.html">The Story of OpenClaw</a>
+      <a href="../../progress.html">Your Progress</a>
+      <a href="../../resources.html">Resources</a>
+      <a href="../../about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="../../js/state.js"></script>
+<script src="../../js/quiz.js"></script>
+<script>
+  (function initModulePage() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+    if (typeof window.initQuiz === 'function') {
+      window.initQuiz(7);
+    }
+  })();
+</script>
+
+</body>
+</html>

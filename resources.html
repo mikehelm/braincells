@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Resources</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="resources-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="progress.html" class="nav-link">Progress</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="story.html" class="nav-link">The Story</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+<main class="layout-full">
+  <div class="content-inner">
+    <h1>Resources</h1>
+    <pre>## Appendix B: Recommended Learning Path
+
+```
+Week 1: Modules 1 + 2 (concepts — easy wins)
+Week 2: Modules 3 + 4 (understanding — where it clicks)
+Week 3: Module 5 (installation — the practical leap)
+Week 4: Module 6 (first automation — hands-on)
+Week 5: Module 7 (marketing superpowers — ROI visible)
+Week 6: Module 8 (advanced — the long game)
+```
+
+---
+
+## Appendix C: Key Terms Glossary
+
+| Term | Plain English |
+|------|--------------|
+| AI Agent | An AI that takes actions, not just answers questions |
+| Gateway | The OpenClaw server running on Graham's computer |
+| Channel | How Graham talks to OpenClaw (Telegram, WhatsApp, etc.) |
+| Heartbeat | The 30-minute "check in" cycle the AI runs automatically |
+| Cron job | A scheduled task that runs at a specific time |
+| SOUL.md | The AI's personality file |
+| AGENTS.md | The AI's operating instructions |
+| HEARTBEAT.md | The recurring checklist |
+| MEMORY.md | The AI's long-term memory |
+| TOOLS.md | Local notes and environment details |
+| Workspace | The folder where all the magic files live |
+| Self-hosted | Runs on your own machine, not someone else's server |
+| Brain Cells | The only currency that matters in this course |
+
+---
+
+*Course outline created by Otto (AI assistant to Mike, who is dashingly handsome and knew this course would be great). Research phase complete: February 2026.*
+
+*🧠 "Go use your Brain, Graham."*</pre>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🦞 BrainCells</div>
+    <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
+    <div class="footer-links">
+      <a href="story.html">The Story of OpenClaw</a>
+      <a href="progress.html">Your Progress</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </div>
+    <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
+  </div>
+</footer>
+
+<script src="js/state.js"></script>
+<script>
+  (function updateHeaderCells() {
+    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells || 0;
+  })();
+</script>
+</body>
+</html>
