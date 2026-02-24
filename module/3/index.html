@@ -8,6 +8,58 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,178 +78,303 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 3</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 3</span>
+    </div>
+    
+    <h1>Module 3: Meet OpenClaw</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>The AI That Lives On YOUR Computer</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~60 min</span>
+      <span class="module-meta-badge">🧠 200 base cells</span>
+      <span class="module-meta-badge">✅ +75 quiz bonus</span>
+      <span class="module-meta-badge">🏆 275 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 3: Meet OpenClaw</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><a href="../2/index.html" class="btn btn-outline">← Module 2</a> <span style="opacity:.5;font-size:.9rem;">Module 3 of 8</span> <a href="../4/index.html" class="btn btn-outline">Module 4 →</a></div>
+
+    
+  <section class="section-videos">
+    <h3 class="videos-heading">🎥 Required Viewing</h3>
+    
+    <div class="video-wrap">
+      <div class="video-label">OpenClaw in 3 Minutes</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/vte-fDoZczE" 
+                title="OpenClaw in 3 Minutes"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <article>
-      <pre># MODULE 3: Meet OpenClaw
-## *The AI That Lives on YOUR Computer and Actually Does Stuff*
+    <div class="module-body">
+      <h1>MODULE 3: Meet OpenClaw</h1>
+<h2><em>The AI That Lives on YOUR Computer and Actually Does Stuff</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 200 base + up to 75 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~60 minutes<br>🎯 <strong>Unlock:</strong> Requires Module 2 completion</p>
+</blockquote>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Explain what OpenClaw is to a non-technical colleague in under 2 minutes</li>
+<li><input disabled="" type="checkbox"> Understand why &quot;self-hosted&quot; matters (and why Graham should care)</li>
+<li><input disabled="" type="checkbox"> Compare OpenClaw to Zapier, n8n, and Make.com — and explain why each is different</li>
+<li><input disabled="" type="checkbox"> Know which messaging apps OpenClaw connects to</li>
+<li><input disabled="" type="checkbox"> Get genuinely excited about sending a WhatsApp message and having his computer execute a task</li>
+</ul>
+<hr>
+<h3>Key Concepts to Cover</h3>
+<p><strong>1. The one-sentence explanation</strong></p>
+<blockquote>
+<p>&quot;OpenClaw is a program that runs on your computer 24/7, connects to your WhatsApp (or Telegram), and lets you chat with an AI assistant that can actually DO things — browse websites, manage data, send reports, and run automations — all from your phone.&quot;</p>
+</blockquote>
+<p><strong>2. Self-hosted = your data, your rules</strong></p>
+<ul>
+<li>When you use Zapier: your data flows through Zapier&#39;s servers (they can see it)</li>
+<li>When you use OpenClaw: everything stays on YOUR machine</li>
+<li>For marketing: client lists, lead data, campaign details — all private</li>
+<li>GDPR/privacy compliance: dramatically simpler when data never leaves your hardware</li>
+</ul>
+<p><strong>3. The messaging magic — why this is different</strong></p>
+<ul>
+<li>You&#39;re not opening an app or a dashboard</li>
+<li>You&#39;re sending a WhatsApp message: &quot;Hey, find the LinkedIn of everyone who signed up for our webinar last Tuesday&quot;</li>
+<li>Your computer gets the message, does the work, messages you back: &quot;Found 23 contacts. 18 have LinkedIn. Here&#39;s the enriched list. 🦞&quot;</li>
+<li>This works from anywhere — your phone, the beach, a client meeting</li>
+</ul>
+<p><strong>4. OpenClaw vs. the competition</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it&#39;s like</th>
+<th>The problem</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Zapier</td>
+<td>A very smart traffic light</td>
+<td>Only does what you told it. Can&#39;t think.</td>
+</tr>
+<tr>
+<td>Make.com</td>
+<td>A flowchart you built</td>
+<td>Very manual to build; breaks when data changes</td>
+</tr>
+<tr>
+<td>n8n</td>
+<td>Zapier for developers</td>
+<td>Great! But requires a developer</td>
+</tr>
+<tr>
+<td>ChatGPT</td>
+<td>A brilliant consultant</td>
+<td>Brilliant but can&#39;t touch your systems or run on schedule</td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td>A full-time AI employee</td>
+<td>Lives on your computer, remembers context, takes action, you chat with it naturally</td>
+</tr>
+</tbody></table>
+<p><strong>5. The channels OpenClaw supports</strong></p>
+<ul>
+<li>✅ WhatsApp (most popular)</li>
+<li>✅ Telegram (fast, reliable, great for automation notifications)</li>
+<li>✅ Discord (great for teams)</li>
+<li>✅ iMessage (Mac only — another reason to get that Mac Mini...)</li>
+<li>✅ Web dashboard (browser-based control panel at localhost:18789)</li>
+</ul>
+<p><strong>6. Who OpenClaw is built for</strong></p>
+<ul>
+<li>Power users who want a personal AI they control</li>
+<li>People who handle sensitive business data</li>
+<li>Marketing professionals who want automation without coding</li>
+<li>Anyone who wants their AI to be a persistent partner, not just a chat window</li>
+</ul>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<ol>
+<li>🎥 <strong>&quot;AI Agents for Beginners&quot; (Microsoft)</strong> — <a href="https://www.youtube.com/watch?v=OhI005_aJkA">https://www.youtube.com/watch?v=OhI005_aJkA</a> — <em>First 2 lessons only (est. 30 min) — builds agent intuition</em></li>
+<li>🎥 <strong>&quot;AI Web Scraping with No Code&quot;</strong> — <a href="https://www.youtube.com/watch?v=vFXKZcvaAi0">https://www.youtube.com/watch?v=vFXKZcvaAi0</a> — <em>Shows what the old way looks like vs. what OpenClaw does</em></li>
+</ol>
+<hr>
+<h3>Quiz — Module 3</h3>
+<p><strong>Complete for up to 75 bonus Brain Cells (15 per correct answer)</strong></p>
+<p><strong>Q1:</strong> What does &quot;self-hosted&quot; mean, and why does it matter for Graham&#39;s marketing business?<br>✅ <strong>Answer:</strong> Self-hosted means the software runs on Graham&#39;s own machine, not a third-party server. This means client data stays private, never passes through another company&#39;s systems, and Graham maintains full control.</p>
+<p><strong>Q2:</strong> How do you interact with OpenClaw after it&#39;s set up?<br>✅ <strong>Answer:</strong> Via messaging apps (WhatsApp, Telegram, Discord, iMessage) — send a message from your phone and OpenClaw does the task on your computer, then reports back.</p>
+<p><strong>Q3:</strong> Name two ways OpenClaw is different from Zapier.<br>✅ <strong>Answer (any two):</strong> OpenClaw is self-hosted (Zapier is cloud); OpenClaw uses AI to make decisions (Zapier uses rigid rules); OpenClaw remembers context across conversations; OpenClaw responds conversationally; OpenClaw can handle tasks that weren&#39;t pre-programmed.</p>
+<p><strong>Q4:</strong> True or False: OpenClaw requires you to be at your computer to use it.<br>✅ <strong>Answer:</strong> FALSE — you send messages from your phone (WhatsApp/Telegram) and OpenClaw works on your computer autonomously.</p>
+<p><strong>Q5:</strong> Which of these can OpenClaw NOT do?<br>A) Browse websites<br>B) Read your emails<br>C) Make your coffee<br>D) Send you Telegram messages<br>✅ <strong>Answer:</strong> C — OpenClaw cannot yet operate physical hardware (coffee machines, thermostat control, etc.). Give it time.  </p>
+<blockquote>
+<p><em>Graham gets bonus Brain Cells if he said &quot;yet&quot; after answering C.</em></p>
+</blockquote>
+<hr>
+<h3>🔓 Unlock Criteria for Module 4</h3>
+<ul>
+<li>Complete quiz with 3/5 correct</li>
+<li><strong>Achievement Unlock:</strong> &quot;OpenClaw Curious&quot; 🦞 (+20 bonus Brain Cells)</li>
+</ul>
+<hr>
+<h3>Humor Notes for Module 3</h3>
+<ul>
+<li>The WhatsApp-from-the-beach scenario is compelling and should be vivid</li>
+<li>Emphasize: Graham doesn&#39;t need to understand HOW it works, just that it does</li>
+<li>The comparison table is gold — make it slightly snarky about competitors</li>
+<li>iMessage unlock is a subtle seed for the Mac Mini recommendation in Module 5</li>
+</ul>
+<hr>
+<hr>
 
-&gt; 🧠 **Brain Cells at stake:** 200 base + up to 75 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~60 minutes  
-&gt; 🎯 **Unlock:** Requires Module 2 completion
+    </div>
 
----
+    
+  <div class="drama-break">
+    <div class="drama-break__header">
+      <span class="drama-break__icon">🎭</span>
+      <h3 class="drama-break__title">🎭 Drama Break: The OpenAI Deal That Divided the Community</h3>
+    </div>
+    <div class="drama-break__body">
+      <p>Just as OpenClaw was going viral, OpenAI came knocking. Peter announced that OpenAI would begin sponsoring OpenClaw — and the community split in two.
 
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Explain what OpenClaw is to a non-technical colleague in under 2 minutes
-- [ ] Understand why "self-hosted" matters (and why Graham should care)
-- [ ] Compare OpenClaw to Zapier, n8n, and Make.com — and explain why each is different
-- [ ] Know which messaging apps OpenClaw connects to
-- [ ] Get genuinely excited about sending a WhatsApp message and having his computer execute a task
+<strong>🎉 Team Resources:</strong> "OpenAI money = faster development, better infrastructure, Peter can work on it full-time. Win."<br>
+<strong>😤 Team Independence:</strong> "OpenAI sponsors the project that runs Claude? Conflict of interest. Will it start favoring GPT models?"
 
----
+<strong>Fortune</strong> covered Peter. <strong>Sam Altman</strong> and <strong>Mark Zuckerberg</strong> both noticed. The project went from indie experiment to tech industry conversation piece in weeks.</p>
+    </div>
+  </div>
 
-### Key Concepts to Cover
-
-**1. The one-sentence explanation**
-&gt; "OpenClaw is a program that runs on your computer 24/7, connects to your WhatsApp (or Telegram), and lets you chat with an AI assistant that can actually DO things — browse websites, manage data, send reports, and run automations — all from your phone."
-
-**2. Self-hosted = your data, your rules**
-- When you use Zapier: your data flows through Zapier's servers (they can see it)
-- When you use OpenClaw: everything stays on YOUR machine
-- For marketing: client lists, lead data, campaign details — all private
-- GDPR/privacy compliance: dramatically simpler when data never leaves your hardware
-
-**3. The messaging magic — why this is different**
-- You're not opening an app or a dashboard
-- You're sending a WhatsApp message: "Hey, find the LinkedIn of everyone who signed up for our webinar last Tuesday"
-- Your computer gets the message, does the work, messages you back: "Found 23 contacts. 18 have LinkedIn. Here's the enriched list. 🦞"
-- This works from anywhere — your phone, the beach, a client meeting
-
-**4. OpenClaw vs. the competition**
-
-| Tool | What it's like | The problem |
-|------|---------------|-------------|
-| Zapier | A very smart traffic light | Only does what you told it. Can't think. |
-| Make.com | A flowchart you built | Very manual to build; breaks when data changes |
-| n8n | Zapier for developers | Great! But requires a developer |
-| ChatGPT | A brilliant consultant | Brilliant but can't touch your systems or run on schedule |
-| **OpenClaw** | A full-time AI employee | Lives on your computer, remembers context, takes action, you chat with it naturally |
-
-**5. The channels OpenClaw supports**
-- ✅ WhatsApp (most popular)
-- ✅ Telegram (fast, reliable, great for automation notifications)
-- ✅ Discord (great for teams)
-- ✅ iMessage (Mac only — another reason to get that Mac Mini...)
-- ✅ Web dashboard (browser-based control panel at localhost:18789)
-
-**6. Who OpenClaw is built for**
-- Power users who want a personal AI they control
-- People who handle sensitive business data
-- Marketing professionals who want automation without coding
-- Anyone who wants their AI to be a persistent partner, not just a chat window
-
----
-
-### Suggested Videos for This Module
-1. 🎥 **"AI Agents for Beginners" (Microsoft)** — https://www.youtube.com/watch?v=OhI005_aJkA — *First 2 lessons only (est. 30 min) — builds agent intuition*
-2. 🎥 **"AI Web Scraping with No Code"** — https://www.youtube.com/watch?v=vFXKZcvaAi0 — *Shows what the old way looks like vs. what OpenClaw does*
-
----
-
-### Quiz — Module 3
-**Complete for up to 75 bonus Brain Cells (15 per correct answer)**
-
-**Q1:** What does "self-hosted" mean, and why does it matter for Graham's marketing business?  
-✅ **Answer:** Self-hosted means the software runs on Graham's own machine, not a third-party server. This means client data stays private, never passes through another company's systems, and Graham maintains full control.
-
-**Q2:** How do you interact with OpenClaw after it's set up?  
-✅ **Answer:** Via messaging apps (WhatsApp, Telegram, Discord, iMessage) — send a message from your phone and OpenClaw does the task on your computer, then reports back.
-
-**Q3:** Name two ways OpenClaw is different from Zapier.  
-✅ **Answer (any two):** OpenClaw is self-hosted (Zapier is cloud); OpenClaw uses AI to make decisions (Zapier uses rigid rules); OpenClaw remembers context across conversations; OpenClaw responds conversationally; OpenClaw can handle tasks that weren't pre-programmed.
-
-**Q4:** True or False: OpenClaw requires you to be at your computer to use it.  
-✅ **Answer:** FALSE — you send messages from your phone (WhatsApp/Telegram) and OpenClaw works on your computer autonomously.
-
-**Q5:** Which of these can OpenClaw NOT do?  
-A) Browse websites  
-B) Read your emails  
-C) Make your coffee  
-D) Send you Telegram messages  
-✅ **Answer:** C — OpenClaw cannot yet operate physical hardware (coffee machines, thermostat control, etc.). Give it time.  
-&gt; *Graham gets bonus Brain Cells if he said "yet" after answering C.*
-
----
-
-### 🔓 Unlock Criteria for Module 4
-- Complete quiz with 3/5 correct
-- **Achievement Unlock:** "OpenClaw Curious" 🦞 (+20 bonus Brain Cells)
-
----
-
-### Humor Notes for Module 3
-- The WhatsApp-from-the-beach scenario is compelling and should be vivid
-- Emphasize: Graham doesn't need to understand HOW it works, just that it does
-- The comparison table is gold — make it slightly snarky about competitors
-- iMessage unlock is a subtle seed for the Mac Mini recommendation in Module 5
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The OpenAI Deal (Module 3 → 4 interlude)
-
-**The deal that divided the community**
-
-Just as OpenClaw was going viral, OpenAI came knocking. Peter announced that OpenAI would begin sponsoring OpenClaw, and he was working to form it into a foundation.
-
-His exact words from his blog (steipete.me): *"The community around OpenClaw is something magical and OpenAI has made strong commitments to enable me to dedicate my time to it and already sponsors the project. To get this into a proper structure I'm working on making it a foundation."*
-
-**The two camps:**
-- 🎉 **Team Resources:** "OpenAI money = faster development, better infrastructure, Peter can work on it full-time. Win."
-- 😤 **Team Independence:** "OpenAI sponsors the project that runs Claude? Conflict of interest. Will it start favoring GPT models? Is 'open' source becoming 'open to OpenAI'?"
-
-**Fortune** covered Peter. **Sam Altman** and **Mark Zuckerberg** both noticed. The project went from indie experiment to tech industry conversation piece in weeks.
-
-Sources: steipete.me/posts/2026/openclaw, Fortune Feb 19 2026
-
----</pre>
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 3 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> Where does OpenClaw run?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q3_0" value="0"> On YOUR computer — local, private, yours
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_0" value="1"> On a cloud server somewhere
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_0" value="2"> On OpenAI's servers
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_0" value="3"> On Graham's phone
+          </label>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/vte-fDoZczE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> What is a "channel" in OpenClaw?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_1" value="0"> A TV channel
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q3_1" value="1"> How you communicate with your agent (Telegram, WhatsApp, etc.)
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_1" value="2"> A payment method
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_1" value="3"> A type of file
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> Who built OpenClaw and why?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_2" value="0"> Google, to compete with OpenAI
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_2" value="1"> Microsoft, for enterprise customers
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_2" value="2"> Anthropic, to use Claude
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q3_2" value="3"> Peter Steinberger, because he was annoyed it didn't exist
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> What makes OpenClaw different from using ChatGPT directly?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_3" value="0"> It's cheaper
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_3" value="1"> It has a better UI
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q3_3" value="2"> It runs on your machine, has persistent memory, and can use tools/automations
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_3" value="3"> It's made by a bigger company
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What happened when OpenClaw launched on GitHub?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_4" value="0"> Nothing notable
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q3_4" value="1"> It became one of the fastest-growing repositories in GitHub history
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_4" value="2"> It was taken down
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q3_4" value="3"> It was bought by Microsoft
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-3" onclick="submitQuiz(3, 75)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-3" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-3"></div>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-3" onclick="completeModule(3, 200)">
+        ✅ Mark Module 3 Complete (+200 🧠)
+      </button>
+    </div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../module/2/index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../module/4/index.html">Next: Module 4 →</a>
-    </nav>
+    <div class="module-nav"><a href="../2/index.html" class="btn btn-outline">← Module 2</a> <span style="opacity:.5;font-size:.9rem;">Module 3 of 8</span> <a href="../4/index.html" class="btn btn-outline">Module 4 →</a></div>
+
   </div>
 </main>
 
@@ -205,28 +382,108 @@ Sources: steipete.me/posts/2026/openclaw, Fortune Feb 19 2026
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(3);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[3];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-3');
+      if (btn) { btn.textContent = '✅ Module 3 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 3 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../4/index.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>

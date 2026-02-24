@@ -8,6 +8,58 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,234 +78,319 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 7</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 7</span>
+    </div>
+    
+    <h1>Module 7: Marketing Superpowers</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Scraping, Growth & Enrichment</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~90 min</span>
+      <span class="module-meta-badge">🧠 350 base cells</span>
+      <span class="module-meta-badge">✅ +140 quiz bonus</span>
+      <span class="module-meta-badge">🏆 490 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 7: Marketing Superpowers</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><a href="../6/index.html" class="btn btn-outline">← Module 6</a> <span style="opacity:.5;font-size:.9rem;">Module 7 of 8</span> <a href="../8/index.html" class="btn btn-outline">Module 8 →</a></div>
+
+    
+  <section class="section-videos">
+    <h3 class="videos-heading">🎥 Required Viewing</h3>
+    
+    <div class="video-wrap">
+      <div class="video-label">Marketing Automation with AI Agents</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/1c_9tuQdkLY" 
+                title="Marketing Automation with AI Agents"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <article>
-      <pre># MODULE 7: Marketing Superpowers
-## *Web Scraping, Database Growth, Contact Enrichment — The Good Stuff*
-
-&gt; 🧠 **Brain Cells at stake:** 350 base + up to 140 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~90 minutes  
-&gt; 🎯 **Unlock:** Requires Module 6 completion
-
----
-
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Understand what web scraping is and what it's ethically/legally appropriate for
-- [ ] Describe 5 marketing use cases for AI-powered data gathering
-- [ ] Know how Mike's pre-built automations work and how to trigger them
-- [ ] Set up a basic lead enrichment workflow
-- [ ] Understand contact database growth via automated research
-- [ ] Know when to run automations vs. when to review them before acting
-
----
-
-### Key Concepts to Cover
-
-**1. What is web scraping? (Plain English)**
-- Web scraping = automatically reading publicly available information from websites
-- Instead of you manually visiting 100 company pages and copy-pasting data → your AI does it
-- Publicly available data (job titles, company names, public LinkedIn info) = generally fine
-- Private data, data behind logins, GDPR-protected personal data = be careful (laws apply)
-- **Graham's rule of thumb:** "If a human could look at this and write it down, my AI can too"
-
-**2. Contact database growth — the core use case**
-
-**The manual way:** Graham visits conference attendee pages, LinkedIn, company websites... one by one. Copies names, titles, emails, companies. Takes days.
-
-**The OpenClaw way:**
-```
-Graham: "Find me the LinkedIn profiles and company info for everyone who spoke at 
+    <div class="module-body">
+      <h1>MODULE 7: Marketing Superpowers</h1>
+<h2><em>Web Scraping, Database Growth, Contact Enrichment — The Good Stuff</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 350 base + up to 140 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~90 minutes<br>🎯 <strong>Unlock:</strong> Requires Module 6 completion</p>
+</blockquote>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Understand what web scraping is and what it&#39;s ethically/legally appropriate for</li>
+<li><input disabled="" type="checkbox"> Describe 5 marketing use cases for AI-powered data gathering</li>
+<li><input disabled="" type="checkbox"> Know how Mike&#39;s pre-built automations work and how to trigger them</li>
+<li><input disabled="" type="checkbox"> Set up a basic lead enrichment workflow</li>
+<li><input disabled="" type="checkbox"> Understand contact database growth via automated research</li>
+<li><input disabled="" type="checkbox"> Know when to run automations vs. when to review them before acting</li>
+</ul>
+<hr>
+<h3>Key Concepts to Cover</h3>
+<p><strong>1. What is web scraping? (Plain English)</strong></p>
+<ul>
+<li>Web scraping = automatically reading publicly available information from websites</li>
+<li>Instead of you manually visiting 100 company pages and copy-pasting data → your AI does it</li>
+<li>Publicly available data (job titles, company names, public LinkedIn info) = generally fine</li>
+<li>Private data, data behind logins, GDPR-protected personal data = be careful (laws apply)</li>
+<li><strong>Graham&#39;s rule of thumb:</strong> &quot;If a human could look at this and write it down, my AI can too&quot;</li>
+</ul>
+<p><strong>2. Contact database growth — the core use case</strong></p>
+<p><strong>The manual way:</strong> Graham visits conference attendee pages, LinkedIn, company websites... one by one. Copies names, titles, emails, companies. Takes days.</p>
+<p><strong>The OpenClaw way:</strong></p>
+<pre><code>Graham: &quot;Find me the LinkedIn profiles and company info for everyone who spoke at 
          [Industry Conference 2025]. I want: name, title, company, LinkedIn URL, 
-         company size if visible, email if public."
+         company size if visible, email if public.&quot;
 
-OpenClaw: "On it. Will take about 15 minutes. I'll send you the results as a 
-           formatted spreadsheet."
+OpenClaw: &quot;On it. Will take about 15 minutes. I&#39;ll send you the results as a 
+           formatted spreadsheet.&quot;
 
 [15 minutes later]
 
-OpenClaw: "Done. Found 47 speakers. 41 have LinkedIn profiles. 12 had public 
-           contact info. Here's the CSV. 🦞"
-```
-
-That's the dream. And it's real.
-
-**3. Contact enrichment — making your existing list smarter**
-
-You have a list of company names. OpenClaw can:
-- Find the right decision-maker at each company (by role)
-- Find their title, LinkedIn, public contact info
-- Note company size, industry, recent news
-- Score leads by relevance criteria you define
-
-**Mike will provide a pre-built enrichment prompt** — Graham triggers it, reviews results, imports to CRM.
-
-**4. Competitor monitoring — knowing before they know you know**
-
-Set up weekly automated checks:
-- Check competitor pricing pages for changes
-- Monitor their blog/news for new product announcements  
-- Track their job postings (hiring signals)
-- Watch for new case studies or testimonials
-
-```bash
-# Competitor monitoring cron (set and forget)
+OpenClaw: &quot;Done. Found 47 speakers. 41 have LinkedIn profiles. 12 had public 
+           contact info. Here&#39;s the CSV. 🦞&quot;
+</code></pre>
+<p>That&#39;s the dream. And it&#39;s real.</p>
+<p><strong>3. Contact enrichment — making your existing list smarter</strong></p>
+<p>You have a list of company names. OpenClaw can:</p>
+<ul>
+<li>Find the right decision-maker at each company (by role)</li>
+<li>Find their title, LinkedIn, public contact info</li>
+<li>Note company size, industry, recent news</li>
+<li>Score leads by relevance criteria you define</li>
+</ul>
+<p><strong>Mike will provide a pre-built enrichment prompt</strong> — Graham triggers it, reviews results, imports to CRM.</p>
+<p><strong>4. Competitor monitoring — knowing before they know you know</strong></p>
+<p>Set up weekly automated checks:</p>
+<ul>
+<li>Check competitor pricing pages for changes</li>
+<li>Monitor their blog/news for new product announcements  </li>
+<li>Track their job postings (hiring signals)</li>
+<li>Watch for new case studies or testimonials</li>
+</ul>
+<pre><code class="language-bash"># Competitor monitoring cron (set and forget)
 openclaw cron add \
-  --name "Weekly Competitor Watch" \
-  --cron "0 9 * * 1" \
+  --name &quot;Weekly Competitor Watch&quot; \
+  --cron &quot;0 9 * * 1&quot; \
   --session isolated \
-  --message "Check [Competitor A] and [Competitor B] websites for pricing changes, 
+  --message &quot;Check [Competitor A] and [Competitor B] websites for pricing changes, 
              new product pages, or major announcements since last Monday. 
-             Summarize in under 10 bullet points." \
+             Summarize in under 10 bullet points.&quot; \
   --announce --channel telegram
-```
+</code></pre>
+<p><strong>5. The ethics and limits — being a responsible user</strong></p>
+<p>✅ <strong>Fine to automate:</strong></p>
+<ul>
+<li>Public business information (company names, addresses, public phone numbers)</li>
+<li>Public social media profiles (names, job titles, public posts)</li>
+<li>Conference speaker lists, industry directories</li>
+<li>Public pricing pages</li>
+<li>News articles and press releases</li>
+</ul>
+<p>⚠️ <strong>Be careful with:</strong></p>
+<ul>
+<li>Email addresses (even public ones — GDPR applies in many countries)</li>
+<li>Personal information about private individuals (not businesses)</li>
+<li>High-volume scraping of websites (be respectful of their servers)</li>
+<li>Any data from behind a login wall</li>
+</ul>
+<p>❌ <strong>Don&#39;t:</strong></p>
+<ul>
+<li>Scrape data you&#39;d need to log in to see</li>
+<li>Violate a website&#39;s Terms of Service</li>
+<li>Use scraped data in ways that violate GDPR or local privacy laws</li>
+<li>Spam people with scraped contact info</li>
+</ul>
+<p><strong>6. Mike&#39;s pre-built automations — how to use them</strong></p>
+<p>Mike has built (or will build) several ready-to-go automation templates for Graham:</p>
+<ul>
+<li>Lead enrichment template (trigger → review → CRM import)</li>
+<li>Competitor monitoring setup</li>
+<li>Conference/event attendee research</li>
+<li>CRM data quality checker</li>
+</ul>
+<p>Graham triggers these with a simple message, reviews the output, then decides what to do with it. He&#39;s always in control.</p>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<ol>
+<li>🎥 <strong>&quot;How I Built a Web Scraping AI Agent&quot;</strong> (Tech With Tim) — <a href="https://www.youtube.com/watch?v=G5djZjdxVvo">https://www.youtube.com/watch?v=G5djZjdxVvo</a> — <em>Shows the concept in action (~20 min)</em></li>
+<li>🎥 <strong>&quot;How I Use AI to Automate 80% of My Marketing&quot;</strong> — <a href="https://www.youtube.com/watch?v=XKqNdX0qNRI">https://www.youtube.com/watch?v=XKqNdX0qNRI</a> — <em>13 strategies — inspiration fuel</em></li>
+<li>🎥 <strong>&quot;AI for Marketers: Automation &amp; Personalization&quot;</strong> — <a href="https://www.youtube.com/watch?v=_SFiSfA6_2U">https://www.youtube.com/watch?v=_SFiSfA6_2U</a> — <em>Marketing-specific examples</em></li>
+</ol>
+<hr>
+<h3>Quiz — Module 7</h3>
+<p><strong>Complete for up to 140 bonus Brain Cells (28 per correct answer)</strong></p>
+<p><strong>Q1:</strong> Graham wants to collect the job titles and LinkedIn URLs for all speakers at a major industry conference. The speaker list is publicly visible on the conference website. Is this generally appropriate to automate?<br>✅ <strong>Answer:</strong> Yes — this is publicly available business information, visible to any human visiting the site. Automating the research of publicly available data is generally appropriate. He should still review the data before using it and be mindful of local privacy laws before emailing anyone.</p>
+<p><strong>Q2:</strong> What is &quot;contact enrichment&quot;?<br>✅ <strong>Answer:</strong> Taking an existing contact list (with partial data like company names) and automatically researching to add more details — job titles, LinkedIn profiles, company size, industry, contact info. Turning thin data into rich data.</p>
+<p><strong>Q3:</strong> Graham sets up a competitor monitoring cron job. It runs every Monday. What&#39;s the ideal output format for the results?<br>✅ <strong>Answer (any reasonable answer):</strong> Short bullet-point summary (under 10 items), highlighting only what CHANGED since last check. Flagging anything significant for Graham&#39;s attention. Not a wall of text.</p>
+<p><strong>Q4:</strong> Name two types of data that Graham should NOT automate the collection of.<br>✅ <strong>Answer (any two):</strong> Personal data about private individuals; data behind a login wall; emails at such volume it becomes spam infrastructure; any data the website&#39;s Terms of Service prohibits scraping.</p>
+<p><strong>Q5:</strong> After Graham&#39;s OpenClaw returns a list of 50 enriched contacts, what&#39;s the right next step before importing to CRM?<br>✅ <strong>Answer:</strong> Review the results — spot-check accuracy (AI can make mistakes), remove any entries that don&#39;t meet criteria, verify email addresses before sending anything, ensure compliance with privacy laws for his jurisdiction.</p>
+<hr>
+<h3>🔓 Unlock Criteria for Module 8</h3>
+<ul>
+<li>Complete quiz with 4/5 correct AND</li>
+<li>Successfully trigger at least one of Mike&#39;s pre-built automation templates AND</li>
+<li>Review and approve (or modify) the output</li>
+<li><strong>Achievement Unlock:</strong> &quot;Marketing Machine&quot; 🚀 (+35 bonus Brain Cells)</li>
+<li><strong>Big Brain Award:</strong> Perfect module score = &quot;Galaxy Brain Status&quot; 🌌 (+50 bonus)</li>
+</ul>
+<hr>
+<h3>Humor Notes for Module 7</h3>
+<ul>
+<li>The &quot;Graham asks / OpenClaw responds&quot; dialogue is the money shot — make it vivid and aspirational</li>
+<li>The ethics section must be respectful and clear but doesn&#39;t have to be preachy</li>
+<li>&quot;Mike will provide pre-built automations&quot; is a recurring comfort — Graham is never alone in this</li>
+<li>End on excitement: this module is where the ROI becomes obvious</li>
+</ul>
+<hr>
+<hr>
 
-**5. The ethics and limits — being a responsible user**
+    </div>
 
-✅ **Fine to automate:**
-- Public business information (company names, addresses, public phone numbers)
-- Public social media profiles (names, job titles, public posts)
-- Conference speaker lists, industry directories
-- Public pricing pages
-- News articles and press releases
+    
+  <div class="drama-break">
+    <div class="drama-break__header">
+      <span class="drama-break__icon">🎭</span>
+      <h3 class="drama-break__title">🎭 Drama Break: Graham Meets His Numbers</h3>
+    </div>
+    <div class="drama-break__body">
+      <p>Here's the part where the course gets personal. The lead enrichment module isn't theoretical — it's the exact workflow that marketing professionals use to turn a conference attendee list into a warm outreach pipeline.
 
-⚠️ **Be careful with:**
-- Email addresses (even public ones — GDPR applies in many countries)
-- Personal information about private individuals (not businesses)
-- High-volume scraping of websites (be respectful of their servers)
-- Any data from behind a login wall
+The companies Otto automated research for? Their marketing teams spent <strong>6–8 hours per week</strong> doing this manually. With OpenClaw: <strong>15 minutes, zero human effort.</strong>
 
-❌ **Don't:**
-- Scrape data you'd need to log in to see
-- Violate a website's Terms of Service
-- Use scraped data in ways that violate GDPR or local privacy laws
-- Spam people with scraped contact info
+That gap — 6 hours vs 15 minutes — compounds every single week. By year's end, that's <strong>300+ hours back</strong> in your life. What would you do with 300 extra hours, Graham?</p>
+    </div>
+  </div>
 
-**6. Mike's pre-built automations — how to use them**
-
-Mike has built (or will build) several ready-to-go automation templates for Graham:
-- Lead enrichment template (trigger → review → CRM import)
-- Competitor monitoring setup
-- Conference/event attendee research
-- CRM data quality checker
-
-Graham triggers these with a simple message, reviews the output, then decides what to do with it. He's always in control.
-
----
-
-### Suggested Videos for This Module
-1. 🎥 **"How I Built a Web Scraping AI Agent"** (Tech With Tim) — https://www.youtube.com/watch?v=G5djZjdxVvo — *Shows the concept in action (~20 min)*
-2. 🎥 **"How I Use AI to Automate 80% of My Marketing"** — https://www.youtube.com/watch?v=XKqNdX0qNRI — *13 strategies — inspiration fuel*
-3. 🎥 **"AI for Marketers: Automation &amp; Personalization"** — https://www.youtube.com/watch?v=_SFiSfA6_2U — *Marketing-specific examples*
-
----
-
-### Quiz — Module 7
-**Complete for up to 140 bonus Brain Cells (28 per correct answer)**
-
-**Q1:** Graham wants to collect the job titles and LinkedIn URLs for all speakers at a major industry conference. The speaker list is publicly visible on the conference website. Is this generally appropriate to automate?  
-✅ **Answer:** Yes — this is publicly available business information, visible to any human visiting the site. Automating the research of publicly available data is generally appropriate. He should still review the data before using it and be mindful of local privacy laws before emailing anyone.
-
-**Q2:** What is "contact enrichment"?  
-✅ **Answer:** Taking an existing contact list (with partial data like company names) and automatically researching to add more details — job titles, LinkedIn profiles, company size, industry, contact info. Turning thin data into rich data.
-
-**Q3:** Graham sets up a competitor monitoring cron job. It runs every Monday. What's the ideal output format for the results?  
-✅ **Answer (any reasonable answer):** Short bullet-point summary (under 10 items), highlighting only what CHANGED since last check. Flagging anything significant for Graham's attention. Not a wall of text.
-
-**Q4:** Name two types of data that Graham should NOT automate the collection of.  
-✅ **Answer (any two):** Personal data about private individuals; data behind a login wall; emails at such volume it becomes spam infrastructure; any data the website's Terms of Service prohibits scraping.
-
-**Q5:** After Graham's OpenClaw returns a list of 50 enriched contacts, what's the right next step before importing to CRM?  
-✅ **Answer:** Review the results — spot-check accuracy (AI can make mistakes), remove any entries that don't meet criteria, verify email addresses before sending anything, ensure compliance with privacy laws for his jurisdiction.
-
----
-
-### 🔓 Unlock Criteria for Module 8
-- Complete quiz with 4/5 correct AND
-- Successfully trigger at least one of Mike's pre-built automation templates AND
-- Review and approve (or modify) the output
-- **Achievement Unlock:** "Marketing Machine" 🚀 (+35 bonus Brain Cells)
-- **Big Brain Award:** Perfect module score = "Galaxy Brain Status" 🌌 (+50 bonus)
-
----
-
-### Humor Notes for Module 7
-- The "Graham asks / OpenClaw responds" dialogue is the money shot — make it vivid and aspirational
-- The ethics section must be respectful and clear but doesn't have to be preachy
-- "Mike will provide pre-built automations" is a recurring comfort — Graham is never alone in this
-- End on excitement: this module is where the ROI becomes obvious
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The Future (Module 7 → 8 interlude)
-
-**Where OpenClaw Goes From Here**
-
-**The Foundation:** Peter is formalizing OpenClaw as a foundation, separate from any single company's control. The goal: ensure it outlasts any sponsorship and stays genuinely open.
-
-**Multi-agent systems:** The next frontier. Instead of one AI on your computer, imagine five — a research agent, a marketing agent, a writing agent, a monitoring agent, all coordinated by a routing layer. OpenClaw already supports this. Most users haven't explored it yet.
-
-**Mobile companion:** iOS and Android apps mean your agents can do things triggered by your physical location ("when I leave the office, send team EOD summary"), photos you take, or voice commands.
-
-**The competition:**
-- **Claude Computer Use:** Anthropic's own computer control feature (runs in the cloud)
-- **Microsoft Copilot Agents:** Deep Windows integration but entirely cloud-based
-- **OpenAI Operator:** Web browsing agent (cloud)
-
-The pattern: every major player is building agents. OpenClaw's unique position: the *only* mainstream self-hosted option. Your data stays local. That's the moat.
-
-**Where this seems to be going:** AI agents become as normal as email clients. Within 2 years, "I have an AI that manages my schedule and researches my leads" will be as unremarkable as "I use Google Calendar." 
-
-Graham Brain is early. Very, very early.
-
----</pre>
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 7 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> What is "lead enrichment" in the marketing context?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_0" value="0"> Making leads more colorful
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_0" value="1"> Sending more emails
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q7_0" value="2"> Taking a basic contact list and automatically adding context (title, company, LinkedIn, email)
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_0" value="3"> A type of CRM
+          </label>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/1c_9tuQdkLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> What tool does OpenClaw use for web research?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q7_1" value="0"> Web search + web fetch tools — allowing it to browse the web autonomously
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_1" value="1"> Only Google
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_1" value="2"> Manual copy-paste
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_1" value="3"> A physical newspaper
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> What's the typical time saving for lead research automation?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_2" value="0"> 5 minutes vs 6 minutes
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_2" value="1"> 1 hour vs 1.5 hours
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_2" value="2"> 30 minutes vs 45 minutes
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q7_2" value="3"> 6-8 hours per week vs ~15 minutes with automation
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> What is competitor monitoring and why does it matter?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_3" value="0"> Spying illegally
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q7_3" value="1"> Automatically tracking what changes on competitor websites, pricing, messaging — giving you strategic intel on autopilot
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_3" value="2"> A type of Google Alert
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_3" value="3"> A sales technique
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What does "compounding" mean in the context of your AI agent?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q7_4" value="0"> It gets better over time as it learns your preferences, CRM format, clients by name, and workflows
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_4" value="1"> Interest rates
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_4" value="2"> More API calls
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q7_4" value="3"> The AI copies itself
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-7" onclick="submitQuiz(7, 140)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-7" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-7"></div>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-7" onclick="completeModule(7, 350)">
+        ✅ Mark Module 7 Complete (+350 🧠)
+      </button>
+    </div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../module/6/index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../module/8/index.html">Next: Module 8 →</a>
-    </nav>
+    <div class="module-nav"><a href="../6/index.html" class="btn btn-outline">← Module 6</a> <span style="opacity:.5;font-size:.9rem;">Module 7 of 8</span> <a href="../8/index.html" class="btn btn-outline">Module 8 →</a></div>
+
   </div>
 </main>
 
@@ -261,28 +398,108 @@ Graham Brain is early. Very, very early.
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(7);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[7];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-7');
+      if (btn) { btn.textContent = '✅ Module 7 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 7 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../8/index.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>

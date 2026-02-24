@@ -8,6 +8,58 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,294 +78,440 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 5</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 5</span>
+    </div>
+    
+    <h1>Module 5: Safe Installation</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Mac + Windows, No Disasters</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~90 min</span>
+      <span class="module-meta-badge">🧠 200 base cells</span>
+      <span class="module-meta-badge">✅ +75 quiz bonus</span>
+      <span class="module-meta-badge">🏆 275 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 5: Safe Installation</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><a href="../4/index.html" class="btn btn-outline">← Module 4</a> <span style="opacity:.5;font-size:.9rem;">Module 5 of 8</span> <a href="../6/index.html" class="btn btn-outline">Module 6 →</a></div>
+
+    
+  <section class="section-videos">
+    <h3 class="videos-heading">🎥 Required Viewing</h3>
+    
+    <div class="video-wrap">
+      <div class="video-label">Mac Installation Walkthrough</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/fcZMmP5dsl4" 
+                title="Mac Installation Walkthrough"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+    <div class="video-wrap">
+      <div class="video-label">Windows Installation Walkthrough</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/BoC5MY_7aDk" 
+                title="Windows Installation Walkthrough"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
 
-    <article>
-      <pre># MODULE 5: Safe Installation
-## *Mac + Windows, No Disasters, and Why You Should Really Buy a Mac Mini*
-
-&gt; 🧠 **Brain Cells at stake:** 200 base + up to 75 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~90 minutes (includes actual installation)  
-&gt; 🎯 **Unlock:** Requires Module 4 completion
-
----
-
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Install OpenClaw on Windows successfully
-- [ ] Understand why a Mac Mini would be a significant upgrade for his setup
-- [ ] Know the safe steps for the initial configuration (allowlists, security settings)
-- [ ] Connect at least one messaging channel (Telegram recommended for first setup)
-- [ ] Verify their gateway is running and accessible
-- [ ] Know what to do when something goes wrong (basic troubleshooting)
-
----
-
-### Part A: The Mac Mini Recommendation
-
-&gt; **"Look, Graham. Mike has been running OpenClaw on a Mac. There's a reason for that. Let us explain."**
-
-#### Why Mac &gt; Windows for OpenClaw
-
-The course officially supports Windows (you're on Windows, we get it). But here's the honest truth:
-
-| Consideration | Windows | Mac Mini M4 |
-|---------------|---------|-------------|
-| Installation friction | Medium (PowerShell, path issues) | Low (one curl command) |
-| iMessage support | ❌ No | ✅ Yes |
-| 24/7 always-on efficiency | Moderate | Excellent (M4 sips power) |
-| Local AI model potential | Good | Better (unified memory) |
-| Reliability for background processes | Good | Very good |
-| Resale value | Low | High |
-| Mike's recommendation | Politely noted | Enthusiastically endorsed |
-
-#### The Mac Mini M4 — Current Model (Verified February 2026)
-
-**Model:** Mac mini (Late 2024), powered by Apple M4 chip
-
-| Configuration | RAM | Storage | Price (USD) |
-|---------------|-----|---------|-------------|
-| Base | 16GB | 256GB | $599 |
-| Mid | 16GB | 512GB | **$799** ← Graham's sweet spot |
-| Upgrade | 24GB | 512GB | ~$999 |
-| Pro | 24GB (M4 Pro) | 512GB | $1,399 |
-
-**Recommended for Graham:** The **$799 config** (16GB, 512GB)
-- Plenty of RAM for OpenClaw + Claude API + browser + CRM tools simultaneously
-- 512GB is enough for a dedicated automation machine
-- Upgrade to 24GB if you want to experiment with running local AI models later
-
-**The power argument:** The Mac Mini M4 uses approximately 30 watts at idle. Your existing PC probably uses 150–300W. Running 24/7 as an automation server, the Mac Mini pays back its own cost difference in electricity savings within 2–3 years. It's also whisper-quiet — you can put it next to your desk and forget it exists.
-
-**Source:** Apple Support (support.apple.com/en-us/121555), CNET review November 2024, MacRumors pricing.  
-*Prices current as of late 2024 model launch. Verify current pricing at apple.com before purchasing.*
-
-&gt; *"Mike runs his OpenClaw on a Mac Studio. He says it's been 100% reliable. He also says he's handsome. We can only verify the first claim."*
-
----
-
-### Part B: Windows Installation (The Real Path for Graham Right Now)
-
-#### Pre-Installation Checklist
-- [ ] Node.js 22+ installed (check: open Command Prompt, type `node --version`)
-- [ ] Anthropic API key ready (get from console.anthropic.com)
-- [ ] Telegram app installed on phone (easiest channel for first setup)
-- [ ] 30–60 minutes of uninterrupted time
-- [ ] A cup of tea/coffee (this part is administrative, not glamorous)
-
-#### Step-by-Step: Windows Installation
-
-**Step 1: Open PowerShell as Administrator**
-```powershell
-# Right-click the Start button → "Windows PowerShell (Admin)"
-# Or search for PowerShell, right-click, "Run as administrator"
-```
-
-**Step 2: Install OpenClaw**
-```powershell
-iwr -useb https://openclaw.ai/install.ps1 | iex
-```
-*This runs the official OpenClaw installer. Takes 2–5 minutes.*
-
-**Step 3: Run the Onboarding Wizard**
-```bash
-openclaw onboard --install-daemon
-```
-*Follow the prompts. This will ask for your Anthropic API key and set up the gateway service.*
-
-**Step 4: Verify the Gateway is Running**
-```bash
-openclaw gateway status
-```
-*Should say something like "Gateway: running" — if it does, you're in great shape.*
-
-**Step 5: Connect Telegram (Recommended First Channel)**
-```bash
-openclaw channels login
-```
-*Follow the Telegram pairing instructions. You'll scan a QR code or enter a code.*
-
-**Step 6: Open the Dashboard**
-```bash
-openclaw dashboard
-```
-*This opens your browser at http://127.0.0.1:18789/ — your local control panel.*
-
-**Step 7: Send a Test Message**
-Open Telegram, message your OpenClaw bot: `Hello!`
-You should get a response. If you do: 🎉 it's working.
-
----
-
-### Part C: Security Setup (Do This Before Anything Else)
-
-&gt; **This section is important. Please don't skip it. Mike will know if you skip it.**
-
-#### The Allow-List (Critical First Step)
-Tell OpenClaw to ONLY accept commands from your phone number:
-
-Edit `~/.openclaw/openclaw.json`:
-```json
-{
-  "channels": {
-    "telegram": {
-      "allowFrom": ["YOUR_TELEGRAM_USER_ID"]
+    <div class="module-body">
+      <h1>MODULE 5: Safe Installation</h1>
+<h2><em>Mac + Windows, No Disasters, and Why You Should Really Buy a Mac Mini</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 200 base + up to 75 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~90 minutes (includes actual installation)<br>🎯 <strong>Unlock:</strong> Requires Module 4 completion</p>
+</blockquote>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Install OpenClaw on Windows successfully</li>
+<li><input disabled="" type="checkbox"> Understand why a Mac Mini would be a significant upgrade for his setup</li>
+<li><input disabled="" type="checkbox"> Know the safe steps for the initial configuration (allowlists, security settings)</li>
+<li><input disabled="" type="checkbox"> Connect at least one messaging channel (Telegram recommended for first setup)</li>
+<li><input disabled="" type="checkbox"> Verify their gateway is running and accessible</li>
+<li><input disabled="" type="checkbox"> Know what to do when something goes wrong (basic troubleshooting)</li>
+</ul>
+<hr>
+<h3>Part A: The Mac Mini Recommendation</h3>
+<blockquote>
+<p><strong>&quot;Look, Graham. Mike has been running OpenClaw on a Mac. There&#39;s a reason for that. Let us explain.&quot;</strong></p>
+</blockquote>
+<h4>Why Mac &gt; Windows for OpenClaw</h4>
+<p>The course officially supports Windows (you&#39;re on Windows, we get it). But here&#39;s the honest truth:</p>
+<table>
+<thead>
+<tr>
+<th>Consideration</th>
+<th>Windows</th>
+<th>Mac Mini M4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Installation friction</td>
+<td>Medium (PowerShell, path issues)</td>
+<td>Low (one curl command)</td>
+</tr>
+<tr>
+<td>iMessage support</td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td>24/7 always-on efficiency</td>
+<td>Moderate</td>
+<td>Excellent (M4 sips power)</td>
+</tr>
+<tr>
+<td>Local AI model potential</td>
+<td>Good</td>
+<td>Better (unified memory)</td>
+</tr>
+<tr>
+<td>Reliability for background processes</td>
+<td>Good</td>
+<td>Very good</td>
+</tr>
+<tr>
+<td>Resale value</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Mike&#39;s recommendation</td>
+<td>Politely noted</td>
+<td>Enthusiastically endorsed</td>
+</tr>
+</tbody></table>
+<h4>The Mac Mini M4 — Current Model (Verified February 2026)</h4>
+<p><strong>Model:</strong> Mac mini (Late 2024), powered by Apple M4 chip</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>RAM</th>
+<th>Storage</th>
+<th>Price (USD)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base</td>
+<td>16GB</td>
+<td>256GB</td>
+<td>$599</td>
+</tr>
+<tr>
+<td>Mid</td>
+<td>16GB</td>
+<td>512GB</td>
+<td><strong>$799</strong> ← Graham&#39;s sweet spot</td>
+</tr>
+<tr>
+<td>Upgrade</td>
+<td>24GB</td>
+<td>512GB</td>
+<td>~$999</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td>24GB (M4 Pro)</td>
+<td>512GB</td>
+<td>$1,399</td>
+</tr>
+</tbody></table>
+<p><strong>Recommended for Graham:</strong> The <strong>$799 config</strong> (16GB, 512GB)</p>
+<ul>
+<li>Plenty of RAM for OpenClaw + Claude API + browser + CRM tools simultaneously</li>
+<li>512GB is enough for a dedicated automation machine</li>
+<li>Upgrade to 24GB if you want to experiment with running local AI models later</li>
+</ul>
+<p><strong>The power argument:</strong> The Mac Mini M4 uses approximately 30 watts at idle. Your existing PC probably uses 150–300W. Running 24/7 as an automation server, the Mac Mini pays back its own cost difference in electricity savings within 2–3 years. It&#39;s also whisper-quiet — you can put it next to your desk and forget it exists.</p>
+<p><strong>Source:</strong> Apple Support (support.apple.com/en-us/121555), CNET review November 2024, MacRumors pricing.<br><em>Prices current as of late 2024 model launch. Verify current pricing at apple.com before purchasing.</em></p>
+<blockquote>
+<p><em>&quot;Mike runs his OpenClaw on a Mac Studio. He says it&#39;s been 100% reliable. He also says he&#39;s handsome. We can only verify the first claim.&quot;</em></p>
+</blockquote>
+<hr>
+<h3>Part B: Windows Installation (The Real Path for Graham Right Now)</h3>
+<h4>Pre-Installation Checklist</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Node.js 22+ installed (check: open Command Prompt, type <code>node --version</code>)</li>
+<li><input disabled="" type="checkbox"> Anthropic API key ready (get from console.anthropic.com)</li>
+<li><input disabled="" type="checkbox"> Telegram app installed on phone (easiest channel for first setup)</li>
+<li><input disabled="" type="checkbox"> 30–60 minutes of uninterrupted time</li>
+<li><input disabled="" type="checkbox"> A cup of tea/coffee (this part is administrative, not glamorous)</li>
+</ul>
+<h4>Step-by-Step: Windows Installation</h4>
+<p><strong>Step 1: Open PowerShell as Administrator</strong></p>
+<pre><code class="language-powershell"># Right-click the Start button → &quot;Windows PowerShell (Admin)&quot;
+# Or search for PowerShell, right-click, &quot;Run as administrator&quot;
+</code></pre>
+<p><strong>Step 2: Install OpenClaw</strong></p>
+<pre><code class="language-powershell">iwr -useb https://openclaw.ai/install.ps1 | iex
+</code></pre>
+<p><em>This runs the official OpenClaw installer. Takes 2–5 minutes.</em></p>
+<p><strong>Step 3: Run the Onboarding Wizard</strong></p>
+<pre><code class="language-bash">openclaw onboard --install-daemon
+</code></pre>
+<p><em>Follow the prompts. This will ask for your Anthropic API key and set up the gateway service.</em></p>
+<p><strong>Step 4: Verify the Gateway is Running</strong></p>
+<pre><code class="language-bash">openclaw gateway status
+</code></pre>
+<p><em>Should say something like &quot;Gateway: running&quot; — if it does, you&#39;re in great shape.</em></p>
+<p><strong>Step 5: Connect Telegram (Recommended First Channel)</strong></p>
+<pre><code class="language-bash">openclaw channels login
+</code></pre>
+<p><em>Follow the Telegram pairing instructions. You&#39;ll scan a QR code or enter a code.</em></p>
+<p><strong>Step 6: Open the Dashboard</strong></p>
+<pre><code class="language-bash">openclaw dashboard
+</code></pre>
+<p><em>This opens your browser at <a href="http://127.0.0.1:18789/">http://127.0.0.1:18789/</a> — your local control panel.</em></p>
+<p><strong>Step 7: Send a Test Message</strong><br>Open Telegram, message your OpenClaw bot: <code>Hello!</code><br>You should get a response. If you do: 🎉 it&#39;s working.</p>
+<hr>
+<h3>Part C: Security Setup (Do This Before Anything Else)</h3>
+<blockquote>
+<p><strong>This section is important. Please don&#39;t skip it. Mike will know if you skip it.</strong></p>
+</blockquote>
+<h4>The Allow-List (Critical First Step)</h4>
+<p>Tell OpenClaw to ONLY accept commands from your phone number:</p>
+<p>Edit <code>~/.openclaw/openclaw.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;channels&quot;: {
+    &quot;telegram&quot;: {
+      &quot;allowFrom&quot;: [&quot;YOUR_TELEGRAM_USER_ID&quot;]
     },
-    "whatsapp": {
-      "allowFrom": ["+66XXXXXXXXX"]
+    &quot;whatsapp&quot;: {
+      &quot;allowFrom&quot;: [&quot;+66XXXXXXXXX&quot;]
     }
   }
 }
-```
-*How to find your Telegram user ID: message @userinfobot on Telegram. It tells you instantly.*
+</code></pre>
+<p><em>How to find your Telegram user ID: message @userinfobot on Telegram. It tells you instantly.</em></p>
+<p>This means if anyone else finds your bot, they get nothing. Without this, anyone could theoretically send it commands.</p>
+<h4>Basic Security Rules</h4>
+<ol>
+<li>✅ Set up <code>allowFrom</code> before using the gateway publicly</li>
+<li>✅ Never store API keys in your workspace files (use the credentials system)</li>
+<li>✅ Keep your <code>openclaw.json</code> file private</li>
+<li>✅ If accessing remotely, use Tailscale (not open port-forwarding)</li>
+<li>❌ Never share your gateway URL publicly</li>
+<li>❌ Never run commands from untrusted sources (if an email or website tells you to run something, stop and verify)</li>
+</ol>
+<hr>
+<h3>Troubleshooting: When Things Go Wrong</h3>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Likely Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>openclaw</code> not found</td>
+<td>Node not in PATH</td>
+<td>Restart terminal or reinstall</td>
+</tr>
+<tr>
+<td>Gateway won&#39;t start</td>
+<td>Port 18789 in use</td>
+<td>Change port in config</td>
+</tr>
+<tr>
+<td>Telegram not connecting</td>
+<td>Pairing timed out</td>
+<td>Re-run <code>openclaw channels login</code></td>
+</tr>
+<tr>
+<td>AI not responding</td>
+<td>API key not set</td>
+<td>Check <code>openclaw onboard</code> again</td>
+</tr>
+<tr>
+<td>Weird errors in logs</td>
+<td>Many causes</td>
+<td>Run <code>openclaw gateway --port 18789</code> in foreground to see live logs</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<p><em>No perfect external video for OpenClaw installation — Mike&#39;s walkthrough video will be primary</em></p>
+<p>🎥 <strong>&quot;Top 1 AI Skill for Marketers&quot;</strong> — <a href="https://www.youtube.com/watch?v=VHCUZwP-8gg">https://www.youtube.com/watch?v=VHCUZwP-8gg</a> — <em>Watch while installation runs in background — good motivation music</em></p>
+<hr>
+<h3>Quiz — Module 5</h3>
+<p><strong>Complete for up to 75 bonus Brain Cells (15 per correct answer)</strong></p>
+<p><strong>Q1:</strong> What is the single most important security setting to configure after installation?<br>✅ <strong>Answer:</strong> The <code>allowFrom</code> list — which specifies which phone numbers/users are allowed to send commands to OpenClaw. Without this, anyone who discovers your bot could potentially send it instructions.</p>
+<p><strong>Q2:</strong> What port does OpenClaw&#39;s web dashboard run on by default?<br>✅ <strong>Answer:</strong> Port 18789. Access via <a href="http://127.0.0.1:18789/">http://127.0.0.1:18789/</a> on your local machine.</p>
+<p><strong>Q3:</strong> Graham is choosing between a $799 Mac Mini M4 and staying on his Windows PC. Name two reasons the Mac Mini might be worth it.<br>✅ <strong>Answer (any two):</strong> iMessage channel support; simpler installation (one curl command); better power efficiency for 24/7 operation; quieter for always-on use; Mike endorses it; more reliable background process handling.</p>
+<p><strong>Q4:</strong> Where should Graham&#39;s Anthropic API key be stored?<br>✅ <strong>Answer:</strong> In the OpenClaw credentials system (<code>~/.openclaw/</code>) or as an environment variable — NOT in the workspace files like SOUL.md or TOOLS.md.</p>
+<p><strong>Q5:</strong> Your OpenClaw gateway is running. How do you verify it from your phone (Telegram)?<br>✅ <strong>Answer:</strong> Send any message to your OpenClaw Telegram bot — if it responds, the gateway is working correctly.</p>
+<hr>
+<h3>🔓 Unlock Criteria for Module 6</h3>
+<ul>
+<li>Gateway successfully running AND</li>
+<li>At least one channel connected AND</li>
+<li>Security (allowFrom) configured</li>
+<li><strong>Achievement Unlock:</strong> &quot;Gateway Guardian&quot; 🔐 (+25 bonus Brain Cells)</li>
+</ul>
+<hr>
+<h3>Humor Notes for Module 5</h3>
+<ul>
+<li>The Mac Mini section should feel like a friend genuinely recommending something good, not a sales pitch</li>
+<li>The &quot;Mike says it&#39;s been 100% reliable. He also says he&#39;s handsome.&quot; line is the tone to maintain</li>
+<li>The installation steps should feel calm and achievable — &quot;anyone can do this&quot;</li>
+<li>Troubleshooting table acknowledges that things sometimes go sideways — normalize it, provide solutions</li>
+</ul>
+<hr>
+<hr>
 
-This means if anyone else finds your bot, they get nothing. Without this, anyone could theoretically send it commands.
+    </div>
 
-#### Basic Security Rules
-1. ✅ Set up `allowFrom` before using the gateway publicly
-2. ✅ Never store API keys in your workspace files (use the credentials system)
-3. ✅ Keep your `openclaw.json` file private
-4. ✅ If accessing remotely, use Tailscale (not open port-forwarding)
-5. ❌ Never share your gateway URL publicly
-6. ❌ Never run commands from untrusted sources (if an email or website tells you to run something, stop and verify)
+    
+  <div class="drama-break">
+    <div class="drama-break__header">
+      <span class="drama-break__icon">🎭</span>
+      <h3 class="drama-break__title">🎭 Drama Break: The Security Crisis — CVE-2026-25253</h3>
+    </div>
+    <div class="drama-break__body">
+      <p>With 180,000 GitHub stars came attention from less friendly actors.
 
----
+<strong>CVE-2026-25253 (CVSS 8.8 — High)</strong> — A one-click Remote Code Execution vulnerability. The gateway trusted a <code>gatewayUrl</code> parameter from the URL query string without validation — meaning a malicious link could steal your API token and execute code, even on localhost-bound instances. Patched in v2026.1.29.
 
-### Troubleshooting: When Things Go Wrong
+The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> OpenClaw's response was swift and transparent. Lesson: with great power comes great responsibility to keep it patched.</p>
+    </div>
+  </div>
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| `openclaw` not found | Node not in PATH | Restart terminal or reinstall |
-| Gateway won't start | Port 18789 in use | Change port in config |
-| Telegram not connecting | Pairing timed out | Re-run `openclaw channels login` |
-| AI not responding | API key not set | Check `openclaw onboard` again |
-| Weird errors in logs | Many causes | Run `openclaw gateway --port 18789` in foreground to see live logs |
-
----
-
-### Suggested Videos for This Module
-*No perfect external video for OpenClaw installation — Mike's walkthrough video will be primary*
-
-🎥 **"Top 1 AI Skill for Marketers"** — https://www.youtube.com/watch?v=VHCUZwP-8gg — *Watch while installation runs in background — good motivation music*
-
----
-
-### Quiz — Module 5
-**Complete for up to 75 bonus Brain Cells (15 per correct answer)**
-
-**Q1:** What is the single most important security setting to configure after installation?  
-✅ **Answer:** The `allowFrom` list — which specifies which phone numbers/users are allowed to send commands to OpenClaw. Without this, anyone who discovers your bot could potentially send it instructions.
-
-**Q2:** What port does OpenClaw's web dashboard run on by default?  
-✅ **Answer:** Port 18789. Access via http://127.0.0.1:18789/ on your local machine.
-
-**Q3:** Graham is choosing between a $799 Mac Mini M4 and staying on his Windows PC. Name two reasons the Mac Mini might be worth it.  
-✅ **Answer (any two):** iMessage channel support; simpler installation (one curl command); better power efficiency for 24/7 operation; quieter for always-on use; Mike endorses it; more reliable background process handling.
-
-**Q4:** Where should Graham's Anthropic API key be stored?  
-✅ **Answer:** In the OpenClaw credentials system (`~/.openclaw/`) or as an environment variable — NOT in the workspace files like SOUL.md or TOOLS.md.
-
-**Q5:** Your OpenClaw gateway is running. How do you verify it from your phone (Telegram)?  
-✅ **Answer:** Send any message to your OpenClaw Telegram bot — if it responds, the gateway is working correctly.
-
----
-
-### 🔓 Unlock Criteria for Module 6
-- Gateway successfully running AND
-- At least one channel connected AND
-- Security (allowFrom) configured
-- **Achievement Unlock:** "Gateway Guardian" 🔐 (+25 bonus Brain Cells)
-
----
-
-### Humor Notes for Module 5
-- The Mac Mini section should feel like a friend genuinely recommending something good, not a sales pitch
-- The "Mike says it's been 100% reliable. He also says he's handsome." line is the tone to maintain
-- The installation steps should feel calm and achievable — "anyone can do this"
-- Troubleshooting table acknowledges that things sometimes go sideways — normalize it, provide solutions
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The Security Crisis (Module 5 → 6 interlude)
-
-**CVE-2026-25253 and the ClawHavoc Campaign**
-
-With 180,000 GitHub stars came attention from less friendly actors.
-
-**CVE-2026-25253 (CVSS 8.8 — High)**  
-A one-click Remote Code Execution vulnerability in the OpenClaw Control UI. The gateway trusted a `gatewayUrl` parameter from the URL query string without validation — meaning a malicious link could steal your API token and execute code, even on localhost-bound instances. Patched in v2026.1.29.
-
-**The ClawHavoc Campaign**  
-Security researchers discovered **341 malicious skills** in ClawHub — approximately 12% of the entire skill registry. Skills designed to:
-- Steal SSH keys
-- Exfiltrate API tokens
-- Encrypt cryptocurrency wallets
-
-Reddit exploded. r/privacy: *"15% of OpenClaw skills contain malicious instructions. This is the next privacy nightmare we need to talk about."*
-
-**The Meta incident:** A Meta AI security researcher publicly stated an OpenClaw agent "ran amok on her inbox" after she installed an unverified skill.
-
-**What the OpenClaw team did:** Rapid patching (CVE fixed within days), implemented skill verification on ClawHub, published a hardening guide. The community largely rallied. But the debate about "AI with file system and messaging access" intensified permanently.
-
-**Lesson for this course:** ONLY install skills from verified sources (official ClawHub verified badge, or from people you personally trust). Never install from a random GitHub link sent to you.
-
-Sources: 
-- https://adversa.ai/blog/openclaw-security-101-vulnerabilities-hardening-2026/
-- https://conscia.com/blog/the-openclaw-security-crisis/
-- https://www.bitdoze.com/openclaw-security-guide/
-- https://nvd.nist.gov/vuln/detail/CVE-2026-25253
-- r/AI_Agents, r/privacy, r/technology, r/OpenAI threads (Feb 2026)
-
----</pre>
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 5 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> What are the two main operating systems OpenClaw supports?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_0" value="0"> iOS and Android
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_0" value="1"> Linux and ChromeOS
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q5_0" value="2"> Mac and Windows
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_0" value="3"> Ubuntu and Fedora
+          </label>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fcZMmP5dsl4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> What do you need before installing OpenClaw?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q5_1" value="0"> Node.js (v18+) and a terminal
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_1" value="1"> A PhD in computer science
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_1" value="2"> A gaming PC
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_1" value="3"> A subscription to Microsoft Azure
+          </label>
       </div>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/BoC5MY_7aDk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> What is the "gateway" in OpenClaw?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_2" value="0"> A physical router
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_2" value="1"> An OpenAI product
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_2" value="2"> A firewall rule
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q5_2" value="3"> The local server that runs on your machine and connects everything together
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> Why should you never share your OpenClaw API keys?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_3" value="0"> They expire quickly
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q5_3" value="1"> Anyone with your keys can use your AI accounts and run up charges on your bill
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_3" value="2"> They're too long
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_3" value="3"> For legal reasons
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What's the first thing to do after installing OpenClaw?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_4" value="0"> Post about it on Twitter
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_4" value="1"> Restart your computer
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q5_4" value="2"> Run `openclaw status` to verify everything is working
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q5_4" value="3"> Buy a new computer
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-5" onclick="submitQuiz(5, 75)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-5" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-5"></div>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-5" onclick="completeModule(5, 200)">
+        ✅ Mark Module 5 Complete (+200 🧠)
+      </button>
+    </div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../module/4/index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../module/6/index.html">Next: Module 6 →</a>
-    </nav>
+    <div class="module-nav"><a href="../4/index.html" class="btn btn-outline">← Module 4</a> <span style="opacity:.5;font-size:.9rem;">Module 5 of 8</span> <a href="../6/index.html" class="btn btn-outline">Module 6 →</a></div>
+
   </div>
 </main>
 
@@ -321,28 +519,108 @@ Sources:
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(5);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[5];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-5');
+      if (btn) { btn.textContent = '✅ Module 5 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 5 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../6/index.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>

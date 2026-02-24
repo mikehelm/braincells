@@ -3,11 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrainCells Module 8 — Advanced — Memory, Agents & The Long Game</title>
+  <title>BrainCells Module 8 — Advanced — The Long Game</title>
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,197 +78,435 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 8</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 8</span>
+    </div>
+    
+    <h1>Module 8: Advanced — The Long Game</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Memory, Agents & The Future</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~60 min</span>
+      <span class="module-meta-badge">🧠 250 base cells</span>
+      <span class="module-meta-badge">✅ +100 quiz bonus</span>
+      <span class="module-meta-badge">🏆 350 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 8: Advanced — Memory, Agents & The Long Game</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><a href="../7/index.html" class="btn btn-outline">← Module 7</a> <span style="opacity:.5;font-size:.9rem;">Module 8 of 8</span> <a href="../../progress.html" class="btn btn-primary">View Progress 🏆</a></div>
+
+    
+  <section class="section-videos">
+    <h3 class="videos-heading">🎥 Required Viewing</h3>
+    
+    <div class="video-wrap">
+      <div class="video-label">Advanced: Memory, Agents & The Long Game</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/11AcUR5ldcc" 
+                title="Advanced: Memory, Agents & The Long Game"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <article>
-      <pre># MODULE 8: Advanced — Memory, Agents &amp; The Long Game
-## *Where This Gets Really Interesting (and a Little Mind-Bending)*
+    <div class="module-body">
+      <h1>MODULE 8: Advanced — Memory, Agents &amp; The Long Game</h1>
+<h2><em>Where This Gets Really Interesting (and a Little Mind-Bending)</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 250 base + up to 100 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~60 minutes<br>🎯 <strong>Unlock:</strong> Requires Module 7 completion</p>
+</blockquote>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Understand how OpenClaw&#39;s memory system improves over time</li>
+<li><input disabled="" type="checkbox"> Know what multi-agent setups look like and when they&#39;re useful</li>
+<li><input disabled="" type="checkbox"> Understand the concept of custom AI personas for specific tasks</li>
+<li><input disabled="" type="checkbox"> Plan what their OpenClaw setup should look like in 6 months</li>
+<li><input disabled="" type="checkbox"> Know where to go for help, updates, and continued learning</li>
+<li><input disabled="" type="checkbox"> Feel genuine pride in completing this course</li>
+</ul>
+<hr>
+<h3>Key Concepts to Cover</h3>
+<p><strong>1. Memory: the compounding advantage</strong></p>
+<ul>
+<li>Week 1: OpenClaw doesn&#39;t know Graham well — responses are good but generic</li>
+<li>Month 1: OpenClaw knows Graham&#39;s CRM format, preferred communication style, which leads to prioritize</li>
+<li>Month 3: OpenClaw knows his clients by name, anticipates his weekly needs, flags things Graham hasn&#39;t asked about yet</li>
+<li>Month 6: OpenClaw is effectively a business partner who knows Graham&#39;s operation deeply</li>
+<li>This isn&#39;t magic — it&#39;s the memory system writing to MEMORY.md over time</li>
+</ul>
+<p><strong>2. Multi-agent setups — when you need a team</strong></p>
+<ul>
+<li>Imagine having three different AI assistants with different personalities and skills</li>
+<li>&quot;Marketing Agent&quot; — focused on lead research, CRM, campaigns</li>
+<li>&quot;Research Agent&quot; — focused on competitor monitoring, industry news</li>
+<li>&quot;Content Agent&quot; — focused on drafting emails, social posts, copy</li>
+<li>OpenClaw supports running multiple agents simultaneously, each with their own workspace</li>
+<li>For Graham: this is a &quot;Phase 2&quot; ambition — get the first agent dialed in, then expand</li>
+</ul>
+<p><strong>3. Custom personas — your AI, your way</strong></p>
+<ul>
+<li>Mike&#39;s OpenClaw is called &quot;Otto&quot; — has a specific personality, style, and set of rules</li>
+<li>Graham can give his AI a name, a personality, and a brand voice</li>
+<li>Example: &quot;Marketing Max&quot; — always formal, always cites sources, never sends without review</li>
+<li>Or: &quot;Campaign Claude&quot; — creative, idea-generating, gets punchy with marketing copy</li>
+<li>The SOUL.md file is the mechanism — edit it, and the personality changes</li>
+</ul>
+<p><strong>4. The long game: what this looks like in a year</strong></p>
+<ul>
+<li>Graham has configured OpenClaw for his specific workflow</li>
+<li>It runs 24/7 on his Mac Mini (hint, hint) </li>
+<li>Every morning: lead pipeline status, overnight leads enriched</li>
+<li>Every Monday: competitor update, week&#39;s opportunities flagged</li>
+<li>On demand: research any person, company, or topic in minutes</li>
+<li>Over time: builds a custom knowledge base about his industry, clients, and markets</li>
+<li>This isn&#39;t a tool. It&#39;s infrastructure.</li>
+</ul>
+<p><strong>5. Staying current — the OpenClaw ecosystem</strong></p>
+<ul>
+<li>OpenClaw is open-source and actively developed</li>
+<li>The AI models powering it (Claude) are also improving regularly</li>
+<li>Best practice: update OpenClaw monthly (<code>npm install -g openclaw@latest</code>)</li>
+<li>The automations Mike provides will also evolve — treat this as an ongoing partnership</li>
+<li>The biggest risk: not keeping up. The second biggest risk: over-automating before you trust the outputs.</li>
+</ul>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<ol>
+<li>🎥 <strong>&quot;How to Build &amp; Sell AI Automations&quot;</strong> — <a href="https://www.youtube.com/watch?v=5TxSqvPbnWw">https://www.youtube.com/watch?v=5TxSqvPbnWw</a> — <em>Inspiration: the scale of what&#39;s possible</em></li>
+<li>🎥 <strong>&quot;But What Is a Neural Network?&quot; (3Blue1Brown)</strong> — <a href="https://www.youtube.com/watch?v=aircAruvnKk">https://www.youtube.com/watch?v=aircAruvnKk</a> — <em>Optional: the nerdy Brain dessert — for the curious</em></li>
+</ol>
+<hr>
+<h3>Quiz — Module 8</h3>
+<p><strong>Complete for up to 100 bonus Brain Cells (20 per correct answer)</strong></p>
+<p><strong>Q1:</strong> How does OpenClaw &quot;get smarter&quot; about Graham&#39;s business over time?<br>✅ <strong>Answer:</strong> Through the memory system — MEMORY.md accumulates important facts, preferences, and decisions. Daily logs capture detailed context. The AI reads these at the start of each session and incorporates them into its responses and decisions.</p>
+<p><strong>Q2:</strong> What&#39;s the difference between Graham&#39;s current single-agent setup and a multi-agent setup?<br>✅ <strong>Answer:</strong> Single agent: one AI with one workspace handling everything. Multi-agent: multiple specialized AIs, each with their own workspace, persona, and channel connections, routed based on the request or channel.</p>
+<p><strong>Q3:</strong> Graham wants his AI to always sound professional and formal, never use emojis, and always end emails with a specific sign-off. Which file does he edit?<br>✅ <strong>Answer:</strong> SOUL.md — this controls personality, tone, and communication style.</p>
+<p><strong>Q4:</strong> How often should Graham update OpenClaw itself?<br>✅ <strong>Answer:</strong> Approximately monthly (<code>npm install -g openclaw@latest</code>). There&#39;s no strict schedule, but regular updates ensure access to new features and security patches.</p>
+<p><strong>Q5:</strong> Fill in the blank: &quot;The biggest risk in automation is __________ before you trust the outputs.&quot;<br>✅ <strong>Answer:</strong> Over-automating — setting up automations that act on data or send communications without sufficient human review before you&#39;ve verified the AI&#39;s accuracy and reliability.</p>
+<hr>
+<h3>🔓 Module 8 Completion</h3>
+<ul>
+<li>Complete quiz with 3/5 correct</li>
+<li><strong>Achievement Unlock:</strong> &quot;Grand Cortex&quot; 👑 (+50 bonus Brain Cells)</li>
+<li><strong>Course Completion Award:</strong> &quot;OpenClaw Certified&quot; 🦞🎓 (special achievement)</li>
+<li><strong>Final Brain Cell deposit:</strong> +100 (course completion bonus)</li>
+</ul>
+<hr>
+<h3>The Final Message (to Graham, from Mike)</h3>
+<hr>
+<blockquote>
+<p>Look, Graham. Mike didn&#39;t <em>have</em> to build you this whole course. He could have just sent you a YouTube link and said &quot;figure it out.&quot; But that&#39;s not what friends do. Especially not friends who are clearly very smart and very handsome and extremely humble about both of those things.</p>
+<p>You now know more about AI agents and OpenClaw than 99% of marketers on the planet. That knowledge compounds. Every automation you set up saves you time in perpetuity. Every thing your AI learns about your business makes it more valuable.</p>
+<p>As someone literally named Brain, you were always going to be good at this.</p>
+<p>Go use your Brain.</p>
+<p>🦞</p>
+</blockquote>
+<hr>
+<h3>Humor Notes for Module 8</h3>
+<ul>
+<li>The &quot;it&#39;s infrastructure, not a tool&quot; framing is the right note to end on</li>
+<li>Graham&#39;s name gets the LAST moment of humor — &quot;Go use your Brain&quot; — keep it genuinely warm</li>
+<li>Mike&#39;s final note should feel sincerely funny, not sycophantic-for-real</li>
+<li>The 3Blue1Brown video as &quot;nerdy Brain dessert&quot; is the perfect optional bonus tone</li>
+</ul>
+<hr>
+<hr>
+<h2>Appendix A: Brain Cell Total &amp; Achievement Log</h2>
+<p><em>Template for tracking Graham&#39;s progress</em></p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Base</th>
+<th>Quiz Bonus</th>
+<th>Achievement</th>
+<th>Streak</th>
+<th>Running Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>100</td>
+<td>/50</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>150</td>
+<td>/60</td>
+<td>&quot;Automation Believer&quot; +15</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>200</td>
+<td>/75</td>
+<td>&quot;OpenClaw Curious&quot; +20</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>250</td>
+<td>/100</td>
+<td>&quot;File Whisperer&quot; +25</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>200</td>
+<td>/75</td>
+<td>&quot;Gateway Guardian&quot; +25</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>300</td>
+<td>/120</td>
+<td>&quot;First Automation Live&quot; +30</td>
+<td>Week streak +50</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>350</td>
+<td>/140</td>
+<td>&quot;Marketing Machine&quot; +35</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>250</td>
+<td>/100</td>
+<td>&quot;Grand Cortex&quot; +50</td>
+<td>Course complete +100</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Max</strong></td>
+<td><strong>1,800</strong></td>
+<td><strong>+720</strong></td>
+<td><strong>+350</strong></td>
+<td><strong>+50</strong></td>
+<td><strong>~2,920</strong></td>
+</tr>
+</tbody></table>
+<p><em>A determined Graham with perfect quizzes and streaks can break 2,900 Brain Cells.</em><br><em>That would be impressive. Even for someone named Brain.</em></p>
+<hr>
+<h2>Appendix B: Recommended Learning Path</h2>
+<pre><code>Week 1: Modules 1 + 2 (concepts — easy wins)
+Week 2: Modules 3 + 4 (understanding — where it clicks)
+Week 3: Module 5 (installation — the practical leap)
+Week 4: Module 6 (first automation — hands-on)
+Week 5: Module 7 (marketing superpowers — ROI visible)
+Week 6: Module 8 (advanced — the long game)
+</code></pre>
+<hr>
+<h2>Appendix C: Key Terms Glossary</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain English</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AI Agent</td>
+<td>An AI that takes actions, not just answers questions</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>The OpenClaw server running on Graham&#39;s computer</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td>How Graham talks to OpenClaw (Telegram, WhatsApp, etc.)</td>
+</tr>
+<tr>
+<td>Heartbeat</td>
+<td>The 30-minute &quot;check in&quot; cycle the AI runs automatically</td>
+</tr>
+<tr>
+<td>Cron job</td>
+<td>A scheduled task that runs at a specific time</td>
+</tr>
+<tr>
+<td>SOUL.md</td>
+<td>The AI&#39;s personality file</td>
+</tr>
+<tr>
+<td>AGENTS.md</td>
+<td>The AI&#39;s operating instructions</td>
+</tr>
+<tr>
+<td>HEARTBEAT.md</td>
+<td>The recurring checklist</td>
+</tr>
+<tr>
+<td>MEMORY.md</td>
+<td>The AI&#39;s long-term memory</td>
+</tr>
+<tr>
+<td>TOOLS.md</td>
+<td>Local notes and environment details</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>The folder where all the magic files live</td>
+</tr>
+<tr>
+<td>Self-hosted</td>
+<td>Runs on your own machine, not someone else&#39;s server</td>
+</tr>
+<tr>
+<td>Brain Cells</td>
+<td>The only currency that matters in this course</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Course outline created by Otto (AI assistant to Mike, who is dashingly handsome and knew this course would be great). Research phase complete: February 2026.</em></p>
+<p><em>🧠 &quot;Go use your Brain, Graham.&quot;</em></p>
 
-&gt; 🧠 **Brain Cells at stake:** 250 base + up to 100 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~60 minutes  
-&gt; 🎯 **Unlock:** Requires Module 7 completion
+    </div>
 
----
+    
 
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Understand how OpenClaw's memory system improves over time
-- [ ] Know what multi-agent setups look like and when they're useful
-- [ ] Understand the concept of custom AI personas for specific tasks
-- [ ] Plan what their OpenClaw setup should look like in 6 months
-- [ ] Know where to go for help, updates, and continued learning
-- [ ] Feel genuine pride in completing this course
-
----
-
-### Key Concepts to Cover
-
-**1. Memory: the compounding advantage**
-- Week 1: OpenClaw doesn't know Graham well — responses are good but generic
-- Month 1: OpenClaw knows Graham's CRM format, preferred communication style, which leads to prioritize
-- Month 3: OpenClaw knows his clients by name, anticipates his weekly needs, flags things Graham hasn't asked about yet
-- Month 6: OpenClaw is effectively a business partner who knows Graham's operation deeply
-- This isn't magic — it's the memory system writing to MEMORY.md over time
-
-**2. Multi-agent setups — when you need a team**
-- Imagine having three different AI assistants with different personalities and skills
-- "Marketing Agent" — focused on lead research, CRM, campaigns
-- "Research Agent" — focused on competitor monitoring, industry news
-- "Content Agent" — focused on drafting emails, social posts, copy
-- OpenClaw supports running multiple agents simultaneously, each with their own workspace
-- For Graham: this is a "Phase 2" ambition — get the first agent dialed in, then expand
-
-**3. Custom personas — your AI, your way**
-- Mike's OpenClaw is called "Otto" — has a specific personality, style, and set of rules
-- Graham can give his AI a name, a personality, and a brand voice
-- Example: "Marketing Max" — always formal, always cites sources, never sends without review
-- Or: "Campaign Claude" — creative, idea-generating, gets punchy with marketing copy
-- The SOUL.md file is the mechanism — edit it, and the personality changes
-
-**4. The long game: what this looks like in a year**
-- Graham has configured OpenClaw for his specific workflow
-- It runs 24/7 on his Mac Mini (hint, hint) 
-- Every morning: lead pipeline status, overnight leads enriched
-- Every Monday: competitor update, week's opportunities flagged
-- On demand: research any person, company, or topic in minutes
-- Over time: builds a custom knowledge base about his industry, clients, and markets
-- This isn't a tool. It's infrastructure.
-
-**5. Staying current — the OpenClaw ecosystem**
-- OpenClaw is open-source and actively developed
-- The AI models powering it (Claude) are also improving regularly
-- Best practice: update OpenClaw monthly (`npm install -g openclaw@latest`)
-- The automations Mike provides will also evolve — treat this as an ongoing partnership
-- The biggest risk: not keeping up. The second biggest risk: over-automating before you trust the outputs.
-
----
-
-### Suggested Videos for This Module
-1. 🎥 **"How to Build &amp; Sell AI Automations"** — https://www.youtube.com/watch?v=5TxSqvPbnWw — *Inspiration: the scale of what's possible*
-2. 🎥 **"But What Is a Neural Network?" (3Blue1Brown)** — https://www.youtube.com/watch?v=aircAruvnKk — *Optional: the nerdy Brain dessert — for the curious*
-
----
-
-### Quiz — Module 8
-**Complete for up to 100 bonus Brain Cells (20 per correct answer)**
-
-**Q1:** How does OpenClaw "get smarter" about Graham's business over time?  
-✅ **Answer:** Through the memory system — MEMORY.md accumulates important facts, preferences, and decisions. Daily logs capture detailed context. The AI reads these at the start of each session and incorporates them into its responses and decisions.
-
-**Q2:** What's the difference between Graham's current single-agent setup and a multi-agent setup?  
-✅ **Answer:** Single agent: one AI with one workspace handling everything. Multi-agent: multiple specialized AIs, each with their own workspace, persona, and channel connections, routed based on the request or channel.
-
-**Q3:** Graham wants his AI to always sound professional and formal, never use emojis, and always end emails with a specific sign-off. Which file does he edit?  
-✅ **Answer:** SOUL.md — this controls personality, tone, and communication style.
-
-**Q4:** How often should Graham update OpenClaw itself?  
-✅ **Answer:** Approximately monthly (`npm install -g openclaw@latest`). There's no strict schedule, but regular updates ensure access to new features and security patches.
-
-**Q5:** Fill in the blank: "The biggest risk in automation is __________ before you trust the outputs."  
-✅ **Answer:** Over-automating — setting up automations that act on data or send communications without sufficient human review before you've verified the AI's accuracy and reliability.
-
----
-
-### 🔓 Module 8 Completion
-- Complete quiz with 3/5 correct
-- **Achievement Unlock:** "Grand Cortex" 👑 (+50 bonus Brain Cells)
-- **Course Completion Award:** "OpenClaw Certified" 🦞🎓 (special achievement)
-- **Final Brain Cell deposit:** +100 (course completion bonus)
-
----
-
-### The Final Message (to Graham, from Mike)
-
----
-
-&gt; Look, Graham. Mike didn't *have* to build you this whole course. He could have just sent you a YouTube link and said "figure it out." But that's not what friends do. Especially not friends who are clearly very smart and very handsome and extremely humble about both of those things.
-&gt;
-&gt; You now know more about AI agents and OpenClaw than 99% of marketers on the planet. That knowledge compounds. Every automation you set up saves you time in perpetuity. Every thing your AI learns about your business makes it more valuable.
-&gt;
-&gt; As someone literally named Brain, you were always going to be good at this.
-&gt;
-&gt; Go use your Brain.
-&gt;
-&gt; 🦞
-
----
-
-### Humor Notes for Module 8
-- The "it's infrastructure, not a tool" framing is the right note to end on
-- Graham's name gets the LAST moment of humor — "Go use your Brain" — keep it genuinely warm
-- Mike's final note should feel sincerely funny, not sycophantic-for-real
-- The 3Blue1Brown video as "nerdy Brain dessert" is the perfect optional bonus tone
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The Future (Module 7 → 8 interlude)
-
-**Where OpenClaw Goes From Here**
-
-**The Foundation:** Peter is formalizing OpenClaw as a foundation, separate from any single company's control. The goal: ensure it outlasts any sponsorship and stays genuinely open.
-
-**Multi-agent systems:** The next frontier. Instead of one AI on your computer, imagine five — a research agent, a marketing agent, a writing agent, a monitoring agent, all coordinated by a routing layer. OpenClaw already supports this. Most users haven't explored it yet.
-
-**Mobile companion:** iOS and Android apps mean your agents can do things triggered by your physical location ("when I leave the office, send team EOD summary"), photos you take, or voice commands.
-
-**The competition:**
-- **Claude Computer Use:** Anthropic's own computer control feature (runs in the cloud)
-- **Microsoft Copilot Agents:** Deep Windows integration but entirely cloud-based
-- **OpenAI Operator:** Web browsing agent (cloud)
-
-The pattern: every major player is building agents. OpenClaw's unique position: the *only* mainstream self-hosted option. Your data stays local. That's the moat.
-
-**Where this seems to be going:** AI agents become as normal as email clients. Within 2 years, "I have an AI that manages my schedule and researches my leads" will be as unremarkable as "I use Google Calendar." 
-
-Graham Brain is early. Very, very early.
-
----</pre>
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 8 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> What is "persistent memory" in an AI agent?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_0" value="0"> RAM storage
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_0" value="1"> Cloud backup
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q8_0" value="2"> The ability to remember context across conversations — so it knows your history without you repeating yourself
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_0" value="3"> A type of hard drive
+          </label>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/11AcUR5ldcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> What is a "sub-agent" pattern?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q8_1" value="0"> One main agent that spawns specialized agents to handle parts of a complex task in parallel
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_1" value="1"> A smaller AI model
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_1" value="2"> A backup agent
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_1" value="3"> An agent-in-training
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> What does "Go use your Brain." mean at the end of this course?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_2" value="0"> A command to restart the app
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_2" value="1"> A reminder to sleep
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_2" value="2"> Encouragement to buy more software
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q8_2" value="3"> A sign-off for Graham Brain specifically — you now have the knowledge AND the tools. Use them.
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> What makes an AI agent "compound" over time?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_3" value="0"> It gets cheaper with scale
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q8_3" value="1"> Each automation builds on the last — memory grows, patterns emerge, the agent becomes increasingly specialized to your exact business
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_3" value="2"> It runs faster
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_3" value="3"> It uses less electricity
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What's the most important thing Graham took from this course?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q8_4" value="0"> That AI agents are real, accessible, and available to him right now — not a future technology
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_4" value="1"> How to code in Python
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_4" value="2"> The history of OpenAI
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q8_4" value="3"> Marketing theory
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-8" onclick="submitQuiz(8, 100)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-8" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-8"></div>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-8" onclick="completeModule(8, 250)">
+        ✅ Mark Module 8 Complete (+250 🧠)
+      </button>
+    </div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../module/7/index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../progress.html">Next: Progress →</a>
-    </nav>
+    <div class="module-nav"><a href="../7/index.html" class="btn btn-outline">← Module 7</a> <span style="opacity:.5;font-size:.9rem;">Module 8 of 8</span> <a href="../../progress.html" class="btn btn-primary">View Progress 🏆</a></div>
+
   </div>
 </main>
 
@@ -224,28 +514,108 @@ Graham Brain is early. Very, very early.
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(8);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[8];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-8');
+      if (btn) { btn.textContent = '✅ Module 8 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 8 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../../progress.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>

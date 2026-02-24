@@ -8,6 +8,58 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,262 +78,291 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 4</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 4</span>
+    </div>
+    
+    <h1>Module 4: The Magic Files</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Teaching Your AI Who It Is</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~60 min</span>
+      <span class="module-meta-badge">🧠 250 base cells</span>
+      <span class="module-meta-badge">✅ +100 quiz bonus</span>
+      <span class="module-meta-badge">🏆 350 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 4: The Magic Files</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><a href="../3/index.html" class="btn btn-outline">← Module 3</a> <span style="opacity:.5;font-size:.9rem;">Module 4 of 8</span> <a href="../5/index.html" class="btn btn-outline">Module 5 →</a></div>
+
+    
+  <section class="section-videos">
+    <h3 class="videos-heading">🎥 Required Viewing</h3>
+    
+    <div class="video-wrap">
+      <div class="video-label">The Magic Files — How AI Memory Works</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/11AcUR5ldcc" 
+                title="The Magic Files — How AI Memory Works"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <article>
-      <pre># MODULE 4: The Magic Files
-## *Teaching Your AI Who It Is, What It Does, and How to Be Awesome*
+    <div class="module-body">
+      <h1>MODULE 4: The Magic Files</h1>
+<h2><em>Teaching Your AI Who It Is, What It Does, and How to Be Awesome</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 250 base + up to 100 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~60 minutes<br>🎯 <strong>Unlock:</strong> Requires Module 3 completion</p>
+</blockquote>
+<hr>
+<h3>🎵 THE MODULE 4 RAP 🎵</h3>
+<p><em>(Because Mike said &quot;include a rap&quot; and Otto delivers)</em></p>
+<hr>
+<p><strong>&quot;The Magic Files Banger&quot;</strong><br><em>Drop the beat. Here we go.</em></p>
+<p>🎤 <em>Verse 1:</em><br>Yo, my name is Graham Brain and I&#39;m about to get smart,<br>OpenClaw on my machine, gonna play the part,<br>Got a SOUL dot MD that defines who I am,<br>An AGENTS dot MD, like a personal exam.  </p>
+<p>My AI&#39;s got memory, it writes it all down,<br>MEMORY dot MD — that&#39;s the king of the town,<br>HEARTBEAT dot MD is the morning alarm,<br>Every thirty minutes, baby, running like a charm.  </p>
+<p>🎤 <em>Chorus:</em><br>It&#39;s the <strong>Magic Files</strong>! (Magic Files!)<br>They define the mind! (Define the mind!)<br>SOUL dot MD! (Soul dot MD!)<br>Leave the old way behind! (Leave it behind!)  </p>
+<p>🎤 <em>Verse 2:</em><br>TOOLS dot MD got the notes on my setup,<br>If I change my config it won&#39;t get tripped up,<br>Markdown text, plain English — that&#39;s the whole game,<br>No databases, no bullshit, everything plain.  </p>
+<p>Graham B-R-A-I-N, neuron by neuron,<br>Stacking Brain Cells like he&#39;s farming on Coron,<br>Mike built this course, he&#39;s clearly the GOAT,<br>(Mike told me to say that, I&#39;m just taking note)  </p>
+<p>🎤 <em>Outro:</em><br>SOUL dot MD — that&#39;s WHO you are<br>AGENTS dot MD — that&#39;s HOW you go far<br>HEARTBEAT dot MD — that&#39;s WHEN you run<br>MEMORY dot MD — that&#39;s WHAT you&#39;ve done<br>TOOLS dot MD — that&#39;s WHERE you play<br>Five files, five powers, every single day!  </p>
+<p><em>mic drop</em> 🎤</p>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Identify the 5 magic files and what each one does</li>
+<li><input disabled="" type="checkbox"> Understand why plain Markdown (text) files are used instead of a complicated interface</li>
+<li><input disabled="" type="checkbox"> Know what to customize in SOUL.md to shape his AI&#39;s personality</li>
+<li><input disabled="" type="checkbox"> Understand how HEARTBEAT.md creates &quot;passive&quot; background automation</li>
+<li><input disabled="" type="checkbox"> Be able to explain the two-layer memory system (daily logs vs. long-term memory)</li>
+<li><input disabled="" type="checkbox"> Know what NOT to put in these files (security)</li>
+</ul>
+<hr>
+<h3>Key Concepts to Cover</h3>
+<p><strong>1. Why text files? The philosophy behind it</strong></p>
+<ul>
+<li>Everything your AI knows about itself lives in plain readable text</li>
+<li>You can open any file, read it, edit it — no complex interface</li>
+<li>Version control (git backup) is trivial — just commit the folder</li>
+<li>This is intentional: transparency over magic boxes</li>
+<li><em>&quot;You can audit your AI&#39;s entire brain in 5 minutes by reading 5 files.&quot;</em></li>
+</ul>
+<p><strong>2. Deep dive: SOUL.md</strong></p>
+<ul>
+<li>This is the PERSONALITY file</li>
+<li>It shapes HOW the AI talks, what it cares about, what it refuses</li>
+<li>For Graham: set a tone that matches his business style</li>
+<li>Can include: formal/casual preference, sense of humor level, language style</li>
+<li>Real example line from a live workspace: &quot;An assistant with no personality is just a search engine with extra steps.&quot;</li>
+<li>Graham&#39;s SOUL.md will be pre-configured by Mike — but understanding it means Graham can tweak it</li>
+</ul>
+<p><strong>3. Deep dive: AGENTS.md</strong></p>
+<ul>
+<li>The OPERATING INSTRUCTIONS — the employee handbook</li>
+<li>What to do at session start, how to handle different requests, safety rules</li>
+<li>Mike will pre-configure this for Graham&#39;s marketing workflows</li>
+<li>Graham should know what&#39;s in it so he can request changes</li>
+</ul>
+<p><strong>4. Deep dive: HEARTBEAT.md</strong></p>
+<ul>
+<li>The 30-MINUTE ALARM CLOCK that makes automation passive</li>
+<li>Every ~30 minutes, OpenClaw wakes up and reads this file</li>
+<li>Only messages Graham if something needs attention</li>
+<li>Otherwise: silent, working in the background</li>
+<li>Real examples for Graham&#39;s HEARTBEAT.md:<pre><code class="language-markdown">- Check if any new leads came in overnight
+- If competitor pricing check is due, run it
+- If Graham hasn&#39;t been messaged in 8+ hours, send a status update
+</code></pre>
+</li>
+</ul>
+<p><strong>5. Deep dive: MEMORY.md (long-term) and daily logs</strong></p>
+<ul>
+<li>Two layers: daily notes (raw log, like a diary) and MEMORY.md (curated, like long-term memory)</li>
+<li>The AI writes to memory automatically when it learns something important</li>
+<li>Example memory entries Graham&#39;s AI will accumulate over time:<ul>
+<li>&quot;Graham prefers summaries under 5 bullet points&quot;</li>
+<li>&quot;Primary CRM is HubSpot, contact IDs follow format HB-XXXXX&quot;</li>
+<li>&quot;DO NOT contact prospects on Fridays after 3pm (Graham&#39;s rule)&quot;</li>
+</ul>
+</li>
+<li>The AI gets smarter about Graham&#39;s business over time — automatically</li>
+</ul>
+<p><strong>6. Deep dive: TOOLS.md</strong></p>
+<ul>
+<li>The LOCAL NOTES file — cheat sheet for the specific machine setup</li>
+<li>Not shared, not standard — Graham&#39;s specific environment details</li>
+<li>Examples: which email account to use, which spreadsheet is the master contacts file</li>
+</ul>
+<p><strong>7. Security: what NOT to put in these files</strong></p>
+<ul>
+<li>Never: API keys, passwords, access tokens</li>
+<li>Never: private client data that doesn&#39;t need to be there</li>
+<li>Never: anything you wouldn&#39;t be comfortable a tech-savvy stranger reading</li>
+<li>Where the real secrets live: <code>~/.openclaw/</code> credentials folder (separate, secure)</li>
+</ul>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<p><em>No external video perfectly covers this topic — Mike&#39;s walkthrough of the actual files will be the primary content here</em></p>
+<p>🎥 Supplementary: <strong>&quot;What is AI? A Beginner&#39;s Guide&quot;</strong> — <a href="https://www.youtube.com/watch?v=ZgXYX5MDsWo">https://www.youtube.com/watch?v=ZgXYX5MDsWo</a> — <em>Good refresher on how AI &quot;learns&quot; — helpful context for why memory files matter</em></p>
+<hr>
+<h3>Quiz — Module 4</h3>
+<p><strong>Complete for up to 100 bonus Brain Cells (20 per correct answer)</strong></p>
+<p><strong>Q1:</strong> If you want to change how your AI introduces itself in messages — which file do you edit?<br>✅ <strong>Answer:</strong> SOUL.md — this controls personality, tone, and character.</p>
+<p><strong>Q2:</strong> HEARTBEAT.md runs every:<br>A) 5 minutes<br>B) 30 minutes (default, configurable)<br>C) Once a day<br>D) Whenever Graham sends a message<br>✅ <strong>Answer:</strong> B — 30 minutes by default, but this is configurable in the gateway settings.</p>
+<p><strong>Q3:</strong> Graham&#39;s AI learns that he never books meetings before 9am. Where should this go?<br>✅ <strong>Answer:</strong> MEMORY.md (long-term preference) — or AGENTS.md (if it should be a hard rule). Either is acceptable. Daily log (memory/YYYY-MM-DD.md) is where it would first be noted; MEMORY.md is where it should be distilled.</p>
+<p><strong>Q4:</strong> You need to store your HubSpot API key so OpenClaw can access your CRM. Where does it go?<br>A) SOUL.md<br>B) TOOLS.md<br>C) <code>~/.openclaw/</code> credentials folder or environment variable<br>D) MEMORY.md<br>✅ <strong>Answer:</strong> C — API keys and secrets never go in the workspace files. They go in the secure credentials system.</p>
+<p><strong>Q5:</strong> Why does OpenClaw use plain text Markdown files instead of a complex database or interface?<br>✅ <strong>Answer:</strong> Transparency and simplicity. You can read, edit, and understand every aspect of your AI&#39;s configuration just by opening a text file. It&#39;s auditable, portable, and doesn&#39;t require special software.</p>
+<hr>
+<h3>🔓 Unlock Criteria for Module 5</h3>
+<ul>
+<li>Complete quiz with 3/5 correct</li>
+<li><strong>Achievement Unlock:</strong> &quot;File Whisperer&quot; 📁 (+25 bonus Brain Cells)</li>
+<li><strong>Neuron Boost:</strong> 5/5 on quiz = double base Brain Cells for Module 4 (500 total)</li>
+</ul>
+<hr>
+<h3>Humor Notes for Module 4</h3>
+<ul>
+<li>THE RAP is the centerpiece — make it silly but actually educational (all five files are in it)</li>
+<li>Mike gets specifically called out in the rap (&quot;Mike told me to say that&quot;) — keep the meta-humor going</li>
+<li>The memory section can use a &quot;your AI will remember things even you&#39;ve forgotten&quot; angle — a bit eerie but in a funny way</li>
+<li>The security section should be serious but brief — don&#39;t kill the vibe</li>
+</ul>
+<hr>
+<hr>
 
-&gt; 🧠 **Brain Cells at stake:** 250 base + up to 100 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~60 minutes  
-&gt; 🎯 **Unlock:** Requires Module 3 completion
+    </div>
 
----
+    
 
-### 🎵 THE MODULE 4 RAP 🎵
-
-*(Because Mike said "include a rap" and Otto delivers)*
-
----
-
-**"The Magic Files Banger"**  
-*Drop the beat. Here we go.*
-
-🎤 *Verse 1:*
-Yo, my name is Graham Brain and I'm about to get smart,  
-OpenClaw on my machine, gonna play the part,  
-Got a SOUL dot MD that defines who I am,  
-An AGENTS dot MD, like a personal exam.  
-
-My AI's got memory, it writes it all down,  
-MEMORY dot MD — that's the king of the town,  
-HEARTBEAT dot MD is the morning alarm,  
-Every thirty minutes, baby, running like a charm.  
-
-🎤 *Chorus:*
-It's the **Magic Files**! (Magic Files!)  
-They define the mind! (Define the mind!)  
-SOUL dot MD! (Soul dot MD!)  
-Leave the old way behind! (Leave it behind!)  
-
-🎤 *Verse 2:*
-TOOLS dot MD got the notes on my setup,  
-If I change my config it won't get tripped up,  
-Markdown text, plain English — that's the whole game,  
-No databases, no bullshit, everything plain.  
-
-Graham B-R-A-I-N, neuron by neuron,  
-Stacking Brain Cells like he's farming on Coron,  
-Mike built this course, he's clearly the GOAT,  
-(Mike told me to say that, I'm just taking note)  
-
-🎤 *Outro:*
-SOUL dot MD — that's WHO you are  
-AGENTS dot MD — that's HOW you go far  
-HEARTBEAT dot MD — that's WHEN you run  
-MEMORY dot MD — that's WHAT you've done  
-TOOLS dot MD — that's WHERE you play  
-Five files, five powers, every single day!  
-
-*mic drop* 🎤
-
----
-
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Identify the 5 magic files and what each one does
-- [ ] Understand why plain Markdown (text) files are used instead of a complicated interface
-- [ ] Know what to customize in SOUL.md to shape his AI's personality
-- [ ] Understand how HEARTBEAT.md creates "passive" background automation
-- [ ] Be able to explain the two-layer memory system (daily logs vs. long-term memory)
-- [ ] Know what NOT to put in these files (security)
-
----
-
-### Key Concepts to Cover
-
-**1. Why text files? The philosophy behind it**
-- Everything your AI knows about itself lives in plain readable text
-- You can open any file, read it, edit it — no complex interface
-- Version control (git backup) is trivial — just commit the folder
-- This is intentional: transparency over magic boxes
-- *"You can audit your AI's entire brain in 5 minutes by reading 5 files."*
-
-**2. Deep dive: SOUL.md**
-- This is the PERSONALITY file
-- It shapes HOW the AI talks, what it cares about, what it refuses
-- For Graham: set a tone that matches his business style
-- Can include: formal/casual preference, sense of humor level, language style
-- Real example line from a live workspace: "An assistant with no personality is just a search engine with extra steps."
-- Graham's SOUL.md will be pre-configured by Mike — but understanding it means Graham can tweak it
-
-**3. Deep dive: AGENTS.md**
-- The OPERATING INSTRUCTIONS — the employee handbook
-- What to do at session start, how to handle different requests, safety rules
-- Mike will pre-configure this for Graham's marketing workflows
-- Graham should know what's in it so he can request changes
-
-**4. Deep dive: HEARTBEAT.md**
-- The 30-MINUTE ALARM CLOCK that makes automation passive
-- Every ~30 minutes, OpenClaw wakes up and reads this file
-- Only messages Graham if something needs attention
-- Otherwise: silent, working in the background
-- Real examples for Graham's HEARTBEAT.md:
-  ```markdown
-  - Check if any new leads came in overnight
-  - If competitor pricing check is due, run it
-  - If Graham hasn't been messaged in 8+ hours, send a status update
-  ```
-
-**5. Deep dive: MEMORY.md (long-term) and daily logs**
-- Two layers: daily notes (raw log, like a diary) and MEMORY.md (curated, like long-term memory)
-- The AI writes to memory automatically when it learns something important
-- Example memory entries Graham's AI will accumulate over time:
-  - "Graham prefers summaries under 5 bullet points"
-  - "Primary CRM is HubSpot, contact IDs follow format HB-XXXXX"
-  - "DO NOT contact prospects on Fridays after 3pm (Graham's rule)"
-- The AI gets smarter about Graham's business over time — automatically
-
-**6. Deep dive: TOOLS.md**
-- The LOCAL NOTES file — cheat sheet for the specific machine setup
-- Not shared, not standard — Graham's specific environment details
-- Examples: which email account to use, which spreadsheet is the master contacts file
-
-**7. Security: what NOT to put in these files**
-- Never: API keys, passwords, access tokens
-- Never: private client data that doesn't need to be there
-- Never: anything you wouldn't be comfortable a tech-savvy stranger reading
-- Where the real secrets live: `~/.openclaw/` credentials folder (separate, secure)
-
----
-
-### Suggested Videos for This Module
-*No external video perfectly covers this topic — Mike's walkthrough of the actual files will be the primary content here*
-
-🎥 Supplementary: **"What is AI? A Beginner's Guide"** — https://www.youtube.com/watch?v=ZgXYX5MDsWo — *Good refresher on how AI "learns" — helpful context for why memory files matter*
-
----
-
-### Quiz — Module 4
-**Complete for up to 100 bonus Brain Cells (20 per correct answer)**
-
-**Q1:** If you want to change how your AI introduces itself in messages — which file do you edit?  
-✅ **Answer:** SOUL.md — this controls personality, tone, and character.
-
-**Q2:** HEARTBEAT.md runs every:  
-A) 5 minutes  
-B) 30 minutes (default, configurable)  
-C) Once a day  
-D) Whenever Graham sends a message  
-✅ **Answer:** B — 30 minutes by default, but this is configurable in the gateway settings.
-
-**Q3:** Graham's AI learns that he never books meetings before 9am. Where should this go?  
-✅ **Answer:** MEMORY.md (long-term preference) — or AGENTS.md (if it should be a hard rule). Either is acceptable. Daily log (memory/YYYY-MM-DD.md) is where it would first be noted; MEMORY.md is where it should be distilled.
-
-**Q4:** You need to store your HubSpot API key so OpenClaw can access your CRM. Where does it go?  
-A) SOUL.md  
-B) TOOLS.md  
-C) `~/.openclaw/` credentials folder or environment variable  
-D) MEMORY.md  
-✅ **Answer:** C — API keys and secrets never go in the workspace files. They go in the secure credentials system.
-
-**Q5:** Why does OpenClaw use plain text Markdown files instead of a complex database or interface?  
-✅ **Answer:** Transparency and simplicity. You can read, edit, and understand every aspect of your AI's configuration just by opening a text file. It's auditable, portable, and doesn't require special software.
-
----
-
-### 🔓 Unlock Criteria for Module 5
-- Complete quiz with 3/5 correct
-- **Achievement Unlock:** "File Whisperer" 📁 (+25 bonus Brain Cells)
-- **Neuron Boost:** 5/5 on quiz = double base Brain Cells for Module 4 (500 total)
-
----
-
-### Humor Notes for Module 4
-- THE RAP is the centerpiece — make it silly but actually educational (all five files are in it)
-- Mike gets specifically called out in the rap ("Mike told me to say that") — keep the meta-humor going
-- The memory section can use a "your AI will remember things even you've forgotten" angle — a bit eerie but in a funny way
-- The security section should be serious but brief — don't kill the vibe
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The Security Crisis (Module 5 → 6 interlude)
-
-**CVE-2026-25253 and the ClawHavoc Campaign**
-
-With 180,000 GitHub stars came attention from less friendly actors.
-
-**CVE-2026-25253 (CVSS 8.8 — High)**  
-A one-click Remote Code Execution vulnerability in the OpenClaw Control UI. The gateway trusted a `gatewayUrl` parameter from the URL query string without validation — meaning a malicious link could steal your API token and execute code, even on localhost-bound instances. Patched in v2026.1.29.
-
-**The ClawHavoc Campaign**  
-Security researchers discovered **341 malicious skills** in ClawHub — approximately 12% of the entire skill registry. Skills designed to:
-- Steal SSH keys
-- Exfiltrate API tokens
-- Encrypt cryptocurrency wallets
-
-Reddit exploded. r/privacy: *"15% of OpenClaw skills contain malicious instructions. This is the next privacy nightmare we need to talk about."*
-
-**The Meta incident:** A Meta AI security researcher publicly stated an OpenClaw agent "ran amok on her inbox" after she installed an unverified skill.
-
-**What the OpenClaw team did:** Rapid patching (CVE fixed within days), implemented skill verification on ClawHub, published a hardening guide. The community largely rallied. But the debate about "AI with file system and messaging access" intensified permanently.
-
-**Lesson for this course:** ONLY install skills from verified sources (official ClawHub verified badge, or from people you personally trust). Never install from a random GitHub link sent to you.
-
-Sources: 
-- https://adversa.ai/blog/openclaw-security-101-vulnerabilities-hardening-2026/
-- https://conscia.com/blog/the-openclaw-security-crisis/
-- https://www.bitdoze.com/openclaw-security-guide/
-- https://nvd.nist.gov/vuln/detail/CVE-2026-25253
-- r/AI_Agents, r/privacy, r/technology, r/OpenAI threads (Feb 2026)
-
----</pre>
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 4 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> What is SOUL.md in OpenClaw?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q4_0" value="0"> The file that defines your agent's personality and core behaviors
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_0" value="1"> A music file
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_0" value="2"> A backup file
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_0" value="3"> A settings file
+          </label>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/11AcUR5ldcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> What is MEMORY.md used for?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_1" value="0"> Storing code
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_1" value="1"> Tracking expenses
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q4_1" value="2"> Storing your agent's long-term memories and context
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_1" value="3"> System logs
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> Why are "magic files" so important?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_2" value="0"> They're required by law
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_2" value="1"> They make the AI run faster
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_2" value="2"> They store your API keys
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q4_2" value="3"> They give the agent context about who it is and who it's helping — making it dramatically more useful
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> What does USER.md typically contain?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_3" value="0"> Random notes
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q4_3" value="1"> Information about the human the agent is helping (name, preferences, context)
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_3" value="2"> System requirements
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_3" value="3"> Error logs
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What's the risk of NOT having good magic files?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q4_4" value="0"> Your agent starts from scratch every conversation with no context about you or your preferences
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_4" value="1"> The AI gets confused
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_4" value="2"> Your computer slows down
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q4_4" value="3"> You get charged more
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-4" onclick="submitQuiz(4, 100)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-4" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-4"></div>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-4" onclick="completeModule(4, 250)">
+        ✅ Mark Module 4 Complete (+250 🧠)
+      </button>
+    </div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../module/3/index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../module/5/index.html">Next: Module 5 →</a>
-    </nav>
+    <div class="module-nav"><a href="../3/index.html" class="btn btn-outline">← Module 3</a> <span style="opacity:.5;font-size:.9rem;">Module 4 of 8</span> <a href="../5/index.html" class="btn btn-outline">Module 5 →</a></div>
+
   </div>
 </main>
 
@@ -289,28 +370,108 @@ Sources:
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(4);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[4];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-4');
+      if (btn) { btn.textContent = '✅ Module 4 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 4 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../5/index.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>

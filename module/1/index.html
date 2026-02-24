@@ -8,6 +8,58 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,197 +78,281 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 1</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 1</span>
+    </div>
+    
+    <h1>Module 1: What Are AI Agents?</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Starting From YOUR Level, Graham</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~45 min</span>
+      <span class="module-meta-badge">🧠 100 base cells</span>
+      <span class="module-meta-badge">✅ +50 quiz bonus</span>
+      <span class="module-meta-badge">🏆 150 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 1: What Are AI Agents?</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><span></span> <span style="opacity:.5;font-size:.9rem;">Module 1 of 8</span> <a href="../2/index.html" class="btn btn-outline">Module 2 →</a></div>
+
+    
+  <section class="section-videos">
+    <h3 class="videos-heading">🎥 Required Viewing</h3>
+    
+    <div class="video-wrap">
+      <div class="video-label">Lex Fridman × Peter Steinberger — The OpenClaw Origin Story</div>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/YFjfBk8HI5o" 
+                title="Lex Fridman × Peter Steinberger — The OpenClaw Origin Story"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <article>
-      <pre># MODULE 1: What Are AI Agents?
-## *Starting From YOUR Level, Graham (Which Is Already Pretty High)*
+    <div class="module-body">
+      <h1>MODULE 1: What Are AI Agents?</h1>
+<h2><em>Starting From YOUR Level, Graham (Which Is Already Pretty High)</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 100 base + up to 50 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~45 minutes<br>🎯 <strong>Prerequisite:</strong> None. You already know what AI is. We&#39;re skipping &quot;what is a computer.&quot;</p>
+</blockquote>
+<hr>
+<h3>The Poem That Starts Everything</h3>
+<p><em>(Because Mike insisted there be a poem, and honestly he was right)</em></p>
+<hr>
+<p><strong>Ode to Graham Brain</strong><br><em>by Otto, AI assistant</em></p>
+<p>There once was a marketer named Brain,<br>Whose neurons fired again and again.<br>He&#39;d heard about AI,<br>Said &quot;worth giving a try,&quot;<br>And Mike built him this whole course to explain.</p>
+<p>Now the agents are coming to help him,<br>They&#39;ll scrape the web, right to the brim,<br>They&#39;ll enrich his leads,<br>And meet all his needs,<br>While Graham just sips his afternoon swim.</p>
+<p><em>(Graham: if you don&#39;t swim, substitute your leisure activity of choice.<br>The rhyme scheme demanded it. Poetry is hard.)</em></p>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Explain what an &quot;AI agent&quot; is in plain English (to clients, partners, or skeptical family members)</li>
+<li><input disabled="" type="checkbox"> Distinguish between a regular AI chatbot and an AI agent that <em>does things</em></li>
+<li><input disabled="" type="checkbox"> Understand why AI agents are the upgrade from AI tools like ChatGPT</li>
+<li><input disabled="" type="checkbox"> Describe 3 specific things an AI agent could do for a marketing business</li>
+<li><input disabled="" type="checkbox"> Feel genuinely excited (not intimidated) about what comes next</li>
+</ul>
+<hr>
+<h3>Key Concepts to Cover</h3>
+<p><strong>1. The Chatbot vs. Agent distinction</strong>  </p>
+<ul>
+<li>Chatbot: You ask a question → it answers → done. Full stop.</li>
+<li>Agent: You give it a goal → it plans → it uses tools → it executes → it reports back → it <em>remembers</em> for next time</li>
+<li>The difference is like a calculator vs. an assistant</li>
+</ul>
+<p><strong>2. What &quot;tools&quot; means for an AI agent</strong>  </p>
+<ul>
+<li>Tools are things the AI can DO: browse websites, read files, send messages, run scripts, call APIs</li>
+<li>An agent is only as powerful as its tools</li>
+<li>OpenClaw gives the agent <em>many</em> tools — and you can add more</li>
+</ul>
+<p><strong>3. The &quot;loop&quot; — how agents think and act</strong>  </p>
+<ul>
+<li>Perceive → Think → Act → Observe → Repeat</li>
+<li>Unlike a chatbot (one answer), agents loop until the task is done</li>
+<li>This is why they can handle complex, multi-step work</li>
+</ul>
+<p><strong>4. Agentic AI in marketing — the concrete version</strong></p>
+<ul>
+<li>&quot;Go find the LinkedIn profiles of everyone who attended X conference last month and pull their email + title&quot;</li>
+<li>&quot;Check our competitor&#39;s pricing page every Monday and tell me if anything changed&quot;  </li>
+<li>&quot;Every morning at 8am, check for new form submissions, research each lead, and add a summary to our CRM&quot;</li>
+<li>These aren&#39;t features. These are things Graham&#39;s OpenClaw will actually do.</li>
+</ul>
+<p><strong>5. Why now? (The 2024–2026 inflection point)</strong>  </p>
+<ul>
+<li>AI models crossed a capability threshold — they&#39;re now reliable enough for real business tasks</li>
+<li>Tools like OpenClaw made agents accessible without needing a developer team</li>
+<li>Early adopters get an enormous competitive advantage — this is that window</li>
+</ul>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<ol>
+<li>🎥 <strong>&quot;What is AI? An Introduction to AI, Updated for 2024&quot;</strong> (IBM Technology) — <a href="https://www.youtube.com/watch?v=WP6z_X5d-Rw">https://www.youtube.com/watch?v=WP6z_X5d-Rw</a> — <em>Watch first, 10 min</em></li>
+<li>🎥 <strong>&quot;AI Agents, Clearly Explained&quot;</strong> (Jeff Su) — <a href="https://www.youtube.com/watch?v=FwOTs4UxQS4">https://www.youtube.com/watch?v=FwOTs4UxQS4</a> — <em>Watch second, 15 min</em></li>
+<li>🎥 <strong>&quot;Top 1 AI Skill for Marketers — Why You Must Learn This in 2026&quot;</strong> — <a href="https://www.youtube.com/watch?v=VHCUZwP-8gg">https://www.youtube.com/watch?v=VHCUZwP-8gg</a> — <em>Optional context, 10–15 min</em></li>
+</ol>
+<hr>
+<h3>Quiz — Module 1</h3>
+<p><strong>Complete for up to 50 bonus Brain Cells (10 per correct answer)</strong></p>
+<p><strong>Q1:</strong> What&#39;s the key difference between an AI chatbot and an AI agent?<br>✅ <strong>Answer:</strong> An AI agent can take actions (use tools, browse web, execute tasks, remember context). A chatbot just answers questions.  </p>
+<blockquote>
+<p><em>Incorrect: &quot;An agent is smarter&quot; — it&#39;s not about intelligence, it&#39;s about the ability to act.</em></p>
+</blockquote>
+<p><strong>Q2:</strong> What does it mean when we say an agent has &quot;tools&quot;?<br>✅ <strong>Answer:</strong> Tools are actions the AI can perform — browsing the web, reading/writing files, sending messages, calling APIs.</p>
+<p><strong>Q3:</strong> Name two things an AI marketing agent could realistically do this week.<br>✅ <strong>Sample answers:</strong> Research leads from LinkedIn, monitor competitor websites, check form submissions, draft email campaigns, summarize last week&#39;s analytics, schedule social posts, find contact information for potential clients.  </p>
+<blockquote>
+<p><em>Award Brain Cells for any two plausible marketing tasks — there are no wrong answers here.</em></p>
+</blockquote>
+<p><strong>Q4:</strong> Why is 2025–2026 a particularly important time to learn this?<br>✅ <strong>Answer:</strong> AI models became reliable enough for real business tasks AND tools like OpenClaw made them accessible. Early adopters gain significant competitive advantage. The window for being &quot;ahead of the curve&quot; is now.</p>
+<p><strong>Q5:</strong> Graham&#39;s last name is Brain. This is:<br>A) A coincidence<br>B) Destiny<br>C) A sign he will ace this course<br>D) All of the above<br>✅ <strong>Answer:</strong> D) All of the above <em>(5 bonus Brain Cells awarded regardless of answer — it&#39;s impossible to get this wrong)</em></p>
+<hr>
+<h3>🔓 Unlock Criteria for Module 2</h3>
+<p>Graham can unlock Module 2 after:</p>
+<ul>
+<li>Watching at least Video 1 (IBM AI Intro)</li>
+<li>Answering at least 3 of 5 quiz questions correctly</li>
+<li>OR completing the module (no quiz minimum — progress matters more than perfection)</li>
+</ul>
+<p><strong>Unlock message:</strong> <em>&quot;Your Brain has been activated. Proceeding to Module 2...&quot;</em> 🧠⚡</p>
+<hr>
+<h3>Humor Notes for Module 1</h3>
+<ul>
+<li>Open with the poem — set the tone that this is fun</li>
+<li>Make the &quot;Graham Brain&quot; joke early and commit to it — &quot;you were literally born to do this&quot;</li>
+<li>Use the calculator vs. assistant metaphor — it&#39;s clear and relatable</li>
+<li>Keep the energy warm and encouraging — Graham already knows AI basics, we&#39;re building on that</li>
+<li>End with something that makes him actually <em>want</em> to open Module 2</li>
+</ul>
+<hr>
+<hr>
 
-&gt; 🧠 **Brain Cells at stake:** 100 base + up to 50 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~45 minutes  
-&gt; 🎯 **Prerequisite:** None. You already know what AI is. We're skipping "what is a computer."
+    </div>
 
----
+    
+  <div class="drama-break">
+    <div class="drama-break__header">
+      <span class="drama-break__icon">🎭</span>
+      <h3 class="drama-break__title">🎭 Drama Break: How OpenClaw Was Born in One Hour</h3>
+    </div>
+    <div class="drama-break__body">
+      <p>Peter Steinberger built OpenClaw because he was annoyed it didn't exist — so he "just prompted it into existence." His words to Lex Fridman: <em>"I was annoyed that it didn't exist, so I just prompted it into existence."</em>
 
-### The Poem That Starts Everything
+This was his <strong>44th AI-related project since 2009</strong>. He'd been building for decades and admitted he'd been burned out: <em>"I couldn't get code out anymore."</em> OpenClaw was the project that reignited everything.
 
-*(Because Mike insisted there be a poem, and honestly he was right)*
+The result: <strong>the fastest-growing repository in GitHub history</strong> — 180,000+ stars and climbing.</p>
+    </div>
+  </div>
 
----
-
-**Ode to Graham Brain**  
-*by Otto, AI assistant*
-
-There once was a marketer named Brain,  
-Whose neurons fired again and again.  
-He'd heard about AI,  
-Said "worth giving a try,"  
-And Mike built him this whole course to explain.
-
-Now the agents are coming to help him,  
-They'll scrape the web, right to the brim,  
-They'll enrich his leads,  
-And meet all his needs,  
-While Graham just sips his afternoon swim.
-
-*(Graham: if you don't swim, substitute your leisure activity of choice.  
-The rhyme scheme demanded it. Poetry is hard.)*
-
----
-
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Explain what an "AI agent" is in plain English (to clients, partners, or skeptical family members)
-- [ ] Distinguish between a regular AI chatbot and an AI agent that *does things*
-- [ ] Understand why AI agents are the upgrade from AI tools like ChatGPT
-- [ ] Describe 3 specific things an AI agent could do for a marketing business
-- [ ] Feel genuinely excited (not intimidated) about what comes next
-
----
-
-### Key Concepts to Cover
-
-**1. The Chatbot vs. Agent distinction**  
-- Chatbot: You ask a question → it answers → done. Full stop.
-- Agent: You give it a goal → it plans → it uses tools → it executes → it reports back → it *remembers* for next time
-- The difference is like a calculator vs. an assistant
-
-**2. What "tools" means for an AI agent**  
-- Tools are things the AI can DO: browse websites, read files, send messages, run scripts, call APIs
-- An agent is only as powerful as its tools
-- OpenClaw gives the agent *many* tools — and you can add more
-
-**3. The "loop" — how agents think and act**  
-- Perceive → Think → Act → Observe → Repeat
-- Unlike a chatbot (one answer), agents loop until the task is done
-- This is why they can handle complex, multi-step work
-
-**4. Agentic AI in marketing — the concrete version**
-- "Go find the LinkedIn profiles of everyone who attended X conference last month and pull their email + title"
-- "Check our competitor's pricing page every Monday and tell me if anything changed"  
-- "Every morning at 8am, check for new form submissions, research each lead, and add a summary to our CRM"
-- These aren't features. These are things Graham's OpenClaw will actually do.
-
-**5. Why now? (The 2024–2026 inflection point)**  
-- AI models crossed a capability threshold — they're now reliable enough for real business tasks
-- Tools like OpenClaw made agents accessible without needing a developer team
-- Early adopters get an enormous competitive advantage — this is that window
-
----
-
-### Suggested Videos for This Module
-1. 🎥 **"What is AI? An Introduction to AI, Updated for 2024"** (IBM Technology) — https://www.youtube.com/watch?v=WP6z_X5d-Rw — *Watch first, 10 min*
-2. 🎥 **"AI Agents, Clearly Explained"** (Jeff Su) — https://www.youtube.com/watch?v=FwOTs4UxQS4 — *Watch second, 15 min*
-3. 🎥 **"Top 1 AI Skill for Marketers — Why You Must Learn This in 2026"** — https://www.youtube.com/watch?v=VHCUZwP-8gg — *Optional context, 10–15 min*
-
----
-
-### Quiz — Module 1
-**Complete for up to 50 bonus Brain Cells (10 per correct answer)**
-
-**Q1:** What's the key difference between an AI chatbot and an AI agent?  
-✅ **Answer:** An AI agent can take actions (use tools, browse web, execute tasks, remember context). A chatbot just answers questions.  
-&gt; *Incorrect: "An agent is smarter" — it's not about intelligence, it's about the ability to act.*
-
-**Q2:** What does it mean when we say an agent has "tools"?  
-✅ **Answer:** Tools are actions the AI can perform — browsing the web, reading/writing files, sending messages, calling APIs.
-
-**Q3:** Name two things an AI marketing agent could realistically do this week.  
-✅ **Sample answers:** Research leads from LinkedIn, monitor competitor websites, check form submissions, draft email campaigns, summarize last week's analytics, schedule social posts, find contact information for potential clients.  
-&gt; *Award Brain Cells for any two plausible marketing tasks — there are no wrong answers here.*
-
-**Q4:** Why is 2025–2026 a particularly important time to learn this?  
-✅ **Answer:** AI models became reliable enough for real business tasks AND tools like OpenClaw made them accessible. Early adopters gain significant competitive advantage. The window for being "ahead of the curve" is now.
-
-**Q5:** Graham's last name is Brain. This is:  
-A) A coincidence  
-B) Destiny  
-C) A sign he will ace this course  
-D) All of the above  
-✅ **Answer:** D) All of the above *(5 bonus Brain Cells awarded regardless of answer — it's impossible to get this wrong)*
-
----
-
-### 🔓 Unlock Criteria for Module 2
-Graham can unlock Module 2 after:
-- Watching at least Video 1 (IBM AI Intro)
-- Answering at least 3 of 5 quiz questions correctly
-- OR completing the module (no quiz minimum — progress matters more than perfection)
-
-**Unlock message:** *"Your Brain has been activated. Proceeding to Module 2..."* 🧠⚡
-
----
-
-### Humor Notes for Module 1
-- Open with the poem — set the tone that this is fun
-- Make the "Graham Brain" joke early and commit to it — "you were literally born to do this"
-- Use the calculator vs. assistant metaphor — it's clear and relatable
-- Keep the energy warm and encouraging — Graham already knows AI basics, we're building on that
-- End with something that makes him actually *want* to open Module 2
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The Origin Story (Module 1 → 2 interlude)
-
-**Peter Steinberger's 1-Hour Prototype**
-
-Peter Steinberger built OpenClaw because he was annoyed it didn't exist — so he "just prompted it into existence." His words to Lex Fridman: "I was annoyed that it didn't exist, so I just prompted it into existence."
-
-This was his **44th AI-related project since 2009**. He'd been building for decades and admitted to Fridman he'd been burned out: "I couldn't get code out anymore." OpenClaw was the project that reignited everything.
-
-The result: **the fastest-growing repository in GitHub history** — 180,000+ stars and climbing.
-
-**Video:** Lex Fridman Podcast #491 — https://www.youtube.com/watch?v=YFjfBk8HI5o  
-**Origin clip:** https://www.youtube.com/watch?v=0ch2xoBzf3A  
-**Fortune article:** https://fortune.com/2026/02/19/openclaw-who-is-peter-steinberger-openai-sam-altman-anthropic-moltbook/
-
----</pre>
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 1 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> What is the key difference between a chatbot and an AI agent?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_0" value="0"> Chatbots are smarter
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q1_0" value="1"> Agents can take actions and complete multi-step tasks
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_0" value="2"> Chatbots cost more
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_0" value="3"> Agents are newer technology
+          </label>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-      <div class="video-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/YFjfBk8HI5o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> What does the "loop" in agentic AI refer to?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_1" value="0"> A software bug
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_1" value="1"> A music playlist
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_1" value="2"> A circular error
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q1_1" value="3"> Perceive → Think → Act → Observe → Repeat
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> What are "tools" in the context of AI agents?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_2" value="0"> Physical hardware
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q1_2" value="1"> Actions the AI can perform (browse, read files, send messages)
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_2" value="2"> Settings menus
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_2" value="3"> API keys
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> Why is 2024–2026 considered an inflection point for AI agents?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_3" value="0"> AI became cheaper
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_3" value="1"> AI models became reliable enough for real business tasks + tools like OpenClaw made them accessible
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q1_3" value="2"> More people started using computers
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_3" value="3"> AI became more expensive
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What's one concrete example of an agent task for a marketing business?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q1_4" value="0"> Research everyone who attended a conference and get their LinkedIn + email
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_4" value="1"> Write a poem
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_4" value="2"> Make coffee
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q1_4" value="3"> Print documents
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-1" onclick="submitQuiz(1, 50)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-1" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-1"></div>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-1" onclick="completeModule(1, 100)">
+        ✅ Mark Module 1 Complete (+100 🧠)
+      </button>
+    </div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../module/2/index.html">Next: Module 2 →</a>
-    </nav>
+    <div class="module-nav"><span></span> <span style="opacity:.5;font-size:.9rem;">Module 1 of 8</span> <a href="../2/index.html" class="btn btn-outline">Module 2 →</a></div>
+
   </div>
 </main>
 
@@ -224,28 +360,108 @@ The result: **the fastest-growing repository in GitHub history** — 180,000+ st
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(1);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[1];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-1');
+      if (btn) { btn.textContent = '✅ Module 1 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 1 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../2/index.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>

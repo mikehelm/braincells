@@ -8,6 +8,58 @@
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
+  <style>
+    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-content li { margin-bottom: .35rem; }
+    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-content blockquote p { margin: 0; font-style: italic; }
+    .module-content strong { color: inherit; }
+    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .video-wrap { margin: 1.5rem 0; }
+    .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
+    .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
+    .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
+    .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
+    .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
+    .drama-break__icon { font-size: 1.4rem; }
+    .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
+    .drama-break__body { padding: 1.25rem; }
+    .drama-break__body p { margin: 0; line-height: 1.7; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
+    .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
+    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-option:hover { background: rgba(124,58,237,.07); }
+    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
+    .quiz-feedback.correct { color: #16a34a; }
+    .quiz-feedback.wrong { color: #dc2626; }
+    .quiz-actions { margin-top: 1rem; }
+    .quiz-result { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; font-size: 1rem; }
+    .quiz-result.great { background: #dcfce7; color: #14532d; }
+    .quiz-result.ok { background: #fef3c7; color: #92400e; }
+    .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .complete-btn-wrap { text-align: center; margin: 2rem 0; }
+    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+  </style>
 </head>
 <body>
 
@@ -26,166 +78,245 @@
       <span class="cells-count" id="header-cells">0</span>
       <span class="cells-label">Brain Cells</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <span id="theme-icon">🌙</span>
     </button>
   </div>
 </header>
 
-<main class="layout-full">
-  <div class="content-inner">
-    <div class="breadcrumb">
-      <a href="../../index.html">Home</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">Module 2</span>
+<main>
+  <div class="module-content">
+    
+    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
+      <a href="../../index.html">Home</a> / <span>Module 2</span>
+    </div>
+    
+    <h1>Module 2: AI + Automation = Your New Superpower</h1>
+    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Why the Old Way Is About to Feel Embarrassing</em></p>
+    
+    <div class="module-meta">
+      <span class="module-meta-badge">⏱ ~45 min</span>
+      <span class="module-meta-badge">🧠 150 base cells</span>
+      <span class="module-meta-badge">✅ +60 quiz bonus</span>
+      <span class="module-meta-badge">🏆 210 total available</span>
     </div>
 
-    <section class="callout callout-info">
-      <span class="callout__icon">📘</span>
-      <div class="callout__body">
-        <strong>Module 2: AI + Automation = Your New Superpower</strong>
-        <p>Course content below is copied verbatim from the research outline.</p>
+    <div class="module-nav"><a href="../1/index.html" class="btn btn-outline">← Module 1</a> <span style="opacity:.5;font-size:.9rem;">Module 2 of 8</span> <a href="../3/index.html" class="btn btn-outline">Module 3 →</a></div>
+
+    
+
+    <div class="module-body">
+      <h1>MODULE 2: AI + Automation = Your New Superpower</h1>
+<h2><em>Or: Why the Old Way of Doing Marketing Is About to Feel Embarrassing</em></h2>
+<blockquote>
+<p>🧠 <strong>Brain Cells at stake:</strong> 150 base + up to 60 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~45 minutes<br>🎯 <strong>Unlock:</strong> Requires Module 1 completion</p>
+</blockquote>
+<hr>
+<h3>Learning Objectives</h3>
+<p>By the end of this module, Graham will be able to:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Explain what &quot;automation&quot; means in plain terms (no coding knowledge needed)</li>
+<li><input disabled="" type="checkbox"> Describe why AI makes automation dramatically more powerful than traditional tools (Zapier, etc.)</li>
+<li><input disabled="" type="checkbox"> Identify at least 5 marketing tasks that are ripe for AI-powered automation</li>
+<li><input disabled="" type="checkbox"> Understand the concept of &quot;set it and forget it&quot; vs. &quot;always-on&quot; workflows</li>
+<li><input disabled="" type="checkbox"> Feel the genuine excitement of seeing hours of manual work become... someone else&#39;s problem</li>
+</ul>
+<hr>
+<h3>Key Concepts to Cover</h3>
+<p><strong>1. What &quot;automation&quot; actually means for marketers</strong></p>
+<ul>
+<li>Automation = &quot;this thing happens automatically, without me doing it manually every time&quot;</li>
+<li>Old automation: IF form submitted → send welcome email. Simple, brittle.</li>
+<li>New AI automation: IF form submitted → research the person → score the lead → draft personalized email → flag if high-value → add to CRM with enriched data. All while you&#39;re sleeping.</li>
+</ul>
+<p><strong>2. Why AI changes everything about automation</strong></p>
+<ul>
+<li>Old automation tools (Zapier, Make) follow rigid rules — break if the world changes slightly</li>
+<li>AI can handle ambiguity, variation, and complexity — it figures out edge cases</li>
+<li>AI can READ content (a webpage, an email, a PDF) and make decisions</li>
+<li>AI can WRITE output that&#39;s different every time, personalized, contextual</li>
+</ul>
+<p><strong>3. The marketing tasks that should never be done manually again</strong></p>
+<ul>
+<li>Lead research (finding info on prospects)</li>
+<li>Contact enrichment (adding details to existing contacts)</li>
+<li>Competitor monitoring (watching for price/product changes)</li>
+<li>Social media monitoring (mentions, trends, opportunities)</li>
+<li>Follow-up scheduling (who needs a touchpoint today?)</li>
+<li>Report generation (pulling and summarizing analytics)</li>
+<li>Email draft creation (first drafts from brief → full copy)</li>
+</ul>
+<p><strong>4. The &quot;lever&quot; concept — how one setup creates ongoing value</strong></p>
+<ul>
+<li>Graham spends 2 hours setting up a lead enrichment automation</li>
+<li>That automation runs every morning for the next 3 years</li>
+<li>Each run takes 0 minutes of Graham&#39;s time</li>
+<li>The 2-hour investment pays back within the first week</li>
+</ul>
+<p><strong>5. Human in the loop — staying in control</strong></p>
+<ul>
+<li>Best practice: AI does the work, you make the decisions</li>
+<li>&quot;AI proposes, Graham disposes&quot;</li>
+<li>Review outputs before sending to clients</li>
+<li>Trust grows over time — start cautious, loosen as confidence builds</li>
+</ul>
+<hr>
+<h3>Suggested Videos for This Module</h3>
+<ol>
+<li>🎥 <strong>&quot;Claude AI Tutorial for Beginners&quot;</strong> — <a href="https://www.youtube.com/watch?v=yrphNwXox8c">https://www.youtube.com/watch?v=yrphNwXox8c</a> — <em>Understanding the AI engine (25 min)</em></li>
+<li>🎥 <strong>&quot;Actionable AI for Marketers – The Human in the Loop&quot;</strong> (Britney Muller) — <a href="https://www.youtube.com/watch?v=i9oShrzRzNA">https://www.youtube.com/watch?v=i9oShrzRzNA</a> — <em>Key concept video (watch 15–20 min clip)</em></li>
+</ol>
+<hr>
+<h3>Quiz — Module 2</h3>
+<p><strong>Complete for up to 60 bonus Brain Cells (12 per correct answer)</strong></p>
+<p><strong>Q1:</strong> What&#39;s the difference between traditional automation (Zapier) and AI-powered automation?<br>✅ <strong>Answer:</strong> Traditional automation follows rigid if/then rules and breaks when things change unexpectedly. AI automation can handle variation, read content, make contextual decisions, and produce personalized output.</p>
+<p><strong>Q2:</strong> Name three marketing tasks that are perfect candidates for AI automation.<br>✅ <strong>Sample answers:</strong> Lead research, contact enrichment, competitor monitoring, social monitoring, follow-up scheduling, report generation, email drafting, form response handling. Any 3 are correct.</p>
+<p><strong>Q3:</strong> What does &quot;human in the loop&quot; mean for marketing automation?<br>✅ <strong>Answer:</strong> The AI does the research/drafting/processing work, but a human reviews and approves outputs before they go to clients or get used in campaigns. AI proposes, human decides.</p>
+<p><strong>Q4:</strong> If Graham spends 3 hours setting up an automation that saves 30 minutes per day, how many days until break-even?<br>✅ <strong>Answer:</strong> 6 days (3 hours ÷ 0.5 hours/day). After that, it&#39;s pure time profit.  </p>
+<blockquote>
+<p><em>Bonus: after 1 year, that&#39;s ~180 hours saved — equivalent to 4+ full work weeks.</em></p>
+</blockquote>
+<p><strong>Q5:</strong> What is the &quot;lever concept&quot; as applied to marketing automation?<br>✅ <strong>Answer:</strong> A one-time setup investment (the lever) creates ongoing, compounding returns. You do the work once; the automation runs indefinitely, delivering value every time it runs without additional effort.</p>
+<hr>
+<h3>🔓 Unlock Criteria for Module 3</h3>
+<ul>
+<li>Watch at least 1 of 2 suggested videos</li>
+<li>Complete quiz with 3/5 correct</li>
+<li><strong>Achievement Unlock:</strong> &quot;Automation Believer&quot; 🔧 (+15 bonus Brain Cells)</li>
+</ul>
+<hr>
+<h3>Humor Notes for Module 2</h3>
+<ul>
+<li>Use the &quot;sleeping while your AI works&quot; image — it&#39;s viscerally appealing</li>
+<li>The math problem in Q4 can be presented playfully: &quot;This is the only math in the course. You&#39;re welcome.&quot;</li>
+<li>Reference Mike&#39;s setup: &quot;Mike has been running automations like this for months. He&#39;s very relaxed about it. Suspiciously relaxed.&quot;</li>
+<li>Push the &quot;embarrassing&quot; framing — not mean-spirited, but making manual work feel obviously outdated</li>
+</ul>
+<hr>
+<hr>
+
+    </div>
+
+    
+
+    
+  <section class="quiz-section" id="quiz">
+    <h2 class="quiz-title">🧠 Module 2 Quiz</h2>
+    <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
+    <div class="quiz-questions">
+      
+    <div class="quiz-question" data-q="0">
+      <p class="quiz-q-text"><strong>Q1.</strong> What does "automation" add to AI that plain ChatGPT lacks?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_0" value="0"> Better spelling
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_0" value="1"> Faster answers
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q2_0" value="2"> The ability to take actions in the real world and run on a schedule
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_0" value="3"> Louder notifications
+          </label>
       </div>
-    </section>
-
-    <article>
-      <pre># MODULE 2: AI + Automation = Your New Superpower
-## *Or: Why the Old Way of Doing Marketing Is About to Feel Embarrassing*
-
-&gt; 🧠 **Brain Cells at stake:** 150 base + up to 60 bonus (quiz)  
-&gt; ⏱️ **Estimated time:** ~45 minutes  
-&gt; 🎯 **Unlock:** Requires Module 1 completion
-
----
-
-### Learning Objectives
-By the end of this module, Graham will be able to:
-- [ ] Explain what "automation" means in plain terms (no coding knowledge needed)
-- [ ] Describe why AI makes automation dramatically more powerful than traditional tools (Zapier, etc.)
-- [ ] Identify at least 5 marketing tasks that are ripe for AI-powered automation
-- [ ] Understand the concept of "set it and forget it" vs. "always-on" workflows
-- [ ] Feel the genuine excitement of seeing hours of manual work become... someone else's problem
-
----
-
-### Key Concepts to Cover
-
-**1. What "automation" actually means for marketers**
-- Automation = "this thing happens automatically, without me doing it manually every time"
-- Old automation: IF form submitted → send welcome email. Simple, brittle.
-- New AI automation: IF form submitted → research the person → score the lead → draft personalized email → flag if high-value → add to CRM with enriched data. All while you're sleeping.
-
-**2. Why AI changes everything about automation**
-- Old automation tools (Zapier, Make) follow rigid rules — break if the world changes slightly
-- AI can handle ambiguity, variation, and complexity — it figures out edge cases
-- AI can READ content (a webpage, an email, a PDF) and make decisions
-- AI can WRITE output that's different every time, personalized, contextual
-
-**3. The marketing tasks that should never be done manually again**
-- Lead research (finding info on prospects)
-- Contact enrichment (adding details to existing contacts)
-- Competitor monitoring (watching for price/product changes)
-- Social media monitoring (mentions, trends, opportunities)
-- Follow-up scheduling (who needs a touchpoint today?)
-- Report generation (pulling and summarizing analytics)
-- Email draft creation (first drafts from brief → full copy)
-
-**4. The "lever" concept — how one setup creates ongoing value**
-- Graham spends 2 hours setting up a lead enrichment automation
-- That automation runs every morning for the next 3 years
-- Each run takes 0 minutes of Graham's time
-- The 2-hour investment pays back within the first week
-
-**5. Human in the loop — staying in control**
-- Best practice: AI does the work, you make the decisions
-- "AI proposes, Graham disposes"
-- Review outputs before sending to clients
-- Trust grows over time — start cautious, loosen as confidence builds
-
----
-
-### Suggested Videos for This Module
-1. 🎥 **"Claude AI Tutorial for Beginners"** — https://www.youtube.com/watch?v=yrphNwXox8c — *Understanding the AI engine (25 min)*
-2. 🎥 **"Actionable AI for Marketers – The Human in the Loop"** (Britney Muller) — https://www.youtube.com/watch?v=i9oShrzRzNA — *Key concept video (watch 15–20 min clip)*
-
----
-
-### Quiz — Module 2
-**Complete for up to 60 bonus Brain Cells (12 per correct answer)**
-
-**Q1:** What's the difference between traditional automation (Zapier) and AI-powered automation?  
-✅ **Answer:** Traditional automation follows rigid if/then rules and breaks when things change unexpectedly. AI automation can handle variation, read content, make contextual decisions, and produce personalized output.
-
-**Q2:** Name three marketing tasks that are perfect candidates for AI automation.  
-✅ **Sample answers:** Lead research, contact enrichment, competitor monitoring, social monitoring, follow-up scheduling, report generation, email drafting, form response handling. Any 3 are correct.
-
-**Q3:** What does "human in the loop" mean for marketing automation?  
-✅ **Answer:** The AI does the research/drafting/processing work, but a human reviews and approves outputs before they go to clients or get used in campaigns. AI proposes, human decides.
-
-**Q4:** If Graham spends 3 hours setting up an automation that saves 30 minutes per day, how many days until break-even?  
-✅ **Answer:** 6 days (3 hours ÷ 0.5 hours/day). After that, it's pure time profit.  
-&gt; *Bonus: after 1 year, that's ~180 hours saved — equivalent to 4+ full work weeks.*
-
-**Q5:** What is the "lever concept" as applied to marketing automation?  
-✅ **Answer:** A one-time setup investment (the lever) creates ongoing, compounding returns. You do the work once; the automation runs indefinitely, delivering value every time it runs without additional effort.
-
----
-
-### 🔓 Unlock Criteria for Module 3
-- Watch at least 1 of 2 suggested videos
-- Complete quiz with 3/5 correct
-- **Achievement Unlock:** "Automation Believer" 🔧 (+15 bonus Brain Cells)
-
----
-
-### Humor Notes for Module 2
-- Use the "sleeping while your AI works" image — it's viscerally appealing
-- The math problem in Q4 can be presented playfully: "This is the only math in the course. You're welcome."
-- Reference Mike's setup: "Mike has been running automations like this for months. He's very relaxed about it. Suspiciously relaxed."
-- Push the "embarrassing" framing — not mean-spirited, but making manual work feel obviously outdated
-
----
-
----</pre>
-    </article>
-
-    <section class="callout callout-warning drama-break">
-      <span class="callout__icon">🎭</span>
-      <div class="callout__body">
-        <strong>Drama Break</strong>
-        <pre>## The OpenAI Deal (Module 3 → 4 interlude)
-
-**The deal that divided the community**
-
-Just as OpenClaw was going viral, OpenAI came knocking. Peter announced that OpenAI would begin sponsoring OpenClaw, and he was working to form it into a foundation.
-
-His exact words from his blog (steipete.me): *"The community around OpenClaw is something magical and OpenAI has made strong commitments to enable me to dedicate my time to it and already sponsors the project. To get this into a proper structure I'm working on making it a foundation."*
-
-**The two camps:**
-- 🎉 **Team Resources:** "OpenAI money = faster development, better infrastructure, Peter can work on it full-time. Win."
-- 😤 **Team Independence:** "OpenAI sponsors the project that runs Claude? Conflict of interest. Will it start favoring GPT models? Is 'open' source becoming 'open to OpenAI'?"
-
-**Fortune** covered Peter. **Sam Altman** and **Mark Zuckerberg** both noticed. The project went from indie experiment to tech industry conversation piece in weeks.
-
-Sources: steipete.me/posts/2026/openclaw, Fortune Feb 19 2026
-
----</pre>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="1">
+      <p class="quiz-q-text"><strong>Q2.</strong> Why is the "old way" of using AI about to feel embarrassing?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_1" value="0"> It's expensive
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q2_1" value="1"> Manual copy-paste workflows can't compete with automated agents that run 24/7
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_1" value="2"> It's slow to type
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_1" value="3"> The interface is ugly
+          </label>
       </div>
-    </section>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="2">
+      <p class="quiz-q-text"><strong>Q3.</strong> What is a "trigger" in an automation workflow?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_2" value="0"> A gun metaphor
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_2" value="1"> A type of email
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_2" value="2"> An error message
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q2_2" value="3"> An event that starts an automated sequence
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="3">
+      <p class="quiz-q-text"><strong>Q4.</strong> What makes AI automation compound over time?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q2_3" value="0"> It learns from every interaction and gets smarter with your specific context
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_3" value="1"> It gets cheaper
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_3" value="2"> It uses less electricity
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_3" value="3"> It runs faster
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    <div class="quiz-question" data-q="4">
+      <p class="quiz-q-text"><strong>Q5.</strong> What's the difference between a "task" and a "workflow"?</p>
+      <div class="quiz-options">
+        
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_4" value="0"> Size of the computer
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_4" value="1"> How long it takes
+          </label>
+          <label class="quiz-option" data-correct="true">
+            <input type="radio" name="q2_4" value="2"> A task is one action; a workflow is a series of connected tasks
+          </label>
+          <label class="quiz-option" data-correct="false">
+            <input type="radio" name="q2_4" value="3"> The price
+          </label>
+      </div>
+      <div class="quiz-feedback" style="display:none"></div>
+    </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-primary" id="quiz-submit-2" onclick="submitQuiz(2, 60)">
+        Submit Answers 🧠
+      </button>
+    </div>
+    <div class="quiz-result" id="quiz-result-2" style="display:none"></div>
+  </section>
 
-    <section class="section">
-      <h2>Video Walkthrough</h2>
-    </section>
+    <div class="complete-btn-wrap">
+      <button class="btn btn-primary btn-lg" id="complete-btn-2" onclick="completeModule(2, 150)">
+        ✅ Mark Module 2 Complete (+150 🧠)
+      </button>
+    </div>
 
-    <section class="section">
-      <h2>Module Quiz</h2>
-      <div id="quiz-placeholder-2"></div>
-    </section>
+    <div class="module-nav"><a href="../1/index.html" class="btn btn-outline">← Module 1</a> <span style="opacity:.5;font-size:.9rem;">Module 2 of 8</span> <a href="../3/index.html" class="btn btn-outline">Module 3 →</a></div>
 
-    <nav class="section" style="display:flex;justify-content:space-between;gap:1rem;">
-      <a class="btn btn-outline" href="../../module/1/index.html">← Previous</a>
-      <a class="btn btn-primary" href="../../module/3/index.html">Next: Module 3 →</a>
-    </nav>
   </div>
 </main>
 
@@ -193,28 +324,108 @@ Sources: steipete.me/posts/2026/openclaw, Fortune Feb 19 2026
   <div class="footer-inner">
     <div class="footer-logo">🦞 BrainCells</div>
     <p class="footer-tagline">A course built for Graham Brain by Mike Helm (with significant assistance from Otto, the AI)</p>
-    <div class="footer-links">
-      <a href="../../story.html">The Story of OpenClaw</a>
-      <a href="../../progress.html">Your Progress</a>
-      <a href="../../resources.html">Resources</a>
-      <a href="../../about.html">About</a>
-    </div>
     <p class="footer-copy">Made with 🦞 and an embarrassing number of Brain Cell puns.</p>
   </div>
 </footer>
 
 <script src="../../js/state.js"></script>
-<script src="../../js/quiz.js"></script>
+<script src="../../js/achievements.js"></script>
+<script src="../../js/unlock.js"></script>
 <script>
-  (function initModulePage() {
-    const state = window.BrainCells ? window.BrainCells.loadState() : { brainCells: 0 };
+  // Update header cells on load
+  (function() {
+    const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
     if (el) el.textContent = state.brainCells || 0;
-    if (typeof window.initQuiz === 'function') {
-      window.initQuiz(2);
+    
+    // Check if already completed
+    const modState = state.modules && state.modules[2];
+    if (modState && modState.completedAt) {
+      const btn = document.getElementById('complete-btn-2');
+      if (btn) { btn.textContent = '✅ Module 2 Complete!'; btn.disabled = true; btn.style.opacity = '.6'; }
     }
   })();
-</script>
 
+  function completeModule(num, cells) {
+    if (!window.BrainState) return;
+    const result = BrainState.completeModule(num, cells);
+    if (!result) { alert('Already completed!'); return; }
+    
+    const btn = document.getElementById('complete-btn-' + num);
+    if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
+    
+    // Update header
+    const state = BrainState.load();
+    const el = document.getElementById('header-cells');
+    if (el) el.textContent = state.brainCells;
+    
+    if (window.Achievements) Achievements.check(state);
+    if (window.Unlock) Unlock.check(num, state);
+    
+    setTimeout(() => {
+      if (confirm('Module 2 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+        window.location.href = '../3/index.html';
+      }
+    }, 300);
+  }
+
+  function submitQuiz(num, maxCells) {
+    const questions = document.querySelectorAll('.quiz-question');
+    let correct = 0;
+    let answered = 0;
+    
+    questions.forEach((qEl, i) => {
+      const opts = qEl.querySelectorAll('.quiz-option');
+      const selected = qEl.querySelector('input:checked');
+      if (!selected) return;
+      answered++;
+      
+      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const feedback = qEl.querySelector('.quiz-feedback');
+      
+      opts.forEach(opt => {
+        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+        else if (opt.querySelector('input:checked')) opt.classList.add('wrong');
+        opt.querySelector('input').disabled = true;
+      });
+      
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+        feedback.textContent = isCorrect ? '✅ Correct!' : '❌ Not quite — the correct answer is highlighted above.';
+      }
+      if (isCorrect) correct++;
+    });
+    
+    if (answered < questions.length) { alert('Please answer all questions first!'); return; }
+    
+    const btn = document.getElementById('quiz-submit-' + num);
+    if (btn) btn.style.display = 'none';
+    
+    const earned = Math.round((correct / questions.length) * maxCells);
+    const bonus = correct === questions.length ? Math.round(maxCells * 0.5) : 0;
+    const total = earned + bonus;
+    
+    const resultEl = document.getElementById('quiz-result-' + num);
+    let cls = correct >= 4 ? 'great' : (correct >= 2 ? 'ok' : 'retry');
+    let msg = '';
+    if (correct === 5) msg = '🏆 Perfect score! Neuron Boost activated — bonus Brain Cells earned! +' + total + ' 🧠';
+    else if (correct >= 3) msg = '✅ Good work! ' + correct + '/5 correct. You earned ' + total + ' Brain Cells. 🧠';
+    else msg = '📚 ' + correct + '/5 correct. Review the material and try again for more Brain Cells.';
+    
+    if (resultEl) {
+      resultEl.className = 'quiz-result ' + cls;
+      resultEl.innerHTML = '<strong>' + msg + '</strong>';
+      resultEl.style.display = 'block';
+    }
+    
+    if (window.BrainState && total > 0) {
+      BrainState.addCells(total, 'quiz_module_' + num);
+      const state = BrainState.load();
+      const el = document.getElementById('header-cells');
+      if (el) el.textContent = state.brainCells;
+    }
+  }
+</script>
 </body>
 </html>
