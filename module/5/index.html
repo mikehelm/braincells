@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrainCells Module 5 — Safe Installation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/layout.css">
   <script src="../../js/theme.js"></script>
   <style>
-    .module-content { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
-    .module-content h1 { font-size: 2rem; margin-bottom: .5rem; }
-    .module-content h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
-    .module-content h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
-    .module-content p { line-height: 1.7; margin-bottom: 1rem; }
-    .module-content ul, .module-content ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
-    .module-content li { margin-bottom: .35rem; }
-    .module-content blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
-    .module-content blockquote p { margin: 0; font-style: italic; }
-    .module-content strong { color: inherit; }
-    .module-content hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
-    .module-content pre { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
-    .module-content code { font-family: 'Fira Code', monospace; font-size: .9em; }
-    .module-content p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
+    .module-content { max-width: none; margin: 0; padding: 0; }
+    .module-body h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .module-body h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
+    .module-body h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-body p { line-height: 1.7; margin-bottom: 1rem; }
+    .module-body ul, .module-body ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
+    .module-body li { margin-bottom: .35rem; }
+    .module-body blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-body blockquote p { margin: 0; font-style: italic; }
+    .module-body strong { color: inherit; }
+    .module-body hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
+    .module-body .code-block { background: var(--code-bg, #1e1e2e); color: #cdd6f4; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+    .module-body code { font-family: 'Fira Code', monospace; font-size: .9em; }
+    .module-body p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
     .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
     .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
     .video-wrap { margin: 1.5rem 0; }
@@ -40,14 +43,14 @@
     .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
     .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
     .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
-    .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
+    .quiz-card { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
     .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
-    .quiz-options { display: flex; flex-direction: column; gap: .5rem; }
-    .quiz-option { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
-    .quiz-option:hover { background: rgba(124,58,237,.07); }
-    .quiz-option input { margin-top: .2rem; flex-shrink: 0; }
-    .quiz-option.correct { background: #dcfce7; border-color: #16a34a; }
-    .quiz-option.wrong { background: #fee2e2; border-color: #dc2626; }
+    .quiz-opts { display: flex; flex-direction: column; gap: .5rem; }
+    .quiz-opt { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
+    .quiz-opt:hover { background: rgba(124,58,237,.07); }
+    .quiz-opt input { margin-top: .2rem; flex-shrink: 0; }
+    .quiz-opt.correct { background: #dcfce7; border-color: #16a34a; }
+    .quiz-opt.wrong { background: #fee2e2; border-color: #dc2626; }
     .quiz-feedback { margin-top: .5rem; font-size: .9rem; font-weight: 600; }
     .quiz-feedback.correct { color: #16a34a; }
     .quiz-feedback.wrong { color: #dc2626; }
@@ -58,7 +61,7 @@
     .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
     .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
     .complete-btn-wrap { text-align: center; margin: 2rem 0; }
-    @media (max-width: 600px) { .module-content { padding: 1rem; } .module-meta { gap: .5rem; } }
+    @media (max-width: 600px) { .module-content { padding: 0; } .module-meta { gap: .5rem; } }
   </style>
 </head>
 <body>
@@ -87,24 +90,30 @@
 <main>
   <div class="module-content">
     
-    <div class="breadcrumb" style="margin-bottom:1.5rem;opacity:.7;font-size:.9rem;">
-      <a href="../../index.html">Home</a> / <span>Module 5</span>
+    <div class="module-hero">
+      <div class="module-hero-inner">
+        <div class="module-hero-meta">
+          <a href="../../index.html" class="module-hero-back">← Back to course</a>
+          <span class="module-hero-progress">Module 5 of 8</span>
+        </div>
+        <h1 class="module-hero-title">Module 5: Safe Installation</h1>
+        <p class="module-hero-subtitle">Mac + Windows, No Disasters</p>
+        <div class="module-hero-stats">
+          <span>⏱ ~90 min</span>
+          <span>🧠 200 Brain Cells</span>
+          <span>📝 5-question quiz</span>
+        </div>
+      </div>
     </div>
-    
-    <h1>Module 5: Safe Installation</h1>
-    <p style="font-size:1.15rem;opacity:.8;margin-bottom:1.25rem;"><em>Mac + Windows, No Disasters</em></p>
-    
-    <div class="module-meta">
-      <span class="module-meta-badge">⏱ ~90 min</span>
-      <span class="module-meta-badge">🧠 200 base cells</span>
-      <span class="module-meta-badge">✅ +75 quiz bonus</span>
-      <span class="module-meta-badge">🏆 275 total available</span>
-    </div>
-
-    <div class="module-nav"><a href="../4/index.html" class="btn btn-outline">← Module 4</a> <span style="opacity:.5;font-size:.9rem;">Module 5 of 8</span> <a href="../6/index.html" class="btn btn-outline">Module 6 →</a></div>
-
-    
-  <section class="section-videos">
+  <div class="lesson-layout">
+      <aside class="lesson-toc" id="lesson-toc">
+        <div class="toc-inner">
+          <div class="toc-label">In this module</div>
+          <nav id="toc-nav"></nav>
+        </div>
+      </aside>
+      <article class="module-body" id="module-body">
+  <section class="section-videos reveal">
     <h3 class="videos-heading">🎥 Required Viewing</h3>
     
     <div class="video-wrap">
@@ -127,10 +136,7 @@
                 allowfullscreen></iframe>
       </div>
     </div>
-  </section>
-
-    <div class="module-body">
-      <h1>MODULE 5: Safe Installation</h1>
+  </section>      <h1>MODULE 5: Safe Installation</h1>
 <h2><em>Mac + Windows, No Disasters, and Why You Should Really Buy a Mac Mini</em></h2>
 <blockquote>
 <p>🧠 <strong>Brain Cells at stake:</strong> 200 base + up to 75 bonus (quiz)<br>⏱️ <strong>Estimated time:</strong> ~90 minutes (includes actual installation)<br>🎯 <strong>Unlock:</strong> Requires Module 4 completion</p>
@@ -256,28 +262,28 @@
 </ul>
 <h4>Step-by-Step: Windows Installation</h4>
 <p><strong>Step 1: Open PowerShell as Administrator</strong></p>
-<pre><code class="language-powershell"># Right-click the Start button → &quot;Windows PowerShell (Admin)&quot;
+<div class="code-block"><code class="language-powershell"># Right-click the Start button → &quot;Windows PowerShell (Admin)&quot;
 # Or search for PowerShell, right-click, &quot;Run as administrator&quot;
-</code></pre>
+</code></div>
 <p><strong>Step 2: Install OpenClaw</strong></p>
-<pre><code class="language-powershell">iwr -useb https://openclaw.ai/install.ps1 | iex
-</code></pre>
+<div class="code-block"><code class="language-powershell">iwr -useb https://openclaw.ai/install.ps1 | iex
+</code></div>
 <p><em>This runs the official OpenClaw installer. Takes 2–5 minutes.</em></p>
 <p><strong>Step 3: Run the Onboarding Wizard</strong></p>
-<pre><code class="language-bash">openclaw onboard --install-daemon
-</code></pre>
+<div class="code-block"><code class="language-bash">openclaw onboard --install-daemon
+</code></div>
 <p><em>Follow the prompts. This will ask for your Anthropic API key and set up the gateway service.</em></p>
 <p><strong>Step 4: Verify the Gateway is Running</strong></p>
-<pre><code class="language-bash">openclaw gateway status
-</code></pre>
+<div class="code-block"><code class="language-bash">openclaw gateway status
+</code></div>
 <p><em>Should say something like &quot;Gateway: running&quot; — if it does, you&#39;re in great shape.</em></p>
 <p><strong>Step 5: Connect Telegram (Recommended First Channel)</strong></p>
-<pre><code class="language-bash">openclaw channels login
-</code></pre>
+<div class="code-block"><code class="language-bash">openclaw channels login
+</code></div>
 <p><em>Follow the Telegram pairing instructions. You&#39;ll scan a QR code or enter a code.</em></p>
 <p><strong>Step 6: Open the Dashboard</strong></p>
-<pre><code class="language-bash">openclaw dashboard
-</code></pre>
+<div class="code-block"><code class="language-bash">openclaw dashboard
+</code></div>
 <p><em>This opens your browser at <a href="http://127.0.0.1:18789/">http://127.0.0.1:18789/</a> — your local control panel.</em></p>
 <p><strong>Step 7: Send a Test Message</strong><br>Open Telegram, message your OpenClaw bot: <code>Hello!</code><br>You should get a response. If you do: 🎉 it&#39;s working.</p>
 <hr>
@@ -288,7 +294,7 @@
 <h4>The Allow-List (Critical First Step)</h4>
 <p>Tell OpenClaw to ONLY accept commands from your phone number:</p>
 <p>Edit <code>~/.openclaw/openclaw.json</code>:</p>
-<pre><code class="language-json">{
+<div class="code-block"><code class="language-json">{
   &quot;channels&quot;: {
     &quot;telegram&quot;: {
       &quot;allowFrom&quot;: [&quot;YOUR_TELEGRAM_USER_ID&quot;]
@@ -298,7 +304,7 @@
     }
   }
 }
-</code></pre>
+</code></div>
 <p><em>How to find your Telegram user ID: message @userinfobot on Telegram. It tells you instantly.</em></p>
 <p>This means if anyone else finds your bot, they get nothing. Without this, anyone could theoretically send it commands.</p>
 <h4>Basic Security Rules</h4>
@@ -377,10 +383,7 @@
 <hr>
 <hr>
 
-    </div>
-
-    
-  <div class="drama-break">
+  <div class="drama-break reveal">
     <div class="drama-break__header">
       <span class="drama-break__icon">🎭</span>
       <h3 class="drama-break__title">🎭 Drama Break: The Security Crisis — CVE-2026-25253</h3>
@@ -395,101 +398,106 @@ The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> Open
   </div>
 
     
-  <section class="quiz-section" id="quiz">
+  <section class="quiz-section reveal" id="quiz">
     <h2 class="quiz-title">🧠 Module 5 Quiz</h2>
     <p class="quiz-subtitle">Answer all 5 questions to earn your Brain Cells. Perfect score = Neuron Boost!</p>
-    <div class="quiz-questions">
+    <div class="quiz-cards">
       
-    <div class="quiz-question" data-q="0">
-      <p class="quiz-q-text"><strong>Q1.</strong> What are the two main operating systems OpenClaw supports?</p>
-      <div class="quiz-options">
+    <div class="quiz-card" data-q="0">
+      <div class="quiz-q-num">Q1.</div>
+      <p class="quiz-q-text">What are the two main operating systems OpenClaw supports?</p>
+      <div class="quiz-opts">
         
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_0" value="0"> iOS and Android
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_0" value="1"> Linux and ChromeOS
           </label>
-          <label class="quiz-option" data-correct="true">
+          <label class="quiz-opt" data-correct="true">
             <input type="radio" name="q5_0" value="2"> Mac and Windows
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_0" value="3"> Ubuntu and Fedora
           </label>
       </div>
       <div class="quiz-feedback" style="display:none"></div>
     </div>
-    <div class="quiz-question" data-q="1">
-      <p class="quiz-q-text"><strong>Q2.</strong> What do you need before installing OpenClaw?</p>
-      <div class="quiz-options">
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-q-num">Q2.</div>
+      <p class="quiz-q-text">What do you need before installing OpenClaw?</p>
+      <div class="quiz-opts">
         
-          <label class="quiz-option" data-correct="true">
+          <label class="quiz-opt" data-correct="true">
             <input type="radio" name="q5_1" value="0"> Node.js (v18+) and a terminal
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_1" value="1"> A PhD in computer science
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_1" value="2"> A gaming PC
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_1" value="3"> A subscription to Microsoft Azure
           </label>
       </div>
       <div class="quiz-feedback" style="display:none"></div>
     </div>
-    <div class="quiz-question" data-q="2">
-      <p class="quiz-q-text"><strong>Q3.</strong> What is the "gateway" in OpenClaw?</p>
-      <div class="quiz-options">
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-q-num">Q3.</div>
+      <p class="quiz-q-text">What is the "gateway" in OpenClaw?</p>
+      <div class="quiz-opts">
         
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_2" value="0"> A physical router
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_2" value="1"> An OpenAI product
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_2" value="2"> A firewall rule
           </label>
-          <label class="quiz-option" data-correct="true">
+          <label class="quiz-opt" data-correct="true">
             <input type="radio" name="q5_2" value="3"> The local server that runs on your machine and connects everything together
           </label>
       </div>
       <div class="quiz-feedback" style="display:none"></div>
     </div>
-    <div class="quiz-question" data-q="3">
-      <p class="quiz-q-text"><strong>Q4.</strong> Why should you never share your OpenClaw API keys?</p>
-      <div class="quiz-options">
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-q-num">Q4.</div>
+      <p class="quiz-q-text">Why should you never share your OpenClaw API keys?</p>
+      <div class="quiz-opts">
         
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_3" value="0"> They expire quickly
           </label>
-          <label class="quiz-option" data-correct="true">
+          <label class="quiz-opt" data-correct="true">
             <input type="radio" name="q5_3" value="1"> Anyone with your keys can use your AI accounts and run up charges on your bill
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_3" value="2"> They're too long
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_3" value="3"> For legal reasons
           </label>
       </div>
       <div class="quiz-feedback" style="display:none"></div>
     </div>
-    <div class="quiz-question" data-q="4">
-      <p class="quiz-q-text"><strong>Q5.</strong> What's the first thing to do after installing OpenClaw?</p>
-      <div class="quiz-options">
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-q-num">Q5.</div>
+      <p class="quiz-q-text">What's the first thing to do after installing OpenClaw?</p>
+      <div class="quiz-opts">
         
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_4" value="0"> Post about it on Twitter
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_4" value="1"> Restart your computer
           </label>
-          <label class="quiz-option" data-correct="true">
+          <label class="quiz-opt" data-correct="true">
             <input type="radio" name="q5_4" value="2"> Run `openclaw status` to verify everything is working
           </label>
-          <label class="quiz-option" data-correct="false">
+          <label class="quiz-opt" data-correct="false">
             <input type="radio" name="q5_4" value="3"> Buy a new computer
           </label>
       </div>
@@ -504,14 +512,16 @@ The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> Open
     <div class="quiz-result" id="quiz-result-5" style="display:none"></div>
   </section>
 
-    <div class="complete-btn-wrap">
+    <div class="complete-btn-wrap reveal">
       <button class="btn btn-primary btn-lg" id="complete-btn-5" onclick="completeModule(5, 200)">
         ✅ Mark Module 5 Complete (+200 🧠)
       </button>
     </div>
 
-    <div class="module-nav"><a href="../4/index.html" class="btn btn-outline">← Module 4</a> <span style="opacity:.5;font-size:.9rem;">Module 5 of 8</span> <a href="../6/index.html" class="btn btn-outline">Module 6 →</a></div>
+    <div class="module-nav reveal"><a href="../4/index.html" class="btn btn-outline">← Module 4</a> <span style="opacity:.5;font-size:.9rem;">Module 5 of 8</span> <a href="../6/index.html" class="btn btn-outline">Module 6 →</a></div>
 
+    </article>
+  </div>
   </div>
 </main>
 
@@ -527,6 +537,16 @@ The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> Open
 <script src="../../js/achievements.js"></script>
 <script src="../../js/unlock.js"></script>
 <script>
+  (function() {
+    const bar = document.createElement('div');
+    bar.className = 'reading-progress-bar';
+    document.body.prepend(bar);
+    window.addEventListener('scroll', () => {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
+    }, { passive: true });
+  })();
+
   // Update header cells on load
   (function() {
     const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
@@ -545,6 +565,8 @@ The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> Open
     if (!window.BrainState) return;
     const result = BrainState.completeModule(num, cells);
     if (!result) { alert('Already completed!'); return; }
+
+    launchConfetti();
     
     const btn = document.getElementById('complete-btn-' + num);
     if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
@@ -564,18 +586,112 @@ The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> Open
     }, 300);
   }
 
+  (function() {
+    document.querySelectorAll('.quiz-opt input[type="radio"]').forEach(input => {
+      input.addEventListener('change', () => {
+        const card = input.closest('.quiz-card');
+        if (!card) return;
+        card.querySelectorAll('.quiz-opt').forEach(opt => opt.classList.remove('selected'));
+        const selectedOpt = input.closest('.quiz-opt');
+        if (selectedOpt) selectedOpt.classList.add('selected');
+      });
+    });
+
+    document.querySelectorAll('.module-body h2, .module-body h3, .module-body blockquote, .module-body .callout, .module-body .key-takeaway, .module-body ul, .module-body ol').forEach(el => {
+      el.classList.add('reveal');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+
+  (function() {
+    const nav = document.getElementById('toc-nav');
+    if (!nav) return;
+
+    const headings = document.querySelectorAll('.module-body h2, .module-body h3');
+    headings.forEach((h, i) => {
+      if (!h.id) h.id = 'section-' + i;
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      a.className = h.tagName === 'H3' ? 'toc-h3' : '';
+      a.onclick = e => {
+        e.preventDefault();
+        h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      nav.appendChild(a);
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const id = e.target.id;
+        const link = nav.querySelector('[href="#' + id + '"]');
+        if (link) link.classList.toggle('active', e.isIntersecting);
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+
+    headings.forEach(h => io.observe(h));
+  })();
+
+  function launchConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10000';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const pieces = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: -20,
+      vx: (Math.random() - 0.5) * 6,
+      vy: Math.random() * 5 + 3,
+      r: Math.random() * 6 + 3,
+      color: ['#00C9A7', '#F5A623', '#6366f1', '#ec4899', '#22c55e'][Math.floor(Math.random() * 5)],
+      rot: Math.random() * 360,
+      drot: (Math.random() - 0.5) * 8
+    }));
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r / 1.5);
+        ctx.restore();
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.12;
+        p.rot += p.drot;
+      });
+      if (++frame < 180) requestAnimationFrame(draw);
+      else canvas.remove();
+    }
+    draw();
+  }
   function submitQuiz(num, maxCells) {
-    const questions = document.querySelectorAll('.quiz-question');
+    const questions = document.querySelectorAll('.quiz-card');
     let correct = 0;
     let answered = 0;
     
     questions.forEach((qEl, i) => {
-      const opts = qEl.querySelectorAll('.quiz-option');
+      const opts = qEl.querySelectorAll('.quiz-opt');
       const selected = qEl.querySelector('input:checked');
       if (!selected) return;
       answered++;
       
-      const isCorrect = selected.closest('.quiz-option').dataset.correct === 'true';
+      const isCorrect = selected.closest('.quiz-opt').dataset.correct === 'true';
       const feedback = qEl.querySelector('.quiz-feedback');
       
       opts.forEach(opt => {
