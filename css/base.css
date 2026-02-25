@@ -440,3 +440,51 @@ tr:nth-child(even) td { background: var(--color-hover); }
 
 /* Hide theme toggle entirely — dark mode only */
 .theme-toggle { display: none !important; }
+
+/* =============================================================
+   STEP 1 FIXES — Drama break, background depth, font
+   ============================================================= */
+
+/* Deeper, more cinematic background */
+[data-theme="dark"] body,
+[data-theme="dark"] {
+  --color-bg: #080D18;
+  --color-dark-bg: #080D18;
+}
+
+/* Drama Break — remove amber clash, use slate + teal border */
+[data-theme="dark"] .drama-break,
+.drama-break {
+  border: 1px solid rgba(0,201,167,0.35) !important;
+  border-left: 4px solid #00C9A7 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: #0F1826 !important;
+}
+
+[data-theme="dark"] .drama-break__header,
+.drama-break__header {
+  background: rgba(0,201,167,0.1) !important;
+  color: #00C9A7 !important;
+  padding: 0.875rem 1.25rem !important;
+  border-bottom: 1px solid rgba(0,201,167,0.2) !important;
+}
+
+.drama-break__icon { font-size: 1.2rem; }
+
+.drama-break__title {
+  color: #00C9A7 !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .drama-break__body {
+  background: transparent !important;
+  padding: 1.25rem !important;
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .drama-break__body p {
+  color: #CBD5E1 !important;
+  margin: 0 !important;
+}
