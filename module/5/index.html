@@ -14,12 +14,12 @@
   <style>
     .module-content { max-width: none; margin: 0; padding: 0; }
     .module-body h1 { font-size: 2rem; margin-bottom: .5rem; }
-    .module-body h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid var(--accent, #7c3aed); padding-bottom: .4rem; }
-    .module-body h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: var(--accent, #7c3aed); }
+    .module-body h2 { font-size: 1.5rem; margin: 2rem 0 .75rem; border-bottom: 2px solid #00C9A7; padding-bottom: .4rem; }
+    .module-body h3 { font-size: 1.2rem; margin: 1.5rem 0 .5rem; color: #00C9A7; }
     .module-body p { line-height: 1.7; margin-bottom: 1rem; }
     .module-body ul, .module-body ol { margin: .5rem 0 1rem 1.5rem; line-height: 1.7; }
     .module-body li { margin-bottom: .35rem; }
-    .module-body blockquote { border-left: 4px solid var(--accent, #7c3aed); margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle, #f5f3ff); border-radius: 0 8px 8px 0; }
+    .module-body blockquote { border-left: 4px solid #00C9A7; margin: 1.5rem 0; padding: .75rem 1.25rem; background: var(--bg-subtle,#f0fdfb); border-radius: 0 8px 8px 0; }
     .module-body blockquote p { margin: 0; font-style: italic; }
     .module-body strong { color: inherit; }
     .module-body hr { border: none; border-top: 1px solid var(--border, #e5e7eb); margin: 2rem 0; }
@@ -27,12 +27,12 @@
     .module-body code { font-family: 'Fira Code', monospace; font-size: .9em; }
     .module-body p code { background: var(--bg-subtle, #f0f0f8); padding: .2em .4em; border-radius: 4px; }
     .module-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .module-meta-badge { background: var(--bg-subtle, #f5f3ff); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
+    .module-meta-badge { background: var(--bg-subtle,#f0fdfb); border: 1px solid var(--border, #e5e7eb); border-radius: 999px; padding: .35rem .9rem; font-size: .85rem; }
     .video-wrap { margin: 1.5rem 0; }
     .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; opacity: .8; }
     .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; }
     .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle, #f5f3ff); border-radius: 12px; }
+    .section-videos { margin: 2rem 0; padding: 1.5rem; background: var(--bg-subtle,#f0fdfb); border-radius: 12px; }
     .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; }
     .drama-break { margin: 2.5rem 0; border: 2px solid #f59e0b; border-radius: 12px; overflow: hidden; }
     .drama-break__header { background: #f59e0b; padding: .75rem 1.25rem; display: flex; align-items: center; gap: .75rem; }
@@ -40,14 +40,14 @@
     .drama-break__title { font-size: 1rem; font-weight: 700; color: #1c1917; margin: 0; }
     .drama-break__body { padding: 1.25rem; }
     .drama-break__body p { margin: 0; line-height: 1.7; }
-    .quiz-section { margin: 3rem 0; background: var(--bg-subtle, #f5f3ff); border-radius: 16px; padding: 2rem; }
+    .quiz-section { margin: 3rem 0; background: var(--bg-subtle,#f0fdfb); border-radius: 16px; padding: 2rem; }
     .quiz-title { font-size: 1.5rem; margin-bottom: .5rem; }
     .quiz-subtitle { opacity: .7; margin-bottom: 2rem; }
     .quiz-card { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border, #e5e7eb); }
     .quiz-q-text { font-size: 1rem; margin-bottom: .75rem; }
     .quiz-opts { display: flex; flex-direction: column; gap: .5rem; }
     .quiz-opt { display: flex; align-items: flex-start; gap: .65rem; padding: .65rem 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; cursor: pointer; transition: background .15s; }
-    .quiz-opt:hover { background: rgba(124,58,237,.07); }
+    .quiz-opt:hover { background: rgba(0,201,167,.07); }
     .quiz-opt input { margin-top: .2rem; flex-shrink: 0; }
     .quiz-opt.correct { background: #dcfce7; border-color: #16a34a; }
     .quiz-opt.wrong { background: #fee2e2; border-color: #dc2626; }
@@ -59,7 +59,7 @@
     .quiz-result.great { background: #dcfce7; color: #14532d; }
     .quiz-result.ok { background: #fef3c7; color: #92400e; }
     .quiz-result.retry { background: #fee2e2; color: #7f1d1d; }
-    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle, #f5f3ff); border-radius: 10px; }
+    .module-nav { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; padding: 1rem; background: var(--bg-subtle,#f0fdfb); border-radius: 10px; }
     .complete-btn-wrap { text-align: center; margin: 2rem 0; }
     @media (max-width: 600px) { .module-content { padding: 0; } .module-meta { gap: .5rem; } }
   </style>
@@ -655,7 +655,7 @@ The security community dubbed it the <strong>"ClawHavoc Campaign."</strong> Open
       vx: (Math.random() - 0.5) * 6,
       vy: Math.random() * 5 + 3,
       r: Math.random() * 6 + 3,
-      color: ['#00C9A7', '#F5A623', '#6366f1', '#ec4899', '#22c55e'][Math.floor(Math.random() * 5)],
+      color: ['#00C9A7', '#F5A623', '#00C9A7', '#ec4899', '#22c55e'][Math.floor(Math.random() * 5)],
       rot: Math.random() * 360,
       drot: (Math.random() - 0.5) * 8
     }));
