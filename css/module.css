@@ -161,6 +161,59 @@
 /* ---- Complete button ---- */
 .complete-btn-wrap { text-align: center; margin: 2rem 0; }
 
+/* ---- Quiz teacher notes (collapsed by default) ---- */
+.quiz-teacher-notes {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.quiz-teacher-notes > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+  list-style: none;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.quiz-teacher-notes > summary::marker,
+.quiz-teacher-notes > summary::-webkit-details-marker { display: none; }
+
+.quiz-teacher-notes > summary::before {
+  content: "\25B6";
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.3);
+  transition: transform 0.15s;
+}
+
+.quiz-teacher-notes[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.quiz-teacher-notes > summary:hover {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.7);
+}
+
+.quiz-teacher-notes__body {
+  padding: 1.25rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.quiz-teacher-notes__body h3 { color: rgba(255,255,255,0.5); font-size: 1rem; }
+.quiz-teacher-notes__body p { color: rgba(255,255,255,0.55); margin-bottom: 0.75rem; }
+.quiz-teacher-notes__body blockquote { opacity: 0.6; }
+
 /* ---- Responsive ---- */
 @media (max-width: 600px) {
   .module-content { padding: 0; }

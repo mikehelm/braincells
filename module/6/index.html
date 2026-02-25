@@ -140,7 +140,9 @@ openclaw gateway status      # Confirm gateway is healthy
 <li>🎥 <strong>&quot;AI in 5 Minutes&quot;</strong> — <a href="https://www.youtube.com/watch?v=ad79nYk2keg">https://www.youtube.com/watch?v=ad79nYk2keg</a> — <em>Quick refresher if first automation feels confusing</em></li>
 </ol>
 <hr>
-<h3>Quiz — Module 6</h3>
+<details class="quiz-teacher-notes">
+  <summary>📋 Answer Key — attempt the quiz below first!</summary>
+  <div class="quiz-teacher-notes__body"><h3>Quiz — Module 6</h3>
 <p><strong>Complete for up to 120 bonus Brain Cells (24 per correct answer)</strong></p>
 <p><strong>Q1:</strong> Graham set up a cron job for Monday mornings but it didn&#39;t run. What&#39;s the most likely issue?<br>✅ <strong>Answer (any of):</strong> Timezone mismatch (UTC vs local time); Gateway not running; Job is disabled; Cron expression is wrong. Solution: <code>openclaw cron list</code> to check status, <code>openclaw cron run &lt;id&gt;</code> to force-test.</p>
 <p><strong>Q2:</strong> How does OpenClaw &quot;pick up&quot; changes to HEARTBEAT.md?<br>✅ <strong>Answer:</strong> On the next heartbeat cycle (default: ~30 minutes), the agent reads the current version of HEARTBEAT.md. Changes take effect automatically without restarting the gateway.</p>
@@ -148,6 +150,8 @@ openclaw gateway status      # Confirm gateway is healthy
 <p><strong>Q4:</strong> Graham sends his OpenClaw bot &quot;What&#39;s on my heartbeat checklist?&quot; and gets a blank response. What might be wrong?<br>✅ <strong>Answer:</strong> HEARTBEAT.md might be empty, the gateway might not have read it yet, or the AI may need to be prompted more specifically. Try asking: &quot;Please read your HEARTBEAT.md file and tell me what it contains.&quot;</p>
 <p><strong>Q5:</strong> What command lists all of Graham&#39;s current cron jobs?<br>✅ <strong>Answer:</strong> <code>openclaw cron list</code></p>
 <hr>
+</div>
+</details>
 <h3>🔓 Unlock Criteria for Module 7</h3>
 <ul>
 <li>HEARTBEAT.md configured with at least 2 items AND</li>
