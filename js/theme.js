@@ -20,16 +20,9 @@
    Sets data-theme on <html> so CSS variables load correctly
    and there is zero flash of wrong theme.
 ───────────────────────────────────────────────────────────── */
+// Dark mode only — light mode removed per design decision
 (function applyThemeEarly() {
-  try {
-    var saved      = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme       = saved || (prefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {
-    // localStorage unavailable (private browsing edge case) — default to light
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
+  document.documentElement.setAttribute('data-theme', 'dark');
 })();
 
 /* ─────────────────────────────────────────────────────────────
@@ -108,8 +101,10 @@ window.ThemeToggle = (function () {
 
   /* ── Init ────────────────────────────────────────────────── */
   function init() {
-    injectButton();
-    watchOSPreference();
+    // Dark mode only — hide toggle button if present
+    var btn = document.getElementById('theme-toggle');
+    if (btn) btn.style.display = 'none';
+    // Don't inject or watch OS preference — always dark
   }
 
   if (document.readyState === 'loading') {

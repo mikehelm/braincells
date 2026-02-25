@@ -78,6 +78,12 @@
   --color-border:    #334155;
   --color-hover:     #293548;
   /* primary stays navy — it's already dark, used for header/footer backgrounds */
+
+  /* Extra variables used by module pages inline styles */
+  --bg-subtle:       rgba(255,255,255,0.06);
+  --border:          #334155;
+  --code-bg:         #0d1520;
+  --accent:          #00C9A7;
 }
 
 /* ============================================================
@@ -341,3 +347,96 @@ tr:nth-child(even) td { background: var(--color-hover); }
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
+
+/* =============================================================
+   DARK MODE — Module page overrides
+   Fixes white-on-white issues from inline styles that use
+   --bg-subtle, --border, --code-bg fallback values.
+   These rules only apply when data-theme="dark" (always now).
+   ============================================================= */
+[data-theme="dark"] .module-meta-badge,
+[data-theme="dark"] .section-videos,
+[data-theme="dark"] .quiz-section,
+[data-theme="dark"] .module-nav {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: #334155 !important;
+  color: var(--color-text) !important;
+}
+
+[data-theme="dark"] .module-body p,
+[data-theme="dark"] .module-body li,
+[data-theme="dark"] .module-body h1,
+[data-theme="dark"] .module-body h2,
+[data-theme="dark"] .module-body h3,
+[data-theme="dark"] .module-body h4 {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .module-body h2 {
+  border-bottom-color: #00C9A7;
+}
+
+[data-theme="dark"] .module-body h3 {
+  color: #00C9A7;
+}
+
+[data-theme="dark"] .module-body blockquote {
+  background: rgba(0,201,167,0.08) !important;
+  border-left-color: #00C9A7 !important;
+  color: var(--color-text-light);
+}
+
+[data-theme="dark"] .drama-break {
+  border-color: #b38a00 !important;
+  background: #1a1508;
+}
+
+[data-theme="dark"] .drama-break__header {
+  background: #b38a00 !important;
+  color: white;
+}
+
+[data-theme="dark"] .quiz-opt {
+  border-color: #334155;
+  background: rgba(255,255,255,0.04);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .quiz-opt:hover {
+  background: rgba(0,201,167,0.1) !important;
+  border-color: #00C9A7;
+}
+
+[data-theme="dark"] .quiz-opt.correct {
+  background: rgba(34,197,94,0.15) !important;
+  border-color: #22c55e !important;
+  color: #86efac;
+}
+
+[data-theme="dark"] .quiz-opt.wrong {
+  background: rgba(239,68,68,0.12) !important;
+  border-color: #ef4444 !important;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .quiz-feedback.correct { color: #86efac; }
+[data-theme="dark"] .quiz-feedback.wrong { color: #fca5a5; }
+
+[data-theme="dark"] .quiz-result.great {
+  background: rgba(34,197,94,0.12) !important;
+  color: #86efac !important;
+}
+
+[data-theme="dark"] .quiz-result.ok {
+  background: rgba(245,158,11,0.12) !important;
+  color: #fcd34d !important;
+}
+
+[data-theme="dark"] .lesson-toc .toc-inner,
+[data-theme="dark"] .toc-inner {
+  background: var(--color-surface);
+  border-color: #334155;
+}
+
+/* Hide theme toggle entirely — dark mode only */
+.theme-toggle { display: none !important; }
