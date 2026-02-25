@@ -52,6 +52,19 @@
   color: var(--color-text-light);
 }
 
+/* ---- Lucide icon sizing ---- */
+.lucide-icon, [data-lucide] {
+  display: inline-block;
+  vertical-align: -2px;
+}
+.module-hero-stats span i,
+.module-meta-badge i {
+  width: 13px;
+  height: 13px;
+  vertical-align: -2px;
+  margin-right: 3px;
+}
+
 /* ---- Video section ---- */
 .video-wrap { margin: 1.5rem 0; }
 .video-label { font-weight: 600; margin-bottom: .5rem; font-size: .9rem; color: var(--color-text-light); }
@@ -63,6 +76,9 @@
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
+}
+.section-videos {
+  border-left: 3px solid #00C9A7;
 }
 .videos-heading { font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-text); font-weight: 600; }
 

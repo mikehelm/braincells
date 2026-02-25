@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/homepage.css">
   <!-- theme.js must be first — IIFE sets data-theme before paint (no flash) -->
   <script src="js/theme.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -21,11 +22,11 @@
   <div class="header-inner">
     <a href="index.html" class="header-logo">🦞 BrainCells</a>
     <nav class="header-nav">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="progress.html" class="nav-link">Progress</a>
-      <a href="resources.html" class="nav-link">Resources</a>
-      <a href="story.html" class="nav-link">The Story</a>
-      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link active"><i data-lucide="home" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i>Home</a>
+      <a href="progress.html" class="nav-link"><i data-lucide="bar-chart-2" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i>Progress</a>
+      <a href="resources.html" class="nav-link"><i data-lucide="book-open" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i>Resources</a>
+      <a href="story.html" class="nav-link"><i data-lucide="book" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i>The Story</a>
+      <a href="about.html" class="nav-link"><i data-lucide="user" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i>About</a>
     </nav>
     <div class="header-cells">
       <span class="cells-icon">🧠</span>
@@ -237,5 +238,6 @@
   if (window.Achievements) window.Achievements.renderMilestoneBar('hero-milestone-bar');
 </script>
 
+  <script>if (window.lucide) lucide.createIcons();</script>
 </body>
 </html>

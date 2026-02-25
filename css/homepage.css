@@ -3,9 +3,11 @@
 .header-logo { color:white; text-decoration:none; font-weight:800; font-size:1.2rem; }
 .header-logo:hover { color:#00C9A7; text-decoration:none; }
 .header-nav { display:flex; align-items:center; gap:1.5rem; margin-left:auto; }
-.nav-link { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.875rem; font-weight:500; transition:color 0.15s; }
+.nav-link { color:rgba(255,255,255,0.72); text-decoration:none; font-size:0.875rem; font-weight:500; transition:color 0.15s; }
 .nav-link:hover { color:white; text-decoration:none; }
-.nav-link.active { color:white; font-weight:600; }
+.nav-link.active { color:white; font-weight:600; position:relative; }
+.nav-link.active::after { content:""; position:absolute; bottom:-4px; left:0; right:0; height:2px; background:#00C9A7; border-radius:2px; }
+.site-header__nav a, .header-nav a { position:relative; }
 .header-cells { display:flex; align-items:center; gap:0.5rem; background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.3); border-radius:999px; padding:0.3rem 1rem; }
 .cells-icon { font-size:1rem; line-height:1; }
 .cells-count { color:#F5A623; font-weight:700; font-size:1.05rem; }
