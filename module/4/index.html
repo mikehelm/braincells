@@ -53,8 +53,19 @@
           <span><i data-lucide="zap" style="width:13px;height:13px;vertical-align:-2px;margin-right:3px;color:#F5A623"></i>250 Brain Cells</span>
           <span><i data-lucide="file-text" style="width:13px;height:13px;vertical-align:-2px;margin-right:3px;"></i>5-question quiz</span>
         </div>
+        <div class="module-objectives">
+          <div class="module-objectives-label">After this module, Graham will be able to:</div>
+          <ul class="module-objectives-list">
+            <li>I can explain what SOUL.md, USER.md, and HEARTBEAT.md each control.</li>
+            <li>I can modify a magic file intentionally to change assistant behavior.</li>
+            <li>I can explain why file-based memory beats relying on chat history alone.</li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <div class="module-reading-progress" id="module-reading-progress"><span id="module-reading-pct">0%</span> through this module</div>
+
   <div class="lesson-layout">
       <aside class="lesson-toc" id="lesson-toc">
         <div class="toc-inner">
@@ -313,9 +324,9 @@
     </div>
     </div>
     <div class="quiz-actions">
-      <button class="btn btn-primary" id="quiz-submit-4" onclick="submitQuiz(4, 100)">
+      <div class="quiz-submit-wrapper"><button class="btn btn-primary" id="quiz-submit-4" onclick="submitQuiz(4, 100)">
         Submit Answers 🧠
-      </button>
+      </button></div>
     </div>
     <div class="quiz-result" id="quiz-result-4" style="display:none"></div>
   </section>
@@ -342,20 +353,14 @@
 </footer>
 
 <script src="../../js/state.js"></script>
+<script src="../../js/spaced-review.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="../../js/milestone-modal.js"></script>
+<script src="../../js/module-page-enhancements.js"></script>
 <script src="../../js/achievements.js"></script>
 <script src="../../js/unlock.js"></script>
 <script>
-  (function() {
-    const bar = document.createElement('div');
-    bar.className = 'reading-progress-bar';
-    document.body.prepend(bar);
-    window.addEventListener('scroll', () => {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
-    }, { passive: true });
-  })();
-
-  // Update header cells on load
+    // Update header cells on load
   (function() {
     const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
@@ -369,12 +374,17 @@
     }
   })();
 
+  if (window.showSpacedReview) showSpacedReview(4);
+
   function completeModule(num, cells) {
     if (!window.BrainState) return;
     const result = BrainState.completeModule(num, cells);
     if (!result) { alert('Already completed!'); return; }
 
     launchConfetti();
+    if (result.milestoneReached && window.showMilestoneCelebration) {
+      showMilestoneCelebration(result.milestoneReached);
+    }
     
     const btn = document.getElementById('complete-btn-' + num);
     if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
@@ -539,7 +549,10 @@
     }
     
     if (window.BrainState && total > 0) {
-      BrainState.addCells(total, 'quiz_module_' + num);
+      const addResult = BrainState.addCells(total, 'quiz_module_' + num);
+      if (addResult && addResult.milestoneReached && window.showMilestoneCelebration) {
+        showMilestoneCelebration(addResult.milestoneReached);
+      }
       const state = BrainState.load();
       const el = document.getElementById('header-cells');
       if (el) el.textContent = state.brainCells;

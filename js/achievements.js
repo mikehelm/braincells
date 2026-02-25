@@ -105,7 +105,7 @@ const ACHIEVEMENT_DEFINITIONS = {
   }
 };
 
-const MILESTONES = [
+const ACH_MILESTONES = [
   { cells: 100,  tier: 'Baby Neurons',        badge: '🌱', unlock: 'Module 1 complete' },
   { cells: 300,  tier: 'Brain Activated',      badge: '🧠', unlock: 'Module 3 territory' },
   { cells: 600,  tier: 'Synapse Surge',        badge: '⚡', unlock: 'Module 5 territory' },
@@ -117,7 +117,7 @@ const MILESTONES = [
 
 function getCurrentTier(cells) {
   let current = { cells: 0, tier: 'Pre-Neurons', badge: '🥚', unlock: 'Just starting' };
-  for (const milestone of MILESTONES) {
+  for (const milestone of ACH_MILESTONES) {
     if (cells >= milestone.cells) current = milestone;
     else break;
   }
@@ -125,7 +125,7 @@ function getCurrentTier(cells) {
 }
 
 function getNextMilestone(cells) {
-  for (const milestone of MILESTONES) {
+  for (const milestone of ACH_MILESTONES) {
     if (cells < milestone.cells) return milestone;
   }
   return null;
@@ -266,7 +266,7 @@ function renderMilestoneBar(containerId) {
       </div>
       <div class="milestone-progress-track">
         <div class="milestone-progress-fill" style="width: ${pct}%"></div>
-        ${MILESTONES.map(m => `
+        ${ACH_MILESTONES.map(m => `
           <div class="milestone-marker ${cells >= m.cells ? 'passed' : ''}" 
                style="left: ${(m.cells/maxCells)*100}%"
                title="${m.tier} (${m.cells} 🧠)">
@@ -282,7 +282,7 @@ function renderMilestoneBar(containerId) {
 // Export for module use
 window.Achievements = {
   definitions: ACHIEVEMENT_DEFINITIONS,
-  milestones: MILESTONES,
+  milestones: ACH_MILESTONES,
   getCurrentTier,
   getNextMilestone,
   checkAndUnlock: checkAndUnlockAchievement,

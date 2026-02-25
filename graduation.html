@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainCells Graduation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,700;0,800;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="js/theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>
+    .graduation-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+    .graduation-hero { text-align: center; padding: 2rem 1rem; border: 1px solid rgba(245,166,35,0.35); border-radius: 16px; background: linear-gradient(165deg, rgba(11,30,61,0.9), rgba(12,30,58,0.75)); }
+    .graduation-hero h1 { color: #fff; margin: 0; }
+    .graduation-hero p { color: #c2d3e4; margin: 0.6rem 0 0; }
+    .certificate { margin-top: 1.25rem; background: linear-gradient(160deg, #f8edd1, #efe1bc); color: #2f2412; border: 1px solid rgba(145,118,77,0.45); border-radius: 16px; padding: 1.5rem; text-align: center; }
+    .certificate__label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.09em; opacity: 0.8; }
+    .certificate__name { font-size: 2rem; font-weight: 800; margin: 0.6rem 0 0.2rem; }
+    .certificate__meta { font-size: 0.95rem; }
+    .certificate__sig { margin-top: 1.2rem; font-style: italic; }
+    .stats-grid { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-top: 1rem; }
+    .stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 0.9rem; }
+    .stat-card__label { color: var(--color-text-light); font-size: 0.82rem; }
+    .stat-card__value { color: #00C9A7; font-weight: 700; font-size: 1.2rem; }
+    .graduation-section { margin-top: 1.1rem; }
+    .graduation-quote { border-left: 3px solid #00C9A7; padding: 0.8rem 1rem; background: rgba(0,201,167,0.08); border-radius: 0 10px 10px 0; }
+    .graduation-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .not-ready { max-width: 740px; margin: 3rem auto; text-align: center; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 2rem 1rem; background: rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">🦞 BrainCells</a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="progress.html" class="nav-link">Progress</a>
+      <a href="graduation.html" class="nav-link active">Graduation</a>
+    </nav>
+    <div class="header-cells">
+      <span class="cells-icon">🧠</span>
+      <span class="cells-count" id="header-cells">0</span>
+      <span class="cells-label">Brain Cells</span>
+    </div>
+  </div>
+</header>
+
+<main class="graduation-wrap" id="graduation-root"></main>
+
+<script src="js/state.js"></script>
+<script>
+  (function() {
+    const root = document.getElementById('graduation-root');
+    const raw = localStorage.getItem('braincells_v1');
+    const state = raw ? JSON.parse(raw) : null;
+    const safe = state || { brainCells: 0, modules: {}, achievements: [], courseComplete: false };
+
+    const headerCells = document.getElementById('header-cells');
+    if (headerCells) headerCells.textContent = safe.brainCells || 0;
+
+    const modules = safe.modules || {};
+    const completedCount = Object.values(modules).filter(m => m.status === 'complete').length;
+    const module8 = modules['8'] || {};
+    const isComplete = !!safe.courseComplete && completedCount === 8 && !!module8.completedAt;
+
+    if (!isComplete) {
+      root.innerHTML = [
+        '<section class="not-ready">',
+        '<h1>Not yet... finish Module 8 first! 😏</h1>',
+        '<p>You are close. Complete all modules and this page turns into your full graduation celebration.</p>',
+        '<a class="btn btn-primary" href="module/8/index.html">Return to Module 8 →</a>',
+        '</section>'
+      ].join('');
+      return;
+    }
+
+    const completionDate = new Date(module8.completedAt);
+    const dateText = completionDate.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    const quizzesPassed = Object.values(modules).filter(m => typeof m.quizScore === 'number' && m.quizScore >= 3).length;
+    const unlocked = Array.isArray(safe.achievements) ? safe.achievements : [];
+
+    const defs = {
+      'automation-believer': { name: 'Automation Believer', icon: '🔧' },
+      'openclaw-curious': { name: 'OpenClaw Curious', icon: '🦞' },
+      'file-whisperer': { name: 'File Whisperer', icon: '📁' },
+      'gateway-guardian': { name: 'Gateway Guardian', icon: '🔐' },
+      'first-automation': { name: 'First Automation Live', icon: '🤖' },
+      'marketing-machine': { name: 'Marketing Machine', icon: '🚀' },
+      'grand-cortex': { name: 'Grand Cortex', icon: '👑' },
+      'openclaw-certified': { name: 'OpenClaw Certified', icon: '🦞🎓' }
+    };
+
+    const badges = unlocked.length
+      ? unlocked.map((id) => {
+          const d = defs[id] || { name: id, icon: '🏅' };
+          return '<div class="achievement-card unlocked"><div class="achievement-card__icon">' + d.icon + '</div><div class="achievement-card__name">' + d.name + '</div></div>';
+        }).join('')
+      : '<p class="text-muted">No achievements unlocked yet.</p>';
+
+    root.innerHTML = [
+      '<section class="graduation-hero">',
+      '<h1>🎓 Graham Brain — OpenClaw Certified</h1>',
+      '<p>Completed on ' + dateText + '</p>',
+      '</section>',
+      '<section class="certificate">',
+      '<div class="certificate__label">Certificate of Completion</div>',
+      '<div class="certificate__name">Graham Brain</div>',
+      '<p class="certificate__meta">has successfully completed the BrainCells OpenClaw Marketing Mastery program.</p>',
+      '<p class="certificate__meta">Completion Date: ' + dateText + '</p>',
+      '<div class="certificate__sig">Signed, Mike Helm (course creator)</div>',
+      '</section>',
+      '<section class="graduation-section">',
+      '<h2>Your Stats</h2>',
+      '<div class="stats-grid">',
+      '<div class="stat-card"><div class="stat-card__label">Total Brain Cells</div><div class="stat-card__value">' + (safe.brainCells || 0) + '</div></div>',
+      '<div class="stat-card"><div class="stat-card__label">Modules Completed</div><div class="stat-card__value">' + completedCount + '/8</div></div>',
+      '<div class="stat-card"><div class="stat-card__label">Quizzes Passed</div><div class="stat-card__value">' + quizzesPassed + '</div></div>',
+      '<div class="stat-card"><div class="stat-card__label">Achievements Unlocked</div><div class="stat-card__value">' + unlocked.length + '</div></div>',
+      '</div>',
+      '</section>',
+      '<section class="graduation-section">',
+      '<h2>Achievement Showcase</h2>',
+      '<div class="achievement-grid">' + badges + '</div>',
+      '</section>',
+      '<section class="graduation-section">',
+      '<div class="graduation-quote">"Graham finished the whole thing, which means two things: he is disciplined, and my jokes were at least tolerable." — Mike</div>',
+      '<div class="graduation-actions">',
+      '<button id="share-btn" class="btn btn-gold">Share your achievement</button>',
+      '<a href="index.html" class="btn btn-outline">Back to course</a>',
+      '</div>',
+      '</section>'
+    ].join('');
+
+    const shareText = 'I just graduated BrainCells: OpenClaw Certified 🎓🦞 with ' + (safe.brainCells || 0) + ' Brain Cells. Yes, my name is Brain. Yes, this was destiny.';
+    document.getElementById('share-btn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareText);
+        alert('Copied! Paste it anywhere to share.');
+      } catch (err) {
+        alert(shareText);
+      }
+    });
+
+    if (typeof window.confetti === 'function') {
+      const burst = () => window.confetti({ particleCount: 160, spread: 90, origin: { y: 0.6 }, colors: ['#f5a623', '#ff8a00', '#7c3aed'] });
+      burst();
+      setTimeout(burst, 180);
+      setTimeout(() => window.confetti({ particleCount: 100, spread: 70, origin: { x: 0.2, y: 0.8 }, colors: ['#f5a623', '#00c9a7', '#7c3aed'] }), 300);
+      setTimeout(() => window.confetti({ particleCount: 100, spread: 70, origin: { x: 0.8, y: 0.8 }, colors: ['#f5a623', '#00c9a7', '#7c3aed'] }), 350);
+    }
+  })();
+</script>
+</body>
+</html>

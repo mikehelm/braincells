@@ -362,3 +362,25 @@ window.BrainCells = {
   ACHIEVEMENTS,
   MILESTONES
 };
+
+// Legacy compatibility shim used by existing module pages.
+window.BrainState = {
+  load: loadState,
+  save: saveState,
+  reset: resetState,
+  addCells(amount, source) {
+    const state = loadState();
+    const result = addBrainCells(state, amount, source);
+    return { total: result.newTotal, milestoneReached: result.milestone };
+  },
+  completeModule(moduleNum) {
+    const state = loadState();
+    return completeModule(state, moduleNum);
+  },
+  unlockAchievement(achievementId) {
+    const state = loadState();
+    const unlocked = unlockAchievement(state, achievementId);
+    saveState(state);
+    return unlocked;
+  }
+};

@@ -53,8 +53,19 @@
           <span><i data-lucide="zap" style="width:13px;height:13px;vertical-align:-2px;margin-right:3px;color:#F5A623"></i>250 Brain Cells</span>
           <span><i data-lucide="file-text" style="width:13px;height:13px;vertical-align:-2px;margin-right:3px;"></i>5-question quiz</span>
         </div>
+        <div class="module-objectives">
+          <div class="module-objectives-label">After this module, Graham will be able to:</div>
+          <ul class="module-objectives-list">
+            <li>I can design a multi-step automation pipeline from scratch.</li>
+            <li>I can maintain and evolve my AI setup over time without chaos.</li>
+            <li>I can identify the next three automations I will build after graduation.</li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <div class="module-reading-progress" id="module-reading-progress"><span id="module-reading-pct">0%</span> through this module</div>
+
   <div class="lesson-layout">
       <aside class="lesson-toc" id="lesson-toc">
         <div class="toc-inner">
@@ -457,9 +468,9 @@ Week 6: Module 8 (advanced — the long game)
     </div>
     </div>
     <div class="quiz-actions">
-      <button class="btn btn-primary" id="quiz-submit-8" onclick="submitQuiz(8, 100)">
+      <div class="quiz-submit-wrapper"><button class="btn btn-primary" id="quiz-submit-8" onclick="submitQuiz(8, 100)">
         Submit Answers 🧠
-      </button>
+      </button></div>
     </div>
     <div class="quiz-result" id="quiz-result-8" style="display:none"></div>
   </section>
@@ -486,20 +497,14 @@ Week 6: Module 8 (advanced — the long game)
 </footer>
 
 <script src="../../js/state.js"></script>
+<script src="../../js/spaced-review.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="../../js/milestone-modal.js"></script>
+<script src="../../js/module-page-enhancements.js"></script>
 <script src="../../js/achievements.js"></script>
 <script src="../../js/unlock.js"></script>
 <script>
-  (function() {
-    const bar = document.createElement('div');
-    bar.className = 'reading-progress-bar';
-    document.body.prepend(bar);
-    window.addEventListener('scroll', () => {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
-    }, { passive: true });
-  })();
-
-  // Update header cells on load
+    // Update header cells on load
   (function() {
     const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
@@ -513,12 +518,17 @@ Week 6: Module 8 (advanced — the long game)
     }
   })();
 
+  if (window.showSpacedReview) showSpacedReview(8);
+
   function completeModule(num, cells) {
     if (!window.BrainState) return;
     const result = BrainState.completeModule(num, cells);
     if (!result) { alert('Already completed!'); return; }
 
     launchConfetti();
+    if (result.milestoneReached && window.showMilestoneCelebration) {
+      showMilestoneCelebration(result.milestoneReached);
+    }
     
     const btn = document.getElementById('complete-btn-' + num);
     if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
@@ -530,9 +540,17 @@ Week 6: Module 8 (advanced — the long game)
     
     if (window.Achievements) Achievements.check(state);
     if (window.Unlock) Unlock.check(num, state);
-    
+
+    const allComplete = state.courseComplete || Object.values(state.modules || {}).every(mod => mod.status === 'complete');
+    if (allComplete && window.showGraduationCelebration) {
+      showGraduationCelebration(() => {
+        window.location.href = '../../graduation.html';
+      });
+      return;
+    }
+
     setTimeout(() => {
-      if (confirm('Module 8 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to the next module?')) {
+      if (confirm('Module 8 complete! 🧠 You earned ' + cells + ' Brain Cells!\n\nHead to your progress page?')) {
         window.location.href = '../../progress.html';
       }
     }, 300);
@@ -683,7 +701,10 @@ Week 6: Module 8 (advanced — the long game)
     }
     
     if (window.BrainState && total > 0) {
-      BrainState.addCells(total, 'quiz_module_' + num);
+      const addResult = BrainState.addCells(total, 'quiz_module_' + num);
+      if (addResult && addResult.milestoneReached && window.showMilestoneCelebration) {
+        showMilestoneCelebration(addResult.milestoneReached);
+      }
       const state = BrainState.load();
       const el = document.getElementById('header-cells');
       if (el) el.textContent = state.brainCells;

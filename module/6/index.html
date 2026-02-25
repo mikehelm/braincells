@@ -53,8 +53,19 @@
           <span><i data-lucide="zap" style="width:13px;height:13px;vertical-align:-2px;margin-right:3px;color:#F5A623"></i>300 Brain Cells</span>
           <span><i data-lucide="file-text" style="width:13px;height:13px;vertical-align:-2px;margin-right:3px;"></i>5-question quiz</span>
         </div>
+        <div class="module-objectives">
+          <div class="module-objectives-label">After this module, Graham will be able to:</div>
+          <ul class="module-objectives-list">
+            <li>I can send my first real OpenClaw command and get a useful response.</li>
+            <li>I can build a simple automation that solves one real business task.</li>
+            <li>I can troubleshoot a basic automation when it fails unexpectedly.</li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <div class="module-reading-progress" id="module-reading-progress"><span id="module-reading-pct">0%</span> through this module</div>
+
   <div class="lesson-layout">
       <aside class="lesson-toc" id="lesson-toc">
         <div class="toc-inner">
@@ -283,9 +294,9 @@ openclaw gateway status      # Confirm gateway is healthy
     </div>
     </div>
     <div class="quiz-actions">
-      <button class="btn btn-primary" id="quiz-submit-6" onclick="submitQuiz(6, 120)">
+      <div class="quiz-submit-wrapper"><button class="btn btn-primary" id="quiz-submit-6" onclick="submitQuiz(6, 120)">
         Submit Answers 🧠
-      </button>
+      </button></div>
     </div>
     <div class="quiz-result" id="quiz-result-6" style="display:none"></div>
   </section>
@@ -312,20 +323,14 @@ openclaw gateway status      # Confirm gateway is healthy
 </footer>
 
 <script src="../../js/state.js"></script>
+<script src="../../js/spaced-review.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="../../js/milestone-modal.js"></script>
+<script src="../../js/module-page-enhancements.js"></script>
 <script src="../../js/achievements.js"></script>
 <script src="../../js/unlock.js"></script>
 <script>
-  (function() {
-    const bar = document.createElement('div');
-    bar.className = 'reading-progress-bar';
-    document.body.prepend(bar);
-    window.addEventListener('scroll', () => {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = docH > 0 ? (window.scrollY / docH * 100) + '%' : '0%';
-    }, { passive: true });
-  })();
-
-  // Update header cells on load
+    // Update header cells on load
   (function() {
     const state = window.BrainState ? window.BrainState.load() : { brainCells: 0 };
     const el = document.getElementById('header-cells');
@@ -339,12 +344,17 @@ openclaw gateway status      # Confirm gateway is healthy
     }
   })();
 
+  if (window.showSpacedReview) showSpacedReview(6);
+
   function completeModule(num, cells) {
     if (!window.BrainState) return;
     const result = BrainState.completeModule(num, cells);
     if (!result) { alert('Already completed!'); return; }
 
     launchConfetti();
+    if (result.milestoneReached && window.showMilestoneCelebration) {
+      showMilestoneCelebration(result.milestoneReached);
+    }
     
     const btn = document.getElementById('complete-btn-' + num);
     if (btn) { btn.textContent = '🎉 Completed! +' + cells + ' Brain Cells!'; btn.disabled = true; btn.style.opacity = '.6'; }
@@ -509,7 +519,10 @@ openclaw gateway status      # Confirm gateway is healthy
     }
     
     if (window.BrainState && total > 0) {
-      BrainState.addCells(total, 'quiz_module_' + num);
+      const addResult = BrainState.addCells(total, 'quiz_module_' + num);
+      if (addResult && addResult.milestoneReached && window.showMilestoneCelebration) {
+        showMilestoneCelebration(addResult.milestoneReached);
+      }
       const state = BrainState.load();
       const el = document.getElementById('header-cells');
       if (el) el.textContent = state.brainCells;

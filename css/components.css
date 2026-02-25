@@ -1554,3 +1554,102 @@
   color: inherit;
   padding: 0;
 }
+
+/* ---- Milestone + Graduation Modal ---- */
+.milestone-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 10, 18, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1200;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.milestone-overlay--visible {
+  opacity: 1;
+}
+
+.milestone-modal {
+  width: min(560px, 100%);
+  background: linear-gradient(165deg, #0f1f3f 0%, #0b1730 100%);
+  border: 1px solid rgba(245, 166, 35, 0.42);
+  border-radius: 16px;
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.milestone-modal--graduation {
+  width: min(680px, 100%);
+  border-color: rgba(245, 166, 35, 0.65);
+  background: linear-gradient(165deg, #11254a 0%, #0c1a37 100%);
+}
+
+.milestone-modal__emoji {
+  font-size: 3rem;
+  margin-bottom: 0.4rem;
+}
+
+.milestone-modal__title {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.milestone-modal__cells {
+  margin: 0.6rem 0 0.3rem;
+  color: #f5a623;
+  font-weight: 700;
+}
+
+.milestone-modal__message {
+  margin: 0.4rem auto 1rem;
+  color: #c8d6e5;
+  max-width: 46ch;
+}
+
+/* ---- Mobile quiz improvements ---- */
+.quiz-opt {
+  min-height: 48px;
+}
+
+.quiz-opt input[type="radio"] {
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.quiz-opt,
+.quiz-opt label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.75rem;
+}
+
+.quiz-feedback {
+  min-height: 44px;
+}
+
+.quiz-submit-wrapper {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .quiz-submit-wrapper {
+    position: sticky;
+    bottom: 1rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    z-index: 100;
+  }
+
+  .quiz-submit-wrapper .btn,
+  .quiz-submit-wrapper button {
+    width: 100%;
+  }
+}
